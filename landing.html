@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><rect x="0" y="0" width="8" height="8" fill="%23F25022"/><rect x="9" y="0" width="8" height="8" fill="%237FBA00"/><rect x="0" y="9" width="8" height="8" fill="%2300A4EF"/><rect x="9" y="9" width="8" height="8" fill="%23FFB900"/></svg>'>
+<link rel="icon" type="image/svg+xml" href="../_shared/favicon.svg">
 <title>Agentic AI ROI Toolkit · Paula Silva</title>
 <meta name="description" content="Plan agentic AI investments with rigor: 24 SDLC personas, token economics, agent archetypes, NPV modeling, and an interactive calculator with Gartner-anchored research.">
 <meta property="og:type" content="website">
@@ -32,68 +32,10 @@
 <div id="landing-root"></div>
 <script>
 window.PAGE_DATA = {
-  simulationBlock: `<section class="container" style="padding: 32px 28px 16px; max-width: 1200px; margin: 0 auto;" data-reveal>
-  <h2 style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 600; margin: 0 0 8px; color: var(--ink, #1A1A1A);" data-reveal><span data-lang="en" class="lang-active">See it in action</span><span data-lang="pt-br">Veja em acao</span><span data-lang="es">Velo en accion</span></h2>
-  <p style="font-family: Inter, sans-serif; font-size: 14px; color: var(--ink-2, #3A3A3A); margin: 0 0 16px; line-height: 1.55;" data-reveal><span data-lang="en" class="lang-active">How the ROI calculator scores an agentic program.</span><span data-lang="pt-br">Como o calculador de ROI pontua um programa agentico.</span><span data-lang="es">Como el calculador de ROI puntua un programa agentico.</span></p>
-  <div class="sim-browser" data-reveal>
-  <div class="sim-browser__chrome">
-    <div class="sim-browser__dots">
-      <span class="sim-browser__dot sim-browser__dot--r"></span>
-      <span class="sim-browser__dot sim-browser__dot--y"></span>
-      <span class="sim-browser__dot sim-browser__dot--g"></span>
-    </div>
-    <div class="sim-browser__url">paulasilva.dev/agentic-roi-calculator</div>
-  </div>
-  <div class="sim-browser__content">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;font-family:Inter,sans-serif;">
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#737373;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;">INPUTS</div>
-        <div style="font-size:12px;color:#3A3A3A;line-height:1.9;">
-          Engineers: <strong>240</strong><br>
-          Loaded cost / engineer: <strong>$185k</strong><br>
-          PR cycle time: <strong>4.2 d</strong><br>
-          Adoption target: <strong>65%</strong>
-        </div>
-      </div>
-      <div style="background:#F8F8F4;padding:14px 16px;border-radius:6px;border-left:3px solid #7FBA00;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#737373;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;">YEAR 1 OUTPUT</div>
-        <div style="font-size:24px;font-weight:600;color:#1A1A1A;">$11.4M</div>
-        <div style="font-size:11px;color:#737373;margin-top:4px;">capacity reclaimed, net of platform cost</div>
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="bar-wrap" data-reveal>
-  <div class="bar-row" data-pct="0.62" style="--bar-color: var(--c-green-500);">
-    <span class="bar-row__label"><span data-lang="en" class="lang-active">Capacity reclaimed</span><span data-lang="pt-br">Capacidade recuperada</span><span data-lang="es">Capacidad recuperada</span></span>
-    <span class="bar-row__track"><span class="bar-row__fill"></span></span>
-    <span class="bar-row__value">62%</span>
-  </div>
-  <div class="bar-row" data-pct="0.48" style="--bar-color: var(--c-blue-500);">
-    <span class="bar-row__label"><span data-lang="en" class="lang-active">Cycle-time cut</span><span data-lang="pt-br">Reducao de ciclo</span><span data-lang="es">Reduccion de ciclo</span></span>
-    <span class="bar-row__track"><span class="bar-row__fill"></span></span>
-    <span class="bar-row__value">48%</span>
-  </div>
-  <div class="bar-row" data-pct="0.34" style="--bar-color: var(--c-yellow-500);">
-    <span class="bar-row__label"><span data-lang="en" class="lang-active">Defect-cost avoided</span><span data-lang="pt-br">Custo de defeito evitado</span><span data-lang="es">Coste de defecto evitado</span></span>
-    <span class="bar-row__track"><span class="bar-row__fill"></span></span>
-    <span class="bar-row__value">34%</span>
-  </div>
-  <div class="bar-row" data-pct="0.65" style="--bar-color: var(--c-blue-700);">
-    <span class="bar-row__label"><span data-lang="en" class="lang-active">Adoption rate</span><span data-lang="pt-br">Taxa de adocao</span><span data-lang="es">Tasa de adopcion</span></span>
-    <span class="bar-row__track"><span class="bar-row__fill"></span></span>
-    <span class="bar-row__value">65%</span>
-  </div>
-</div>
-  <div class="callout callout--info" data-reveal>
-  <strong><span data-lang="en" class="lang-active">ROI is a function of adoption.</span><span data-lang="pt-br">ROI is a function of adoption.</span><span data-lang="es">ROI is a function of adoption.</span></strong>
-  <span data-lang="en" class="lang-active">Doubling tool seats while halving active usage halves ROI on paper. The calculator forces you to model adoption, not just license count.</span><span data-lang="pt-br">Dobrar licencas e cortar uso ativo pela metade derruba o ROI na conta. O calculador forca modelar adocao, nao so contagem de licencas.</span><span data-lang="es">Duplicar licencias y reducir el uso activo a la mitad reduce el ROI en el papel. La calculadora obliga a modelar adopcion, no solo el conteo de licencias.</span>
-</div>
-</section>`,
   topicNumber: '10',
   topicLabel: 'Agentic AI ROI Toolkit',
   accent: 'green',
-  existingDeck: 'calculator.html',
+  existingDeck: 'Agentic_AI_ROI_Calculator_v1_0_0_2026-05-07_en.html',
   heroArt: `<svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four lenses of agentic AI planning">
     <defs>
       <linearGradient id="ha-bg" x1="0" y1="0" x2="0" y2="1">
@@ -380,7 +322,7 @@ window.PAGE_DATA = {
       title:{ en:'ROI Calculator (interactive)', 'pt-br':'Calculadora de ROI (interativa)', es:'Calculadora de ROI (interactiva)' },
       desc:{ en:'Live calculator with sliders, scenarios, NPV, IRR, sensitivity tables, persona-specific deep dives, and an architecture advisor. Run it during the customer conversation.', 'pt-br':'Calculadora ao vivo com sliders, cenários, VPL, TIR, tabelas de sensibilidade, deep-dives por persona e advisor de arquitetura. Rode na conversa com o cliente.', es:'Calculadora en vivo con sliders, escenarios, VAN, TIR, tablas de sensibilidad, deep-dives por persona y advisor de arquitectura. Ejecútala en la conversación con el cliente.' },
       meta:{ en:'HTML · React · 30+ min', 'pt-br':'HTML · React · 30+ min', es:'HTML · React · 30+ min' },
-      href:'calculator.html' }
+      href:'Agentic_AI_ROI_Calculator_v1_0_0_2026-05-07_en.html' }
   ],
   crosslinks: [
     { accent:'ink', kicker:'Token economics',
