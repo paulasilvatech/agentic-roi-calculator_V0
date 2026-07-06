@@ -31,12 +31,19 @@ const html = read('calculator.html');
 
 assert(advisorData, 'ADVISOR_DATA must be defined.');
 assert(advisorData.GITHUB_COPILOT?.asOf, 'GitHub Copilot pricing asOf is required.');
-assert(advisorData.MODELS.length >= 10, 'Expected at least 10 model pricing entries.');
+assert(advisorData.GITHUB_COPILOT.asOf === '2026-07-06', 'GitHub Copilot pricing must reflect the July 6, 2026 official-docs refresh.');
+assert(advisorData.MODELS.length >= 19, 'Expected at least 19 model pricing entries.');
 assert(advisorData.PRESETS.length >= 8, 'Expected at least 8 Architecture Advisor presets.');
 assert(Object.keys(personaArchitectures || {}).length === 24, 'Expected 24 persona architecture records.');
 assert(staticCopy, 'I18N_STATIC_COPY must be defined in i18n.js.');
 assert(Object.keys(staticCopy).length >= 60, 'Expected broad static-copy bridge coverage.');
 assert(staticCopy['AI Agent ROI Calculator']?.['pt-BR'], 'Static-copy bridge must include ROI title translations.');
+
+const pricingRows = Object.values(advisorData.GITHUB_COPILOT.pricing || {}).flat();
+for (const requiredModel of ['Claude Sonnet 5', 'Claude Fable 5', 'Claude Opus 4.8 (fast mode) (preview)', 'Kimi K2.7 Code']) {
+  assert(pricingRows.some((row) => row.model === requiredModel), `${requiredModel} must be present in GitHub Copilot pricing.`);
+  assert(advisorData.MODELS.some((row) => row.name === requiredModel), `${requiredModel} must be exposed to the advisor engine.`);
+}
 
 for (const [personaId, personaConfig] of Object.entries(personaArchitectures)) {
   assert(personaConfig.ag?.length >= 3, `${personaId} must have at least 3 agents.`);

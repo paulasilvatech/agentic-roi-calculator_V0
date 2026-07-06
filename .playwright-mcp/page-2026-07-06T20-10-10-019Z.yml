@@ -1,0 +1,512 @@
+- generic [ref=f8e1]:
+  - generic [ref=f8e3]:
+    - link "Back to Knowledge Hub" [ref=f8e4] [cursor=pointer]:
+      - /url: ../index.html
+      - img [ref=f8e5]
+      - generic [ref=f8e10]:
+        - strong [ref=f8e11]: Paula Silva
+        - text: "| Software Global Black Belt · Agentic AI ROI Toolkit"
+    - group "Language" [ref=f8e12]:
+      - button "EN" [ref=f8e13] [cursor=pointer]
+      - button "PT" [ref=f8e14] [cursor=pointer]
+      - button "ES" [ref=f8e15] [cursor=pointer]
+  - generic [ref=f8e16]:
+    - generic [ref=f8e17]:
+      - complementary "Toolkit sections" [ref=f8e18]:
+        - generic [ref=f8e19]: Toolkit
+        - button "01 Overview" [ref=f8e20] [cursor=pointer]:
+          - generic [ref=f8e21]: "01"
+          - img [ref=f8e23]
+          - generic [ref=f8e27]: Overview
+        - button "02 GitHub Copilot UBB" [active] [ref=f8e28] [cursor=pointer]:
+          - generic [ref=f8e29]: "02"
+          - img [ref=f8e31]
+          - generic [ref=f8e33]: GitHub Copilot UBB
+        - button "03 Architecture Advisor" [ref=f8e34] [cursor=pointer]:
+          - generic [ref=f8e35]: "03"
+          - img [ref=f8e37]
+          - generic [ref=f8e40]: Architecture Advisor
+        - button "04 ROI Calculator" [ref=f8e41] [cursor=pointer]:
+          - generic [ref=f8e42]: "04"
+          - img [ref=f8e44]
+          - generic [ref=f8e46]: ROI Calculator
+        - button "05 Gartner Research" [ref=f8e47] [cursor=pointer]:
+          - generic [ref=f8e48]: "05"
+          - img [ref=f8e50]
+          - generic [ref=f8e53]: Gartner Research
+        - button "06 ROI by Persona" [ref=f8e54] [cursor=pointer]:
+          - generic [ref=f8e55]: "06"
+          - img [ref=f8e57]
+          - generic [ref=f8e62]: ROI by Persona
+        - button "07 Agent Advisor" [ref=f8e63] [cursor=pointer]:
+          - generic [ref=f8e64]: "07"
+          - img [ref=f8e66]
+          - generic [ref=f8e69]: Agent Advisor
+      - main [ref=f8e70]:
+        - generic [ref=f8e72]:
+          - generic [ref=f8e73]:
+            - generic [ref=f8e75]: Agentic AI ROI Toolkit
+            - text: · v2.0.0
+          - heading "GitHub Copilot UBB" [level=1] [ref=f8e277]
+          - paragraph [ref=f8e77]: "Official Usage-Based Billing calculator: seats, plan, AI Credits pool, models, cache and Ask / Plan / Agent modes"
+        - generic [ref=f8e278]:
+          - paragraph [ref=f8e279]: Tokens consumed (input, output, cached) priced at per-model rates, converted to GitHub AI Credits (1 credit = US$ 0.01). Effective June 1, 2026. Code completions and next edit suggestions are NOT billed in AI credits.
+          - paragraph [ref=f8e280]: As of 2026-07-06 · prices per 1M tokens · 1 AI Credit = US$ 0.01 · docs.github.com
+          - generic [ref=f8e281]:
+            - text: UBB simulator · seats, plan, mode, model, cache
+            - generic [ref=f8e282]:
+              - generic [ref=f8e283]: Modes (check one or more)
+              - generic [ref=f8e284]:
+                - generic [ref=f8e285] [cursor=pointer]:
+                  - checkbox "Ask (chat Q&A)" [ref=f8e286]
+                  - text: Ask (chat Q&A)
+                - generic [ref=f8e287] [cursor=pointer]:
+                  - checkbox "Plan (spec & planning)" [ref=f8e288]
+                  - text: Plan (spec & planning)
+                - generic [ref=f8e289] [cursor=pointer]:
+                  - checkbox "Agent mode (IDE) · primary" [checked] [ref=f8e290]
+                  - text: Agent mode (IDE)
+                  - generic [ref=f8e291]: · primary
+                - generic [ref=f8e292] [cursor=pointer]:
+                  - checkbox "Cloud agent (async PR)" [ref=f8e293]
+                  - text: Cloud agent (async PR)
+            - generic [ref=f8e294]:
+              - generic [ref=f8e295]: Models (check one or more)
+              - generic [ref=f8e296]:
+                - generic [ref=f8e297] [cursor=pointer]:
+                  - checkbox "GPT-5 mini $0.25/$2.00" [ref=f8e298]
+                  - text: GPT-5 mini
+                  - generic [ref=f8e299]: $0.25/$2.00
+                - generic [ref=f8e300] [cursor=pointer]:
+                  - checkbox "GPT-5.3-Codex $1.75/$14.00" [ref=f8e301]
+                  - text: GPT-5.3-Codex
+                  - generic [ref=f8e302]: $1.75/$14.00
+                - generic [ref=f8e303] [cursor=pointer]:
+                  - checkbox "GPT-5.4 $2.50/$15.00" [ref=f8e304]
+                  - text: GPT-5.4
+                  - generic [ref=f8e305]: $2.50/$15.00
+                - generic [ref=f8e306] [cursor=pointer]:
+                  - checkbox "GPT-5.4 mini $0.75/$4.50" [ref=f8e307]
+                  - text: GPT-5.4 mini
+                  - generic [ref=f8e308]: $0.75/$4.50
+                - generic [ref=f8e309] [cursor=pointer]:
+                  - checkbox "GPT-5.4 nano $0.20/$1.25" [ref=f8e310]
+                  - text: GPT-5.4 nano
+                  - generic [ref=f8e311]: $0.20/$1.25
+                - generic [ref=f8e312] [cursor=pointer]:
+                  - checkbox "GPT-5.5 $5.00/$30.00" [ref=f8e313]
+                  - text: GPT-5.5
+                  - generic [ref=f8e314]: $5.00/$30.00
+                - generic [ref=f8e315] [cursor=pointer]:
+                  - checkbox "Claude Haiku 4.5 $1.00/$5.00" [ref=f8e316]
+                  - text: Claude Haiku 4.5
+                  - generic [ref=f8e317]: $1.00/$5.00
+                - generic [ref=f8e318] [cursor=pointer]:
+                  - checkbox "Claude Sonnet 4 $3.00/$15.00" [ref=f8e319]
+                  - text: Claude Sonnet 4
+                  - generic [ref=f8e320]: $3.00/$15.00
+                - generic [ref=f8e321] [cursor=pointer]:
+                  - checkbox "Claude Sonnet 4.5 $3.00/$15.00" [ref=f8e322]
+                  - text: Claude Sonnet 4.5
+                  - generic [ref=f8e323]: $3.00/$15.00
+                - generic [ref=f8e324] [cursor=pointer]:
+                  - checkbox "Claude Sonnet 4.6 $3.00/$15.00 · primary" [checked] [ref=f8e325]
+                  - text: Claude Sonnet 4.6
+                  - generic [ref=f8e326]: $3.00/$15.00
+                  - generic [ref=f8e327]: · primary
+                - generic [ref=f8e328] [cursor=pointer]:
+                  - checkbox "Claude Sonnet 5 $2.00/$10.00" [ref=f8e329]
+                  - text: Claude Sonnet 5
+                  - generic [ref=f8e330]: $2.00/$10.00
+                - generic [ref=f8e331] [cursor=pointer]:
+                  - checkbox "Claude Opus 4.5 $5.00/$25.00" [ref=f8e332]
+                  - text: Claude Opus 4.5
+                  - generic [ref=f8e333]: $5.00/$25.00
+                - generic [ref=f8e334] [cursor=pointer]:
+                  - checkbox "Claude Opus 4.6 $5.00/$25.00" [ref=f8e335]
+                  - text: Claude Opus 4.6
+                  - generic [ref=f8e336]: $5.00/$25.00
+                - generic [ref=f8e337] [cursor=pointer]:
+                  - checkbox "Claude Opus 4.7 $5.00/$25.00" [ref=f8e338]
+                  - text: Claude Opus 4.7
+                  - generic [ref=f8e339]: $5.00/$25.00
+                - generic [ref=f8e340] [cursor=pointer]:
+                  - checkbox "Claude Opus 4.8 $5.00/$25.00" [ref=f8e341]
+                  - text: Claude Opus 4.8
+                  - generic [ref=f8e342]: $5.00/$25.00
+                - generic [ref=f8e343] [cursor=pointer]:
+                  - checkbox "Claude Opus 4.8 (fast mode) (preview) $10.00/$50.00" [ref=f8e344]
+                  - text: Claude Opus 4.8 (fast mode) (preview)
+                  - generic [ref=f8e345]: $10.00/$50.00
+                - generic [ref=f8e346] [cursor=pointer]:
+                  - checkbox "Claude Fable 5 $10.00/$50.00" [ref=f8e347]
+                  - text: Claude Fable 5
+                  - generic [ref=f8e348]: $10.00/$50.00
+                - generic [ref=f8e349] [cursor=pointer]:
+                  - checkbox "Gemini 2.5 Pro $1.25/$10.00" [ref=f8e350]
+                  - text: Gemini 2.5 Pro
+                  - generic [ref=f8e351]: $1.25/$10.00
+                - generic [ref=f8e352] [cursor=pointer]:
+                  - checkbox "Gemini 3 Flash $0.50/$3.00" [ref=f8e353]
+                  - text: Gemini 3 Flash
+                  - generic [ref=f8e354]: $0.50/$3.00
+                - generic [ref=f8e355] [cursor=pointer]:
+                  - checkbox "Gemini 3.1 Pro $2.00/$12.00" [ref=f8e356]
+                  - text: Gemini 3.1 Pro
+                  - generic [ref=f8e357]: $2.00/$12.00
+                - generic [ref=f8e358] [cursor=pointer]:
+                  - checkbox "Gemini 3.5 Flash $1.50/$9.00" [ref=f8e359]
+                  - text: Gemini 3.5 Flash
+                  - generic [ref=f8e360]: $1.50/$9.00
+                - generic [ref=f8e361] [cursor=pointer]:
+                  - checkbox "Raptor mini $0.25/$2.00" [ref=f8e362]
+                  - text: Raptor mini
+                  - generic [ref=f8e363]: $0.25/$2.00
+                - generic [ref=f8e364] [cursor=pointer]:
+                  - checkbox "MAI-Code-1-Flash $0.75/$4.50" [ref=f8e365]
+                  - text: MAI-Code-1-Flash
+                  - generic [ref=f8e366]: $0.75/$4.50
+                - generic [ref=f8e367] [cursor=pointer]:
+                  - checkbox "Kimi K2.7 Code $0.95/$4.00" [ref=f8e368]
+                  - text: Kimi K2.7 Code
+                  - generic [ref=f8e369]: $0.95/$4.00
+            - generic [ref=f8e370]:
+              - generic [ref=f8e371]:
+                - text: Business seats (CB) · $19
+                - spinbutton "Business seats (CB) · $19" [ref=f8e372]: "0"
+              - generic [ref=f8e373]:
+                - text: Enterprise seats (CE) · $39
+                - spinbutton "Enterprise seats (CE) · $39" [ref=f8e374]: "1000"
+              - generic [ref=f8e375]:
+                - text: Promo window (jun-sep/26)
+                - combobox "Promo window (jun-sep/26)" [ref=f8e376]:
+                  - option "Yes · promo credits" [selected]
+                  - option "No · standard credits"
+              - generic [ref=f8e377]:
+                - text: Model calls / session (iterations)
+                - spinbutton "Model calls / session (iterations)" [ref=f8e378]: "6"
+              - generic [ref=f8e379]:
+                - text: Sessions (tasks) / dev / day
+                - spinbutton "Sessions (tasks) / dev / day" [ref=f8e380]: "4"
+              - generic [ref=f8e381]:
+                - text: Fresh input tokens / session (once)
+                - spinbutton "Fresh input tokens / session (once)" [ref=f8e382]: "12000"
+              - generic [ref=f8e383]:
+                - text: Context tokens (re-read each call)
+                - spinbutton "Context tokens (re-read each call)" [ref=f8e384]: "120000"
+              - generic [ref=f8e385]:
+                - text: Output tokens / session (total)
+                - spinbutton "Output tokens / session (total)" [ref=f8e386]: "8000"
+              - generic [ref=f8e387]:
+                - text: Cache enabled
+                - combobox "Cache enabled" [ref=f8e388]:
+                  - option "Yes · context billed at cached rate" [selected]
+                  - option "No · context billed as fresh input"
+              - generic [ref=f8e389]:
+                - text: Working days / month
+                - spinbutton "Working days / month" [ref=f8e390]: "22"
+            - generic [ref=f8e391]: "Active license: GitHub Copilot Enterprise · 7,000 included credits /user/mo · promo (jun-sep/26)"
+            - generic [ref=f8e392]:
+              - generic [ref=f8e393]:
+                - generic [ref=f8e394]: Included pool
+                - generic [ref=f8e395]: 7,000,000 cr
+                - generic [ref=f8e396]: US$ 70,000/mo · pooled (7,000/seat promo)
+              - generic [ref=f8e397]:
+                - generic [ref=f8e398]: Consumption
+                - generic [ref=f8e399]: 6,916,800 cr
+                - generic [ref=f8e400]: 6,917 consumed/seat · 7,000 included/seat
+              - generic [ref=f8e401]:
+                - generic [ref=f8e402]: Pool utilization
+                - generic [ref=f8e403]: 99%
+                - generic [ref=f8e404]: 6,916,800 / 7,000,000 cr
+              - generic [ref=f8e405]:
+                - generic [ref=f8e406]: Headroom
+                - generic [ref=f8e407]: US$ 832.00/mo
+                - generic [ref=f8e408]: left in the pool
+              - generic [ref=f8e409]:
+                - generic [ref=f8e410]: Licenses + overage
+                - generic [ref=f8e411]: US$ 39,000/mo
+                - generic [ref=f8e412]: licenses US$ 39,000 + overage US$ 0.00
+              - generic [ref=f8e413]:
+                - generic [ref=f8e414]: Pool exhaustion
+                - generic [ref=f8e415]: lasts the whole month
+                - generic [ref=f8e416]: "-"
+            - generic [ref=f8e417]: "Ask, Plan and Agent mode pay the same official per-token rates; what changes is the token profile (agent modes re-read context on every model call). Anthropic: first context pass billed at cache write, subsequent calls at cached input. Cache saves US$ 134,640/mo vs no cache. Credits are pooled at the billing entity. Code completions are not billed in AI credits."
+            - generic [ref=f8e418]:
+              - text: Scenarios · save, export (db.json, Excel, Markdown)
+              - generic [ref=f8e419]:
+                - textbox "Scenario name" [ref=f8e420]
+                - button "Save scenario" [ref=f8e421] [cursor=pointer]
+                - button "Export db.json" [ref=f8e422] [cursor=pointer]
+                - generic [ref=f8e423] [cursor=pointer]: Import db.json
+                - button "Export Excel (CSV)" [ref=f8e424] [cursor=pointer]
+                - button "Export Markdown" [ref=f8e425] [cursor=pointer]
+              - generic [ref=f8e427]: No saved scenarios yet. The export always includes the current scenario.
+          - generic [ref=f8e428]:
+            - generic [ref=f8e429]:
+              - text: GitHub Copilot Business
+              - generic [ref=f8e430]:
+                - text: US$ 19/user/mo · 1,900 included AI credits/user/mo
+                - text: "promo (jun 1 - sep 1, 2026): 3,000 credits · pooled at billing entity"
+            - generic [ref=f8e431]:
+              - text: GitHub Copilot Enterprise
+              - generic [ref=f8e432]:
+                - text: US$ 39/user/mo · 3,900 included AI credits/user/mo
+                - text: "promo (jun 1 - sep 1, 2026): 7,000 credits · pooled at billing entity"
+          - heading "OpenAI" [level=3] [ref=f8e433]
+          - table [ref=f8e434]:
+            - rowgroup [ref=f8e435]:
+              - row "Model Status Category Input Cached in Output" [ref=f8e436]:
+                - columnheader "Model" [ref=f8e437]
+                - columnheader "Status" [ref=f8e438]
+                - columnheader "Category" [ref=f8e439]
+                - columnheader "Input" [ref=f8e440]
+                - columnheader "Cached in" [ref=f8e441]
+                - columnheader "Output" [ref=f8e442]
+            - rowgroup [ref=f8e443]:
+              - row "GPT-5 mini GA Lightweight $0.25 $0.025 $2.00" [ref=f8e444]:
+                - cell "GPT-5 mini" [ref=f8e445]
+                - cell "GA" [ref=f8e446]
+                - cell "Lightweight" [ref=f8e447]
+                - cell "$0.25" [ref=f8e448]
+                - cell "$0.025" [ref=f8e449]
+                - cell "$2.00" [ref=f8e450]
+              - row "GPT-5.3-Codex GA Powerful $1.75 $0.175 $14.00" [ref=f8e451]:
+                - cell "GPT-5.3-Codex" [ref=f8e452]
+                - cell "GA" [ref=f8e453]
+                - cell "Powerful" [ref=f8e454]
+                - cell "$1.75" [ref=f8e455]
+                - cell "$0.175" [ref=f8e456]
+                - cell "$14.00" [ref=f8e457]
+              - 'row "GPT-5.4 · pricing for prompts ≤272K tokens · >272K: $5.00/$22.50 GA Versatile $2.50 $0.250 $15.00" [ref=f8e458]':
+                - 'cell "GPT-5.4 · pricing for prompts ≤272K tokens · >272K: $5.00/$22.50" [ref=f8e459]'
+                - cell "GA" [ref=f8e460]
+                - cell "Versatile" [ref=f8e461]
+                - cell "$2.50" [ref=f8e462]
+                - cell "$0.250" [ref=f8e463]
+                - cell "$15.00" [ref=f8e464]
+              - row "GPT-5.4 mini GA Lightweight $0.75 $0.075 $4.50" [ref=f8e465]:
+                - cell "GPT-5.4 mini" [ref=f8e466]
+                - cell "GA" [ref=f8e467]
+                - cell "Lightweight" [ref=f8e468]
+                - cell "$0.75" [ref=f8e469]
+                - cell "$0.075" [ref=f8e470]
+                - cell "$4.50" [ref=f8e471]
+              - row "GPT-5.4 nano GA Lightweight $0.20 $0.020 $1.25" [ref=f8e472]:
+                - cell "GPT-5.4 nano" [ref=f8e473]
+                - cell "GA" [ref=f8e474]
+                - cell "Lightweight" [ref=f8e475]
+                - cell "$0.20" [ref=f8e476]
+                - cell "$0.020" [ref=f8e477]
+                - cell "$1.25" [ref=f8e478]
+              - 'row "GPT-5.5 · pricing for prompts ≤272K tokens · >272K: $10.00/$45.00 GA Powerful $5.00 $0.500 $30.00" [ref=f8e479]':
+                - 'cell "GPT-5.5 · pricing for prompts ≤272K tokens · >272K: $10.00/$45.00" [ref=f8e480]'
+                - cell "GA" [ref=f8e481]
+                - cell "Powerful" [ref=f8e482]
+                - cell "$5.00" [ref=f8e483]
+                - cell "$0.500" [ref=f8e484]
+                - cell "$30.00" [ref=f8e485]
+          - heading "Anthropic (cache write billed in addition)" [level=3] [ref=f8e486]
+          - table [ref=f8e487]:
+            - rowgroup [ref=f8e488]:
+              - row "Model Status Category Input Cached in Cache write Output" [ref=f8e489]:
+                - columnheader "Model" [ref=f8e490]
+                - columnheader "Status" [ref=f8e491]
+                - columnheader "Category" [ref=f8e492]
+                - columnheader "Input" [ref=f8e493]
+                - columnheader "Cached in" [ref=f8e494]
+                - columnheader "Cache write" [ref=f8e495]
+                - columnheader "Output" [ref=f8e496]
+            - rowgroup [ref=f8e497]:
+              - row "Claude Haiku 4.5 GA Versatile $1.00 $0.100 $1.25 $5.00" [ref=f8e498]:
+                - cell "Claude Haiku 4.5" [ref=f8e499]
+                - cell "GA" [ref=f8e500]
+                - cell "Versatile" [ref=f8e501]
+                - cell "$1.00" [ref=f8e502]
+                - cell "$0.100" [ref=f8e503]
+                - cell "$1.25" [ref=f8e504]
+                - cell "$5.00" [ref=f8e505]
+              - row "Claude Sonnet 4 GA Versatile $3.00 $0.300 $3.75 $15.00" [ref=f8e506]:
+                - cell "Claude Sonnet 4" [ref=f8e507]
+                - cell "GA" [ref=f8e508]
+                - cell "Versatile" [ref=f8e509]
+                - cell "$3.00" [ref=f8e510]
+                - cell "$0.300" [ref=f8e511]
+                - cell "$3.75" [ref=f8e512]
+                - cell "$15.00" [ref=f8e513]
+              - row "Claude Sonnet 4.5 GA Versatile $3.00 $0.300 $3.75 $15.00" [ref=f8e514]:
+                - cell "Claude Sonnet 4.5" [ref=f8e515]
+                - cell "GA" [ref=f8e516]
+                - cell "Versatile" [ref=f8e517]
+                - cell "$3.00" [ref=f8e518]
+                - cell "$0.300" [ref=f8e519]
+                - cell "$3.75" [ref=f8e520]
+                - cell "$15.00" [ref=f8e521]
+              - row "Claude Sonnet 4.6 GA Versatile $3.00 $0.300 $3.75 $15.00" [ref=f8e522]:
+                - cell "Claude Sonnet 4.6" [ref=f8e523]
+                - cell "GA" [ref=f8e524]
+                - cell "Versatile" [ref=f8e525]
+                - cell "$3.00" [ref=f8e526]
+                - cell "$0.300" [ref=f8e527]
+                - cell "$3.75" [ref=f8e528]
+                - cell "$15.00" [ref=f8e529]
+              - row "Claude Sonnet 5 · promotional pricing through August 31, 2026 GA Versatile $2.00 $0.200 $2.50 $10.00" [ref=f8e530]:
+                - cell "Claude Sonnet 5 · promotional pricing through August 31, 2026" [ref=f8e531]
+                - cell "GA" [ref=f8e532]
+                - cell "Versatile" [ref=f8e533]
+                - cell "$2.00" [ref=f8e534]
+                - cell "$0.200" [ref=f8e535]
+                - cell "$2.50" [ref=f8e536]
+                - cell "$10.00" [ref=f8e537]
+              - row "Claude Opus 4.5 GA Powerful $5.00 $0.500 $6.25 $25.00" [ref=f8e538]:
+                - cell "Claude Opus 4.5" [ref=f8e539]
+                - cell "GA" [ref=f8e540]
+                - cell "Powerful" [ref=f8e541]
+                - cell "$5.00" [ref=f8e542]
+                - cell "$0.500" [ref=f8e543]
+                - cell "$6.25" [ref=f8e544]
+                - cell "$25.00" [ref=f8e545]
+              - row "Claude Opus 4.6 GA Powerful $5.00 $0.500 $6.25 $25.00" [ref=f8e546]:
+                - cell "Claude Opus 4.6" [ref=f8e547]
+                - cell "GA" [ref=f8e548]
+                - cell "Powerful" [ref=f8e549]
+                - cell "$5.00" [ref=f8e550]
+                - cell "$0.500" [ref=f8e551]
+                - cell "$6.25" [ref=f8e552]
+                - cell "$25.00" [ref=f8e553]
+              - row "Claude Opus 4.7 GA Powerful $5.00 $0.500 $6.25 $25.00" [ref=f8e554]:
+                - cell "Claude Opus 4.7" [ref=f8e555]
+                - cell "GA" [ref=f8e556]
+                - cell "Powerful" [ref=f8e557]
+                - cell "$5.00" [ref=f8e558]
+                - cell "$0.500" [ref=f8e559]
+                - cell "$6.25" [ref=f8e560]
+                - cell "$25.00" [ref=f8e561]
+              - row "Claude Opus 4.8 GA Powerful $5.00 $0.500 $6.25 $25.00" [ref=f8e562]:
+                - cell "Claude Opus 4.8" [ref=f8e563]
+                - cell "GA" [ref=f8e564]
+                - cell "Powerful" [ref=f8e565]
+                - cell "$5.00" [ref=f8e566]
+                - cell "$0.500" [ref=f8e567]
+                - cell "$6.25" [ref=f8e568]
+                - cell "$25.00" [ref=f8e569]
+              - row "Claude Opus 4.8 (fast mode) (preview) GA Powerful $10.00 $1.000 $12.50 $50.00" [ref=f8e570]:
+                - cell "Claude Opus 4.8 (fast mode) (preview)" [ref=f8e571]
+                - cell "GA" [ref=f8e572]
+                - cell "Powerful" [ref=f8e573]
+                - cell "$10.00" [ref=f8e574]
+                - cell "$1.000" [ref=f8e575]
+                - cell "$12.50" [ref=f8e576]
+                - cell "$50.00" [ref=f8e577]
+              - row "Claude Fable 5 GA Powerful $10.00 $1.000 $12.50 $50.00" [ref=f8e578]:
+                - cell "Claude Fable 5" [ref=f8e579]
+                - cell "GA" [ref=f8e580]
+                - cell "Powerful" [ref=f8e581]
+                - cell "$10.00" [ref=f8e582]
+                - cell "$1.000" [ref=f8e583]
+                - cell "$12.50" [ref=f8e584]
+                - cell "$50.00" [ref=f8e585]
+          - heading "Google" [level=3] [ref=f8e586]
+          - table [ref=f8e587]:
+            - rowgroup [ref=f8e588]:
+              - row "Model Status Category Input Cached in Output" [ref=f8e589]:
+                - columnheader "Model" [ref=f8e590]
+                - columnheader "Status" [ref=f8e591]
+                - columnheader "Category" [ref=f8e592]
+                - columnheader "Input" [ref=f8e593]
+                - columnheader "Cached in" [ref=f8e594]
+                - columnheader "Output" [ref=f8e595]
+            - rowgroup [ref=f8e596]:
+              - row "Gemini 2.5 Pro GA Powerful $1.25 $0.125 $10.00" [ref=f8e597]:
+                - cell "Gemini 2.5 Pro" [ref=f8e598]
+                - cell "GA" [ref=f8e599]
+                - cell "Powerful" [ref=f8e600]
+                - cell "$1.25" [ref=f8e601]
+                - cell "$0.125" [ref=f8e602]
+                - cell "$10.00" [ref=f8e603]
+              - row "Gemini 3 Flash · no long-context surcharge Public preview Lightweight $0.50 $0.050 $3.00" [ref=f8e604]:
+                - cell "Gemini 3 Flash · no long-context surcharge" [ref=f8e605]
+                - cell "Public preview" [ref=f8e606]
+                - cell "Lightweight" [ref=f8e607]
+                - cell "$0.50" [ref=f8e608]
+                - cell "$0.050" [ref=f8e609]
+                - cell "$3.00" [ref=f8e610]
+              - 'row "Gemini 3.1 Pro · pricing for prompts ≤200K tokens · >200K: $4.00/$18.00 Public preview Powerful $2.00 $0.200 $12.00" [ref=f8e611]':
+                - 'cell "Gemini 3.1 Pro · pricing for prompts ≤200K tokens · >200K: $4.00/$18.00" [ref=f8e612]'
+                - cell "Public preview" [ref=f8e613]
+                - cell "Powerful" [ref=f8e614]
+                - cell "$2.00" [ref=f8e615]
+                - cell "$0.200" [ref=f8e616]
+                - cell "$12.00" [ref=f8e617]
+              - row "Gemini 3.5 Flash GA Lightweight $1.50 $0.150 $9.00" [ref=f8e618]:
+                - cell "Gemini 3.5 Flash" [ref=f8e619]
+                - cell "GA" [ref=f8e620]
+                - cell "Lightweight" [ref=f8e621]
+                - cell "$1.50" [ref=f8e622]
+                - cell "$0.150" [ref=f8e623]
+                - cell "$9.00" [ref=f8e624]
+          - heading "GitHub fine-tuned + Microsoft + Moonshot AI" [level=3] [ref=f8e625]
+          - table [ref=f8e626]:
+            - rowgroup [ref=f8e627]:
+              - row "Model Status Category Input Cached in Output" [ref=f8e628]:
+                - columnheader "Model" [ref=f8e629]
+                - columnheader "Status" [ref=f8e630]
+                - columnheader "Category" [ref=f8e631]
+                - columnheader "Input" [ref=f8e632]
+                - columnheader "Cached in" [ref=f8e633]
+                - columnheader "Output" [ref=f8e634]
+            - rowgroup [ref=f8e635]:
+              - row "Raptor mini GA Versatile $0.25 $0.025 $2.00" [ref=f8e636]:
+                - cell "Raptor mini" [ref=f8e637]
+                - cell "GA" [ref=f8e638]
+                - cell "Versatile" [ref=f8e639]
+                - cell "$0.25" [ref=f8e640]
+                - cell "$0.025" [ref=f8e641]
+                - cell "$2.00" [ref=f8e642]
+              - row "MAI-Code-1-Flash GA Lightweight $0.75 $0.075 $4.50" [ref=f8e643]:
+                - cell "MAI-Code-1-Flash" [ref=f8e644]
+                - cell "GA" [ref=f8e645]
+                - cell "Lightweight" [ref=f8e646]
+                - cell "$0.75" [ref=f8e647]
+                - cell "$0.075" [ref=f8e648]
+                - cell "$4.50" [ref=f8e649]
+              - row "Kimi K2.7 Code GA Versatile $0.95 $0.190 $4.00" [ref=f8e650]:
+                - cell "Kimi K2.7 Code" [ref=f8e651]
+                - cell "GA" [ref=f8e652]
+                - cell "Versatile" [ref=f8e653]
+                - cell "$0.95" [ref=f8e654]
+                - cell "$0.190" [ref=f8e655]
+                - cell "$4.00" [ref=f8e656]
+          - paragraph [ref=f8e657]: "Included credits are pooled at the billing entity level. Beyond the pool, additional usage is billed at published per-credit rates (if policy allows) or blocked. GitHub Copilot code review: tokens billed in AI credits + GitHub Actions minutes."
+    - contentinfo [ref=f8e240]:
+      - generic [ref=f8e241]:
+        - generic [ref=f8e242]:
+          - img [ref=f8e243]
+          - generic [ref=f8e248]: Paula Silva
+          - generic [ref=f8e249]: "|"
+          - generic [ref=f8e250]: Software Global Black Belt
+        - heading "Building the future of software development with AI and Agentic DevOps." [level=2] [ref=f8e251]
+        - paragraph [ref=f8e252]: Paula Silva · Software Global Black Belt
+        - generic [ref=f8e253]:
+          - link "Return to Knowledge Hub" [ref=f8e254] [cursor=pointer]:
+            - /url: ../index.html
+            - img [ref=f8e255]
+            - generic [ref=f8e257]:
+              - generic [ref=f8e258]: Return to
+              - generic [ref=f8e259]: Knowledge Hub
+          - link "Back to Planning lens" [ref=f8e260] [cursor=pointer]:
+            - /url: landing.html
+            - img [ref=f8e261]
+            - generic [ref=f8e263]:
+              - generic [ref=f8e264]: Back to
+              - generic [ref=f8e265]: Planning lens
+          - link "Contact paulasilva@microsoft.com" [ref=f8e266] [cursor=pointer]:
+            - /url: mailto:paulasilva@microsoft.com
+            - img [ref=f8e267]
+            - generic [ref=f8e270]:
+              - generic [ref=f8e271]: Contact
+              - generic [ref=f8e272]: paulasilva@microsoft.com
+        - generic [ref=f8e273]:
+          - generic [ref=f8e274]: paulasilva · 2026-07-06
+          - generic [ref=f8e275]: Agentic AI ROI Toolkit · v2.0.0
+        - paragraph [ref=f8e276]: "Sources: Gartner G00837723, G00799085, G00841080, G00846878, G00823006, G00825224"
