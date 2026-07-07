@@ -1,5 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { PORTED_I18N, PORTED_I18N_REVERSE } from './ported-i18n.js';
 
       const { useState, useMemo, useCallback } = React;
 
@@ -16,6 +17,27 @@ import * as ReactDOM from 'react-dom/client';
           return i18nFmt(val, vars);
         }, [loc]);
       }
+      /* ---- Localize a ported (English) subtree via exact-match dictionary ---- */
+      function useLocalizeSubtree(ref) {
+        const locale = React.useContext(LocaleContext);
+        React.useLayoutEffect(function () {
+          const root = ref.current;
+          if (!root) return;
+          const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+          let node;
+          while ((node = walk.nextNode())) {
+            const raw = node.nodeValue;
+            if (!raw) continue;
+            const key = raw.trim();
+            if (!key) continue;
+            const en = PORTED_I18N[key] ? key : PORTED_I18N_REVERSE[key];
+            if (!en) continue;
+            const target = locale === 'en' ? en : ((PORTED_I18N[en] && PORTED_I18N[en][locale]) || en);
+            if (key !== target) node.nodeValue = raw.replace(key, target);
+          }
+        });
+      }
+
       function localeInit() {
         try { var s = localStorage.getItem('roi-locale'); if (s) return s; } catch (e) { }
         var n = (navigator.language || 'en').toLowerCase();
@@ -2999,6 +3021,8 @@ function creditsForCall(rate, inTok, outTok, cachedShare, cacheWriteShare) {
   return usd * 100; /* 1 AI Credit = 0.01 USD */
 }
 function UBBCalculator() {
+  const locRef = React.useRef(null);
+  useLocalizeSubtree(locRef);
   const W = {
     maxWidth: 1140,
     margin: '0 auto'
@@ -3223,6 +3247,7 @@ function UBBCalculator() {
     textAlign: 'center'
   });
   return /*#__PURE__*/React.createElement("div", {
+    ref: locRef,
     style: W
   }, /*#__PURE__*/React.createElement("div", {
     className: "card",
@@ -3979,6 +4004,8 @@ const WS_TASKS = [{
 const tok = lines => Math.round(lines * 9); /* about 9 tokens per line of prose or config */
 
 function WorkspaceCalculator() {
+  const locRef = React.useRef(null);
+  useLocalizeSubtree(locRef);
   const W = {
     maxWidth: 1140,
     margin: '0 auto'
@@ -4130,6 +4157,7 @@ function WorkspaceCalculator() {
     textAlign: 'center'
   });
   return /*#__PURE__*/React.createElement("div", {
+    ref: locRef,
     style: W
   }, /*#__PURE__*/React.createElement("div", {
     className: "card",

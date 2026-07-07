@@ -105,6 +105,10 @@ assert(app.includes('const UBB_DEFAULT_RATES') && app.includes('const UBB_PLANS'
 assert(app.includes('Active license'), 'UBB must render the active-license banner.');
 assert(!app.includes('GPT-4.1'), 'Stale GPT-4.1 model name must not appear in the app.');
 assert(!html.includes('renderUBBPanel'), 'Dead vanilla UBB panel must be removed from calculator.html.');
+assert(fs.existsSync(path.join(root, 'src/ported-i18n.js')), 'Ported-tab translation dictionary must exist.');
+assert(app.includes('useLocalizeSubtree'), 'Ported tabs must use the localization hook for trilingual support.');
+const ported = read('src/ported-i18n.js');
+assert(!/[\u2013\u2014]/.test(ported), 'ported-i18n.js must not contain en dash or em dash characters.');
 
 console.log('Calculator verification passed.');
 console.log(`Models: ${advisorData.MODELS.length}`);

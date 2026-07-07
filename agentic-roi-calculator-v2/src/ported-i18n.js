@@ -1,0 +1,227 @@
+// Trilingual dictionary for the ported UBB and Workspace calculators.
+// The ported v1 components render literal English; this maps each user-facing
+// string to pt-BR and es. A runtime hook (useLocalizeSubtree in app.jsx) walks
+// the component DOM and swaps exact-match text nodes for the active locale.
+// Static labels/headers/paragraphs are covered; purely numeric/interpolated
+// fragments stay language-neutral.
+export const PORTED_I18N = {
+  // ---- UBB: header / banner / KPIs ----
+  "GitHub Copilot Usage-Based Billing Calculator": { "pt-BR": "Calculadora de Cobrança por Uso do GitHub Copilot", "es": "Calculadora de Facturación por Uso de GitHub Copilot" },
+  "Active license: Copilot Business": { "pt-BR": "Licença ativa: Copilot Business", "es": "Licencia activa: Copilot Business" },
+  "Active license: Copilot Enterprise": { "pt-BR": "Licença ativa: Copilot Enterprise", "es": "Licencia activa: Copilot Enterprise" },
+  "Consumed / user / mo": { "pt-BR": "Consumido / usuário / mês", "es": "Consumido / usuario / mes" },
+  "per active dev": { "pt-BR": "por dev ativo", "es": "por dev activo" },
+  "Pool utilization": { "pt-BR": "Utilização do pool", "es": "Utilización del pool" },
+  "Overage / mo": { "pt-BR": "Excedente / mês", "es": "Excedente / mes" },
+  "credits": { "pt-BR": "créditos", "es": "créditos" },
+  "Monthly bill": { "pt-BR": "Conta mensal", "es": "Factura mensual" },
+  "seats + overage": { "pt-BR": "seats + excedente", "es": "seats + excedente" },
+  "Pool exhaustion": { "pt-BR": "Esgotamento do pool", "es": "Agotamiento del pool" },
+  "day": { "pt-BR": "dia", "es": "día" },
+  "working days": { "pt-BR": "dias úteis", "es": "días hábiles" },
+  "of": { "pt-BR": "de", "es": "de" },
+
+  // ---- UBB: plan & population ----
+  "Plan and population": { "pt-BR": "Plano e população", "es": "Plan y población" },
+  "Plan": { "pt-BR": "Plano", "es": "Plan" },
+  "Copilot Business": { "pt-BR": "Copilot Business", "es": "Copilot Business" },
+  "Copilot Enterprise": { "pt-BR": "Copilot Enterprise", "es": "Copilot Enterprise" },
+  "Seats": { "pt-BR": "Seats", "es": "Seats" },
+  "Active developers": { "pt-BR": "Desenvolvedores ativos", "es": "Desarrolladores activos" },
+  "Working days / month": { "pt-BR": "Dias úteis / mês", "es": "Días hábiles / mes" },
+  "credits per user; standard": { "pt-BR": "créditos por usuário; padrão", "es": "créditos por usuario; estándar" },
+
+  // ---- UBB: usage profile ----
+  "Usage profile, per active developer per day": { "pt-BR": "Perfil de uso, por dev ativo por dia", "es": "Perfil de uso, por dev activo por día" },
+  "Chat interactions": { "pt-BR": "Interações de chat", "es": "Interacciones de chat" },
+  "Input tokens / chat": { "pt-BR": "Tokens de entrada / chat", "es": "Tokens de entrada / chat" },
+  "Output tokens / chat": { "pt-BR": "Tokens de saída / chat", "es": "Tokens de salida / chat" },
+  "Agent mode runs": { "pt-BR": "Execuções em modo Agent", "es": "Ejecuciones en modo Agent" },
+  "Iterations / run": { "pt-BR": "Iterações / execução", "es": "Iteraciones / ejecución" },
+  "Input / iteration": { "pt-BR": "Entrada / iteração", "es": "Entrada / iteración" },
+  "Output / iteration": { "pt-BR": "Saída / iteração", "es": "Salida / iteración" },
+  "Code reviews / week": { "pt-BR": "Code reviews / semana", "es": "Code reviews / semana" },
+  "Credits / review (est.)": { "pt-BR": "Créditos / review (est.)", "es": "Créditos / review (est.)" },
+  "Cached share of input tokens": { "pt-BR": "Fração em cache dos tokens de entrada", "es": "Fracción en caché de los tokens de entrada" },
+
+  // ---- UBB: model mix ----
+  "Model mix": { "pt-BR": "Mix de modelos", "es": "Mezcla de modelos" },
+  "Share of interactions by tier. The blended rate drives everything above.": { "pt-BR": "Fração de interações por tier. A taxa combinada rege tudo acima.", "es": "Fracción de interacciones por tier. La tarifa combinada rige todo lo anterior." },
+  "Included (GPT-5 mini, Raptor mini)": { "pt-BR": "Incluído (GPT-5 mini, Raptor mini)", "es": "Incluido (GPT-5 mini, Raptor mini)" },
+  "Lightweight metered": { "pt-BR": "Leve tarifado", "es": "Ligero tarifado" },
+  "Mid tier (Sonnet class)": { "pt-BR": "Tier médio (classe Sonnet)", "es": "Tier medio (clase Sonnet)" },
+  "Frontier (Opus class)": { "pt-BR": "Fronteira (classe Opus)", "es": "Frontera (clase Opus)" },
+  "Uniform usage": { "pt-BR": "Uso uniforme", "es": "Uso uniforme" },
+  "Field distribution": { "pt-BR": "Distribuição de campo", "es": "Distribución de campo" },
+
+  // ---- UBB: rate card / breakdown / levers ----
+  "Rate card, USD per 1M tokens": { "pt-BR": "Tabela de tarifas, USD por 1M tokens", "es": "Tarifario, USD por 1M tokens" },
+  "Where the credits go, per active developer per month": { "pt-BR": "Para onde vão os créditos, por dev ativo por mês", "es": "A dónde van los créditos, por dev activo por mes" },
+  "Code review (credits)": { "pt-BR": "Code review (créditos)", "es": "Code review (créditos)" },
+  "Optimization levers, multiplicative": { "pt-BR": "Alavancas de otimização, multiplicativas", "es": "Palancas de optimización, multiplicativas" },
+  "on the raw bill of": { "pt-BR": "sobre a conta bruta de", "es": "sobre la factura bruta de" },
+  "credits per developer.": { "pt-BR": "créditos por desenvolvedor.", "es": "créditos por desarrollador." },
+  "L1 Route routine work to included models": { "pt-BR": "L1 Rotear trabalho rotineiro para modelos incluídos", "es": "L1 Enrutar trabajo rutinario a modelos incluidos" },
+  "Move eligible chat and simple edits to GPT-5 mini and Raptor mini at zero credit cost": { "pt-BR": "Mova chat elegível e edições simples para GPT-5 mini e Raptor mini a custo zero de créditos", "es": "Mueve chat elegible y ediciones simples a GPT-5 mini y Raptor mini a costo cero de créditos" },
+  "L2 Cache hygiene": { "pt-BR": "L2 Higiene de cache", "es": "L2 Higiene de caché" },
+  "Keep sessions warm, avoid fresh chats that reset the prompt cache": { "pt-BR": "Mantenha sessões aquecidas, evite chats novos que resetam o cache de prompt", "es": "Mantén sesiones tibias, evita chats nuevos que reinician el caché de prompt" },
+  "L3 Context curation": { "pt-BR": "L3 Curadoria de contexto", "es": "L3 Curación de contexto" },
+  "Scoped instructions and precise attachments instead of dump-all context": { "pt-BR": "Instruções com escopo e anexos precisos em vez de despejar todo o contexto", "es": "Instrucciones con alcance y adjuntos precisos en vez de volcar todo el contexto" },
+  "L4 Output discipline": { "pt-BR": "L4 Disciplina de saída", "es": "L4 Disciplina de salida" },
+  "Ask for terse answers and diffs, not essays; output rate dominates the bill": { "pt-BR": "Peça respostas concisas e diffs, não redações; a taxa de saída domina a conta", "es": "Pide respuestas concisas y diffs, no ensayos; la tarifa de salida domina la factura" },
+  "L5 Agent scoping": { "pt-BR": "L5 Escopo de agente", "es": "L5 Alcance de agente" },
+  "Reserve Agent mode for multi-step work, cap iterations, audit unused tools": { "pt-BR": "Reserve o modo Agent para trabalho multi-etapa, limite iterações, audite ferramentas não usadas", "es": "Reserva el modo Agent para trabajo multi-paso, limita iteraciones, audita herramientas sin uso" },
+  "L6 Review policy": { "pt-BR": "L6 Política de review", "es": "L6 Política de review" },
+  "Trigger GitHub Copilot code review on labeled PRs instead of every push": { "pt-BR": "Dispare o code review do GitHub Copilot em PRs rotulados em vez de cada push", "es": "Dispara el code review de GitHub Copilot en PRs etiquetados en vez de cada push" },
+  "Savings from levers": { "pt-BR": "Economia das alavancas", "es": "Ahorro de las palancas" },
+  "/ month": { "pt-BR": "/ mês", "es": "/ mes" },
+
+  // ---- UBB: legacy comparison / governance ----
+  "Legacy premium requests vs Usage-Based Billing": { "pt-BR": "Premium requests legados vs Cobrança por Uso", "es": "Premium requests heredados vs Facturación por Uso" },
+  "Legacy PRU model": { "pt-BR": "Modelo PRU legado", "es": "Modelo PRU heredado" },
+  "same usage, raised multipliers": { "pt-BR": "mesmo uso, multiplicadores elevados", "es": "mismo uso, multiplicadores elevados" },
+  "AI Credits model": { "pt-BR": "Modelo de AI Credits", "es": "Modelo de AI Credits" },
+  "seats": { "pt-BR": "seats", "es": "seats" },
+  "+ overage": { "pt-BR": "+ excedente", "es": "+ excedente" },
+  "Governance checklist": { "pt-BR": "Checklist de governança", "es": "Lista de gobernanza" },
+
+  // ---- UBB: long explanatory paragraphs ----
+  "Since 2026-06-01 every GitHub Copilot plan meters chat, Agent mode, the cloud coding agent and code review in GitHub AI Credits (1 credit = $0.01), computed from input, output and cached tokens at per-model rates. Code completions and Next Edit Suggestions stay unlimited on paid plans. Verify live rates at docs.github.com before quoting a client.": { "pt-BR": "Desde 2026-06-01 todo plano do GitHub Copilot tarifa chat, modo Agent, o coding agent na nuvem e code review em GitHub AI Credits (1 crédito = US$ 0,01), calculados a partir de tokens de entrada, saída e cache às taxas por modelo. Code completions e Next Edit Suggestions seguem ilimitados nos planos pagos. Confirme as taxas ao vivo em docs.github.com antes de cotar um cliente.", "es": "Desde 2026-06-01 todo plan de GitHub Copilot tarifa chat, modo Agent, el coding agent en la nube y code review en GitHub AI Credits (1 crédito = US$ 0,01), calculados a partir de tokens de entrada, salida y caché a tarifas por modelo. Code completions y Next Edit Suggestions siguen ilimitados en los planes de pago. Verifica las tarifas en vivo en docs.github.com antes de cotizar a un cliente." },
+  "credits at the current mix. Each iteration resends prior context plus tool results; tool definitions alone add 50 to 200 tokens per tool per turn.": { "pt-BR": "créditos no mix atual. Cada iteração reenvia o contexto anterior mais resultados de ferramentas; só as definições de ferramentas somam 50 a 200 tokens por ferramenta por turno.", "es": "créditos en la mezcla actual. Cada iteración reenvía el contexto previo más resultados de herramientas; solo las definiciones de herramientas suman 50 a 200 tokens por herramienta por turno." },
+  "One agent run at this profile costs about": { "pt-BR": "Uma execução de agente neste perfil custa cerca de", "es": "Una ejecución de agente en este perfil cuesta cerca de" },
+  "Code review bills twice: AI Credits for tokens plus GitHub Actions minutes for the copilot-pull-request-reviewer workflow. Actions minutes are attributed to the repository, not modeled here.": { "pt-BR": "Code review cobra duas vezes: AI Credits pelos tokens mais minutos de GitHub Actions do workflow copilot-pull-request-reviewer. Os minutos de Actions são atribuídos ao repositório, não modelados aqui.", "es": "Code review cobra dos veces: AI Credits por los tokens más minutos de GitHub Actions del workflow copilot-pull-request-reviewer. Los minutos de Actions se atribuyen al repositorio, no se modelan aquí." },
+  "Cached input reads at roughly one tenth of the fresh input rate. Field baseline: cache reads dominate token activity in warm sessions.": { "pt-BR": "A entrada em cache é lida a cerca de um décimo da taxa de entrada fresca. Base de campo: leituras de cache dominam a atividade de tokens em sessões aquecidas.", "es": "La entrada en caché se lee a cerca de un décimo de la tarifa de entrada fresca. Base de campo: las lecturas de caché dominan la actividad de tokens en sesiones tibias." },
+  "Field distribution reflects observed concentration (consumption Gini 0.72 to 0.77; P99 developers consume about 46x the median), which front-loads pool exhaustion.": { "pt-BR": "A distribuição de campo reflete a concentração observada (Gini de consumo 0,72 a 0,77; devs P99 consomem cerca de 46x a mediana), o que antecipa o esgotamento do pool.", "es": "La distribución de campo refleja la concentración observada (Gini de consumo 0,72 a 0,77; devs P99 consumen cerca de 46x la mediana), lo que adelanta el agotamiento del pool." },
+  "Defaults from the GitHub Docs models and pricing page as read on 2026-07-03. Rates are a moving target; every cell is editable.": { "pt-BR": "Padrões da página de modelos e preços do GitHub Docs conforme lida em 2026-07-03. As taxas mudam; toda célula é editável.", "es": "Valores por defecto de la página de modelos y precios de GitHub Docs leída el 2026-07-03. Las tarifas cambian; cada celda es editable." },
+  "Completions and Next Edit Suggestions are not in this chart because they never consume credits.": { "pt-BR": "Completions e Next Edit Suggestions não estão neste gráfico porque nunca consomem créditos.", "es": "Completions y Next Edit Suggestions no están en este gráfico porque nunca consumen créditos." },
+  "Each lever reduces metered consumption independently; the effects compound. Combined multiplier now: x": { "pt-BR": "Cada alavanca reduz o consumo tarifado de forma independente; os efeitos se compõem. Multiplicador combinado agora: x", "es": "Cada palanca reduce el consumo tarifado de forma independiente; los efectos se componen. Multiplicador combinado ahora: x" },
+  "Annual plans kept premium request pricing until expiry, with multipliers raised on 2026-06-01: Claude Opus 4.7 to 27x, GPT-5.4 to 6x, code review at 13x, overage at $0.04 per request.": { "pt-BR": "Planos anuais mantiveram o preço de premium requests até expirar, com multiplicadores elevados em 2026-06-01: Claude Opus 4.7 a 27x, GPT-5.4 a 6x, code review a 13x, excedente a US$ 0,04 por request.", "es": "Los planes anuales mantuvieron el precio de premium requests hasta expirar, con multiplicadores elevados el 2026-06-01: Claude Opus 4.7 a 27x, GPT-5.4 a 6x, code review a 13x, excedente a US$ 0,04 por request." },
+  "Credits are pooled at the billing entity: one heavy agent session can drain the shared pool early in the cycle": { "pt-BR": "Os créditos são agrupados na entidade de cobrança: uma sessão de agente pesada pode drenar o pool compartilhado cedo no ciclo", "es": "Los créditos se agrupan en la entidad de facturación: una sesión de agente pesada puede drenar el pool compartido temprano en el ciclo" },
+  "Budgets exist at four levels: user, cost center, organization and enterprise; set them before, not after, the first overage": { "pt-BR": "Orçamentos existem em quatro níveis: usuário, centro de custo, organização e enterprise; defina-os antes, não depois, do primeiro excedente", "es": "Los presupuestos existen en cuatro niveles: usuario, centro de costo, organización y enterprise; defínelos antes, no después, del primer excedente" },
+  "Stop usage at budget limit is OFF by default for enterprise and cost center budgets; enable it explicitly or charges continue past the limit": { "pt-BR": "Parar uso no limite do orçamento vem DESLIGADO por padrão para orçamentos de enterprise e centro de custo; ative-o explicitamente ou as cobranças continuam além do limite", "es": "Detener el uso en el límite del presupuesto viene APAGADO por defecto para presupuestos de enterprise y centro de costo; actívalo explícitamente o los cargos continúan más allá del límite" },
+  "Choose the additional usage policy deliberately: allowed bills overage at $0.01 per credit, blocked stops work until the next cycle": { "pt-BR": "Escolha a política de uso adicional deliberadamente: permitido cobra excedente a US$ 0,01 por crédito, bloqueado para o trabalho até o próximo ciclo", "es": "Elige la política de uso adicional deliberadamente: permitido cobra excedente a US$ 0,01 por crédito, bloqueado detiene el trabajo hasta el próximo ciclo" },
+  "Credits do not roll over, and the old fallback to a cheaper model when quota runs out no longer exists": { "pt-BR": "Os créditos não acumulam, e o antigo fallback para um modelo mais barato quando a cota acaba não existe mais", "es": "Los créditos no se acumulan, y el antiguo fallback a un modelo más barato cuando se agota la cuota ya no existe" },
+  "The promotional allowance ends 2026-09-01; treat that date as the mid program checkpoint and re baseline budgets then": { "pt-BR": "A cota promocional termina em 2026-09-01; trate essa data como checkpoint de meio de programa e refaça a baseline dos orçamentos então", "es": "La cuota promocional termina el 2026-09-01; trata esa fecha como checkpoint de mitad de programa y rehaz la baseline de los presupuestos entonces" },
+
+  // ---- Workspace: headers / KPIs ----
+  "Workspace and Repository Token Calculator": { "pt-BR": "Calculadora de Tokens de Workspace e Repositório", "es": "Calculadora de Tokens de Workspace y Repositorio" },
+  "Models the token bill of a GitHub Copilot workspace from its repository primitives up: what each request carries as context before any output, what each mode costs per task, and what routing the right model to the right task saves. Rates use the Sonnet class mid tier for the context tax and each task row's own tier for task costs.": { "pt-BR": "Modela a conta de tokens de um workspace do GitHub Copilot a partir das primitivas do repositório: o que cada request carrega como contexto antes de qualquer saída, quanto cada modo custa por tarefa e o que rotear o modelo certo para a tarefa certa economiza. As taxas usam o tier médio classe Sonnet para o imposto de contexto e o tier de cada linha de tarefa para os custos.", "es": "Modela la factura de tokens de un workspace de GitHub Copilot desde las primitivas del repositorio: qué carga cada request como contexto antes de cualquier salida, cuánto cuesta cada modo por tarea y qué ahorra enrutar el modelo correcto a la tarea correcta. Las tarifas usan el tier medio clase Sonnet para el impuesto de contexto y el tier de cada fila de tarea para los costos." },
+  "Context tax, fresh": { "pt-BR": "Imposto de contexto, fresco", "es": "Impuesto de contexto, fresco" },
+  "tokens before output": { "pt-BR": "tokens antes da saída", "es": "tokens antes de la salida" },
+  "Context tax, cached": { "pt-BR": "Imposto de contexto, em cache", "es": "Impuesto de contexto, en caché" },
+  "% cache read share": { "pt-BR": "% fração de leitura em cache", "es": "% fracción de lectura en caché" },
+  "Agent turn tax": { "pt-BR": "Imposto por turno de agente", "es": "Impuesto por turno de agente" },
+  "tokens incl. tool schemas": { "pt-BR": "tokens incl. schemas de ferramentas", "es": "tokens incl. schemas de herramientas" },
+  "Monthly, per dev": { "pt-BR": "Mensal, por dev", "es": "Mensual, por dev" },
+  "at the task table": { "pt-BR": "na tabela de tarefas", "es": "en la tabla de tareas" },
+  "Routing saves": { "pt-BR": "Roteamento economiza", "es": "El enrutamiento ahorra" },
+  "vs everything on frontier": { "pt-BR": "vs tudo na fronteira", "es": "vs todo en frontera" },
+
+  // ---- Workspace: repository primitives ----
+  "Repository primitives": { "pt-BR": "Primitivas do repositório", "es": "Primitivas del repositorio" },
+  "Versioned files that turn a naked repo into a governed workspace. Each has a read cost per request and removes a larger re explanation cost.": { "pt-BR": "Arquivos versionados que transformam um repo cru em um workspace governado. Cada um tem um custo de leitura por request e remove um custo maior de reexplicação.", "es": "Archivos versionados que convierten un repo desnudo en un workspace gobernado. Cada uno tiene un costo de lectura por request y elimina un costo mayor de reexplicación." },
+  "copilot-instructions.md, lines": { "pt-BR": "copilot-instructions.md, linhas", "es": "copilot-instructions.md, líneas" },
+  "Scoped .instructions.md files": { "pt-BR": "Arquivos .instructions.md com escopo", "es": "Archivos .instructions.md con alcance" },
+  "Lines per scoped file": { "pt-BR": "Linhas por arquivo com escopo", "es": "Líneas por archivo con alcance" },
+  "Prompt files": { "pt-BR": "Prompt files", "es": "Prompt files" },
+  "Custom agents": { "pt-BR": "Agentes customizados", "es": "Agentes personalizados" },
+  "System prompt tokens / agent": { "pt-BR": "Tokens de system prompt / agente", "es": "Tokens de system prompt / agente" },
+  "Tools per agent": { "pt-BR": "Ferramentas por agente", "es": "Herramientas por agente" },
+  "Tokens per tool schema": { "pt-BR": "Tokens por schema de ferramenta", "es": "Tokens por schema de herramienta" },
+  "MCP servers": { "pt-BR": "Servidores MCP", "es": "Servidores MCP" },
+  "Tools per MCP server": { "pt-BR": "Ferramentas por servidor MCP", "es": "Herramientas por servidor MCP" },
+  "Skills (load on demand)": { "pt-BR": "Skills (carregam sob demanda)", "es": "Skills (cargan bajo demanda)" },
+  "Copilot Memory active": { "pt-BR": "Copilot Memory ativo", "es": "Copilot Memory activo" },
+  "Context assembly per request": { "pt-BR": "Montagem de contexto por request", "es": "Ensamblaje de contexto por request" },
+  "What travels as input before the model writes anything.": { "pt-BR": "O que viaja como entrada antes de o modelo escrever qualquer coisa.", "es": "Lo que viaja como entrada antes de que el modelo escriba algo." },
+  "Platform system prompt": { "pt-BR": "System prompt da plataforma", "es": "System prompt de la plataforma" },
+  "Repository instructions": { "pt-BR": "Instruções do repositório", "es": "Instrucciones del repositorio" },
+  "Scoped instructions (matching path)": { "pt-BR": "Instruções com escopo (path correspondente)", "es": "Instrucciones con alcance (path coincidente)" },
+  "Conversation history": { "pt-BR": "Histórico da conversa", "es": "Historial de la conversación" },
+  "Editor context": { "pt-BR": "Contexto do editor", "es": "Contexto del editor" },
+  "@workspace context": { "pt-BR": "Contexto @workspace", "es": "Contexto @workspace" },
+  "User prompt": { "pt-BR": "Prompt do usuário", "es": "Prompt del usuario" },
+  "Base context per turn": { "pt-BR": "Contexto base por turno", "es": "Contexto base por turno" },
+  "User prompt tokens": { "pt-BR": "Tokens do prompt do usuário", "es": "Tokens del prompt del usuario" },
+  "Editor context tokens": { "pt-BR": "Tokens de contexto do editor", "es": "Tokens de contexto del editor" },
+  "@workspace tokens": { "pt-BR": "Tokens de @workspace", "es": "Tokens de @workspace" },
+  "History tokens": { "pt-BR": "Tokens de histórico", "es": "Tokens de historial" },
+  "Cache read share after turn 1": { "pt-BR": "Fração de leitura em cache após o turno 1", "es": "Fracción de lectura en caché tras el turno 1" },
+  "Turns per session": { "pt-BR": "Turnos por sessão", "es": "Turnos por sesión" },
+  "turn session costs about": { "pt-BR": "de sessão custa cerca de", "es": "de sesión cuesta cerca de" },
+  "credits of context alone: one fresh assembly, then": { "pt-BR": "créditos só de contexto: uma montagem fresca, depois", "es": "créditos solo de contexto: un ensamblaje fresco, luego" },
+  "mostly cached turns. Starting a fresh chat for every related question resets the cache and pays the fresh tax again.": { "pt-BR": "turnos majoritariamente em cache. Iniciar um chat novo para cada pergunta relacionada reseta o cache e paga o imposto fresco de novo.", "es": "turnos mayormente en caché. Iniciar un chat nuevo para cada pregunta relacionada reinicia el caché y paga el impuesto fresco de nuevo." },
+
+  // ---- Workspace: execution surfaces ----
+  "Execution surfaces: when to use Ask, Edit, Plan, Agent": { "pt-BR": "Superfícies de execução: quando usar Ask, Edit, Plan, Agent", "es": "Superficies de ejecución: cuándo usar Ask, Edit, Plan, Agent" },
+  "Ask": { "pt-BR": "Ask", "es": "Ask" },
+  "iteration": { "pt-BR": "iteração", "es": "iteración" },
+  "Questions, explanations, single answers. One turn, cheapest surface. If a chat turn answers it, never send an agent.": { "pt-BR": "Perguntas, explicações, respostas únicas. Um turno, a superfície mais barata. Se um turno de chat resolve, nunca envie um agente.", "es": "Preguntas, explicaciones, respuestas únicas. Un turno, la superficie más barata. Si un turno de chat lo resuelve, nunca envíes un agente." },
+  "Edit": { "pt-BR": "Edit", "es": "Edit" },
+  "Scoped edits across selected files. You choose the files, the model edits. Predictable cost, no tool loop.": { "pt-BR": "Edições com escopo em arquivos selecionados. Você escolhe os arquivos, o modelo edita. Custo previsível, sem loop de ferramentas.", "es": "Ediciones con alcance en archivos seleccionados. Tú eliges los archivos, el modelo edita. Costo predecible, sin bucle de herramientas." },
+  "Generate and refine a plan before touching code. Cheap insurance: a reviewed plan prevents runaway agent loops later.": { "pt-BR": "Gere e refine um plano antes de tocar no código. Seguro barato: um plano revisado evita loops de agente descontrolados depois.", "es": "Genera y refina un plan antes de tocar el código. Seguro barato: un plan revisado evita bucles de agente descontrolados después." },
+  "Agent": { "pt-BR": "Agent", "es": "Agent" },
+  "Multi step work: read, edit, test, iterate. Pays back on investigative and multi file tasks; about 10x a chat turn on single edits.": { "pt-BR": "Trabalho multi-etapa: ler, editar, testar, iterar. Compensa em tarefas investigativas e multi-arquivo; cerca de 10x um turno de chat em edições simples.", "es": "Trabajo multi-paso: leer, editar, probar, iterar. Compensa en tareas investigativas y multi-archivo; cerca de 10x un turno de chat en ediciones simples." },
+  "Coding Agent": { "pt-BR": "Coding Agent", "es": "Coding Agent" },
+  "Delegate an issue, receive a PR. Longest sessions, largest budgets. Defaults to Claude Sonnet 4.6; configure per repo.": { "pt-BR": "Delegue uma issue, receba um PR. Sessões mais longas, maiores orçamentos. Padrão Claude Sonnet 4.6; configure por repo.", "es": "Delega una issue, recibe un PR. Sesiones más largas, mayores presupuestos. Por defecto Claude Sonnet 4.6; configura por repo." },
+  "Code Review": { "pt-BR": "Code Review", "es": "Code Review" },
+  "Automated PR review. Bills AI Credits plus GitHub Actions minutes; model is selected automatically and not disclosed.": { "pt-BR": "Review automático de PR. Cobra AI Credits mais minutos de GitHub Actions; o modelo é escolhido automaticamente e não divulgado.", "es": "Review automático de PR. Cobra AI Credits más minutos de GitHub Actions; el modelo se elige automáticamente y no se divulga." },
+
+  // ---- Workspace: task table ----
+  "Cost per task with model routing": { "pt-BR": "Custo por tarefa com roteamento de modelo", "es": "Costo por tarea con enrutamiento de modelo" },
+  "Simulate naked repo": { "pt-BR": "Simular repo cru", "es": "Simular repo desnudo" },
+  "Volumes are per developer per month and editable. Tier is the routing decision; override any row.": { "pt-BR": "Volumes são por desenvolvedor por mês e editáveis. Tier é a decisão de roteamento; sobrescreva qualquer linha.", "es": "Los volúmenes son por desarrollador por mes y editables. Tier es la decisión de enrutamiento; sobrescribe cualquier fila." },
+  "Task": { "pt-BR": "Tarefa", "es": "Tarea" },
+  "Mode": { "pt-BR": "Modo", "es": "Modo" },
+  "Tier": { "pt-BR": "Tier", "es": "Tier" },
+  "Vol/mo": { "pt-BR": "Vol/mês", "es": "Vol/mes" },
+  "Credits/task": { "pt-BR": "Créditos/tarefa", "es": "Créditos/tarea" },
+  "Credits/mo": { "pt-BR": "Créditos/mês", "es": "Créditos/mes" },
+  "Quick question": { "pt-BR": "Pergunta rápida", "es": "Pregunta rápida" },
+  "Included": { "pt-BR": "Incluído", "es": "Incluido" },
+  "Lightweight": { "pt-BR": "Leve", "es": "Ligero" },
+  "Mid tier": { "pt-BR": "Tier médio", "es": "Tier medio" },
+  "Frontier": { "pt-BR": "Fronteira", "es": "Frontera" },
+  "Inline or single edit": { "pt-BR": "Edição inline ou única", "es": "Edición inline o única" },
+  "Test generation": { "pt-BR": "Geração de testes", "es": "Generación de pruebas" },
+  "Plan a change": { "pt-BR": "Planejar uma mudança", "es": "Planear un cambio" },
+  "Multi file refactor": { "pt-BR": "Refatoração multi-arquivo", "es": "Refactorización multi-archivo" },
+  "Bug investigation": { "pt-BR": "Investigação de bug", "es": "Investigación de bug" },
+  "Architecture analysis": { "pt-BR": "Análise de arquitetura", "es": "Análisis de arquitectura" },
+  "Issue to PR delegation": { "pt-BR": "Delegação de issue para PR", "es": "Delegación de issue a PR" },
+  "PR review": { "pt-BR": "Review de PR", "es": "Review de PR" },
+  "Total per developer per month": { "pt-BR": "Total por desenvolvedor por mês", "es": "Total por desarrollador por mes" },
+
+  // ---- Workspace: primitives cost vs savings / routing / field rules ----
+  "Primitives read cost vs savings": { "pt-BR": "Custo de leitura das primitivas vs economia", "es": "Costo de lectura de primitivas vs ahorro" },
+  "Instructions read cost / dev / mo": { "pt-BR": "Custo de leitura das instruções / dev / mês", "es": "Costo de lectura de instrucciones / dev / mes" },
+  "Re explanation removed / dev / mo": { "pt-BR": "Reexplicação removida / dev / mês", "es": "Reexplicación eliminada / dev / mes" },
+  "Net effect of governed context": { "pt-BR": "Efeito líquido do contexto governado", "es": "Efecto neto del contexto gobernado" },
+  "saves": { "pt-BR": "economiza", "es": "ahorra" },
+  "cr / dev / mo": { "pt-BR": "cr / dev / mês", "es": "cr / dev / mes" },
+  "Instructions pay a small read cost on every turn and remove a larger improvisation cost. Keep them lean: dump all context is the most expensive anti pattern.": { "pt-BR": "As instruções pagam um pequeno custo de leitura a cada turno e removem um custo maior de improvisação. Mantenha-as enxutas: despejar todo o contexto é o antipadrão mais caro.", "es": "Las instrucciones pagan un pequeño costo de lectura en cada turno y eliminan un costo mayor de improvisación. Mantenlas ligeras: volcar todo el contexto es el antipatrón más caro." },
+  "Routing discipline": { "pt-BR": "Disciplina de roteamento", "es": "Disciplina de enrutamiento" },
+  "All tasks on frontier": { "pt-BR": "Todas as tarefas na fronteira", "es": "Todas las tareas en frontera" },
+  "Routed as configured": { "pt-BR": "Roteado conforme configurado", "es": "Enrutado según lo configurado" },
+  "Auto model selection is available on every GitHub Copilot plan. Override down for well structured repetitive work, override up for novel and high stakes work. A careless model picker is a billing bug.": { "pt-BR": "A seleção automática de modelo está disponível em todo plano do GitHub Copilot. Rebaixe para trabalho repetitivo bem estruturado, eleve para trabalho novo e de alto risco. Um seletor de modelo descuidado é um bug de cobrança.", "es": "La selección automática de modelo está disponible en todo plan de GitHub Copilot. Baja para trabajo repetitivo bien estructurado, sube para trabajo novedoso y de alto riesgo. Un selector de modelo descuidado es un bug de facturación." },
+  "Field rules of thumb": { "pt-BR": "Regras práticas de campo", "es": "Reglas prácticas de campo" },
+  "If a chat turn answers it, do not send an agent: the single edit premium in Agent mode is about 10x for zero added value": { "pt-BR": "Se um turno de chat resolve, não envie um agente: o prêmio de edição única no modo Agent é cerca de 10x para zero valor agregado", "es": "Si un turno de chat lo resuelve, no envíes un agente: el sobreprecio de edición única en modo Agent es cerca de 10x por cero valor agregado" },
+  "Plan first on anything above trivial: a reviewed plan is the cheapest guardrail against runaway agent loops": { "pt-BR": "Planeje primeiro em qualquer coisa acima do trivial: um plano revisado é a proteção mais barata contra loops de agente descontrolados", "es": "Planea primero en cualquier cosa por encima de lo trivial: un plan revisado es la protección más barata contra bucles de agente descontrolados" },
+  "Cap agent conversations near 150,000 tokens, roughly 2x your P90 task, and alert at 50 and 80 percent of monthly budgets": { "pt-BR": "Limite conversas de agente perto de 150.000 tokens, cerca de 2x sua tarefa P90, e alerte em 50 e 80 por cento dos orçamentos mensais", "es": "Limita las conversaciones de agente cerca de 150.000 tokens, cerca de 2x tu tarea P90, y alerta al 50 y 80 por ciento de los presupuestos mensuales" },
+  "Write reusable prompts and instruction files in English: PT-BR and Spanish cost roughly 20 to 40 percent more tokens on the o200k tokenizer; the code stays in whatever language it is": { "pt-BR": "Escreva prompts e arquivos de instrução reutilizáveis em inglês: PT-BR e espanhol custam cerca de 20 a 40 por cento mais tokens no tokenizer o200k; o código permanece na linguagem que estiver", "es": "Escribe prompts y archivos de instrucción reutilizables en inglés: PT-BR y español cuestan cerca de 20 a 40 por ciento más tokens en el tokenizer o200k; el código permanece en el lenguaje que sea" },
+  "Output rate dominates the bill at 4 to 6x input on most models: ask for diffs and terse answers, not essays": { "pt-BR": "A taxa de saída domina a conta em 4 a 6x a entrada na maioria dos modelos: peça diffs e respostas concisas, não redações", "es": "La tarifa de salida domina la factura en 4 a 6x la entrada en la mayoría de los modelos: pide diffs y respuestas concisas, no ensayos" },
+  "Every unused tool schema costs 50 to 200 tokens on every agent turn: audit the tool set quarterly": { "pt-BR": "Cada schema de ferramenta não usado custa 50 a 200 tokens a cada turno de agente: audite o conjunto de ferramentas trimestralmente", "es": "Cada schema de herramienta sin uso cuesta 50 a 200 tokens en cada turno de agente: audita el conjunto de herramientas trimestralmente" },
+};
+
+// Reverse index: any localized string -> its English key. Lets the runtime hook
+// convert a node from any locale back to English or across locales.
+export const PORTED_I18N_REVERSE = (() => {
+  const r = Object.create(null);
+  for (const en in PORTED_I18N) {
+    const t = PORTED_I18N[en];
+    if (t['pt-BR']) r[t['pt-BR']] = en;
+    if (t['es']) r[t['es']] = en;
+  }
+  return r;
+})();
+
