@@ -115,6 +115,12 @@ assert(!/premium request/i.test(app), 'App must not reference the legacy premium
 assert(!/premium request/i.test(ported), 'Dictionary must not reference the legacy premium-request unit.');
 assert(!app.includes('legacyTotal') && !app.includes('Legacy PRU'), 'Legacy PRU comparison must be fully removed.');
 
+// Calculators start blank behind a how-to gate (no preloaded example numbers).
+assert(app.includes('function HowToGate'), 'HowToGate component must exist so calculators start blank with instructions.');
+for (const name of ['arch', 'roi', 'persona', 'agent', 'workspace']) {
+  assert(app.includes(`name="${name}"`), `Tab "${name}" must be wrapped in the HowToGate.`);
+}
+
 console.log('Calculator verification passed.');
 console.log(`Models: ${advisorData.MODELS.length}`);
 console.log(`Presets: ${advisorData.PRESETS.length}`);

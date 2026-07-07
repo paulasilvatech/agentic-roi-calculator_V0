@@ -52,6 +52,58 @@ import { PORTED_I18N, PORTED_I18N_REVERSE } from './ported-i18n.js';
         }, []);
         return <LocaleContext.Provider value={loc}>{children}</LocaleContext.Provider>;
       }
+
+      const HOWTO = {
+        arch: {
+          en: { title: 'How to use the Architecture Advisor', intro: 'This module starts empty. Pick a role to see a tailored agentic architecture, no example is preloaded.', steps: ['Choose an SDLC role or persona from the selector.', 'Review the recommended custom agents, MCP servers and skills.', 'Switch roles anytime to compare architectures.'], start: 'Choose a role to start' },
+          'pt-BR': { title: 'Como usar o Consultor de Arquitetura', intro: 'Este modulo inicia em branco. Escolha um papel para ver uma arquitetura agentica sob medida, nenhum exemplo vem carregado.', steps: ['Escolha um papel do SDLC ou persona no seletor.', 'Revise os agentes customizados, servidores MCP e skills recomendados.', 'Troque de papel quando quiser para comparar arquiteturas.'], start: 'Escolher um papel para comecar' },
+          es: { title: 'Como usar el Asesor de Arquitectura', intro: 'Este modulo inicia en blanco. Elige un rol para ver una arquitectura agentica a medida, no se precarga ningun ejemplo.', steps: ['Elige un rol del SDLC o persona en el selector.', 'Revisa los agentes personalizados, servidores MCP y skills recomendados.', 'Cambia de rol cuando quieras para comparar arquitecturas.'], start: 'Elegir un rol para empezar' },
+        },
+        roi: {
+          en: { title: 'How to use the ROI Calculator', intro: 'This calculator starts empty, no example numbers. Enter your own inputs to compute ROI, NPV and payback.', steps: ['Enter team size, average loaded salary and working hours.', 'Set the adoption rate and expected productivity uplift.', 'Add tooling and rollout costs; review ROI, NPV and payback.', 'Export the scenario to JSON, CSV or Markdown when done.'], start: 'Start a blank calculation' },
+          'pt-BR': { title: 'Como usar a Calculadora de ROI', intro: 'Esta calculadora inicia em branco, sem numeros de exemplo. Informe seus proprios dados para calcular ROI, VPL e payback.', steps: ['Informe o tamanho do time, o salario medio carregado e as horas de trabalho.', 'Defina a taxa de adocao e o ganho de produtividade esperado.', 'Adicione custos de ferramentas e rollout; veja ROI, VPL e payback.', 'Exporte o cenario para JSON, CSV ou Markdown ao terminar.'], start: 'Iniciar um calculo em branco' },
+          es: { title: 'Como usar la Calculadora de ROI', intro: 'Esta calculadora inicia en blanco, sin numeros de ejemplo. Ingresa tus propios datos para calcular ROI, VPN y payback.', steps: ['Ingresa el tamano del equipo, el salario medio cargado y las horas de trabajo.', 'Define la tasa de adopcion y la mejora de productividad esperada.', 'Agrega costos de herramientas y despliegue; revisa ROI, VPN y payback.', 'Exporta el escenario a JSON, CSV o Markdown al terminar.'], start: 'Iniciar un calculo en blanco' },
+        },
+        persona: {
+          en: { title: 'How to use ROI by Persona', intro: 'This module starts empty. Pick a persona and enter your own headcount and salary, no example is preloaded.', steps: ['Select a persona from the list.', 'Enter headcount and average loaded salary for that persona.', 'Review the per-persona ROI and time-savings breakdown.'], start: 'Choose a persona to start' },
+          'pt-BR': { title: 'Como usar o ROI por Persona', intro: 'Este modulo inicia em branco. Escolha uma persona e informe seu proprio headcount e salario, nenhum exemplo vem carregado.', steps: ['Selecione uma persona na lista.', 'Informe o headcount e o salario medio carregado dessa persona.', 'Revise o ROI por persona e o detalhamento de economia de tempo.'], start: 'Escolher uma persona para comecar' },
+          es: { title: 'Como usar el ROI por Persona', intro: 'Este modulo inicia en blanco. Elige una persona e ingresa tu propio headcount y salario, no se precarga ningun ejemplo.', steps: ['Selecciona una persona de la lista.', 'Ingresa el headcount y el salario medio cargado de esa persona.', 'Revisa el ROI por persona y el desglose de ahorro de tiempo.'], start: 'Elegir una persona para empezar' },
+        },
+        agent: {
+          en: { title: 'How to use the Agent Advisor', intro: 'This module starts empty. Provide your context to receive tailored agent recommendations, no example is preloaded.', steps: ['Select your role and the task you want to automate.', 'Review the recommended agents, tools and skills.', 'Refine the filters to explore alternatives.'], start: 'Start to get recommendations' },
+          'pt-BR': { title: 'Como usar o Agent Advisor', intro: 'Este modulo inicia em branco. Informe seu contexto para receber recomendacoes de agentes sob medida, nenhum exemplo vem carregado.', steps: ['Selecione seu papel e a tarefa que deseja automatizar.', 'Revise os agentes, ferramentas e skills recomendados.', 'Ajuste os filtros para explorar alternativas.'], start: 'Comecar para ver recomendacoes' },
+          es: { title: 'Como usar el Agent Advisor', intro: 'Este modulo inicia en blanco. Proporciona tu contexto para recibir recomendaciones de agentes a medida, no se precarga ningun ejemplo.', steps: ['Selecciona tu rol y la tarea que quieres automatizar.', 'Revisa los agentes, herramientas y skills recomendados.', 'Ajusta los filtros para explorar alternativas.'], start: 'Empezar para ver recomendaciones' },
+        },
+        workspace: {
+          en: { title: 'How to use the Workspace Token Calculator', intro: 'This calculator starts empty, no example numbers. Enter your repository primitives to model the token cost.', steps: ['Enter the number of seats and active developers.', 'Describe your repo: instructions, prompt files, custom agents, MCP tools and skills.', 'Compare governed vs naked repo and routing savings per task.'], start: 'Start a blank calculation' },
+          'pt-BR': { title: 'Como usar a Calculadora de Tokens de Workspace', intro: 'Esta calculadora inicia em branco, sem numeros de exemplo. Informe as primitivas do repositorio para modelar o custo em tokens.', steps: ['Informe o numero de seats e desenvolvedores ativos.', 'Descreva seu repo: instrucoes, prompt files, agentes customizados, ferramentas MCP e skills.', 'Compare repo governado vs cru e a economia de roteamento por tarefa.'], start: 'Iniciar um calculo em branco' },
+          es: { title: 'Como usar la Calculadora de Tokens de Workspace', intro: 'Esta calculadora inicia en blanco, sin numeros de ejemplo. Ingresa las primitivas del repositorio para modelar el costo en tokens.', steps: ['Ingresa el numero de seats y desarrolladores activos.', 'Describe tu repo: instrucciones, prompt files, agentes personalizados, herramientas MCP y skills.', 'Compara repo gobernado vs desnudo y el ahorro de enrutamiento por tarea.'], start: 'Iniciar un calculo en blanco' },
+        },
+      };
+
+      function HowToGate({ name, children }) {
+        const loc = React.useContext(LocaleContext);
+        const [started, setStarted] = React.useState(false);
+        if (started) return children;
+        const t = (HOWTO[name] && (HOWTO[name][loc] || HOWTO[name].en)) || HOWTO[name].en;
+        return (
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <div className="card" style={{ borderLeft: '4px solid #0078D4' }}>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#201F1E', marginBottom: 8 }}>{t.title}</div>
+              <p style={{ fontSize: 13.5, lineHeight: 1.6, color: '#605E5C', margin: '0 0 16px' }}>{t.intro}</p>
+              <ol style={{ margin: '0 0 20px', paddingLeft: 20, color: '#3B3A39', fontSize: 13, lineHeight: 1.8 }}>
+                {t.steps.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+              <button
+                type="button"
+                onClick={() => setStarted(true)}
+                style={{ background: '#0078D4', color: '#fff', border: 'none', borderRadius: 6, padding: '11px 20px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+              >{t.start}</button>
+            </div>
+          </div>
+        );
+      }
+
       const $c = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
       const Nf = n => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
       const pct = (v, t) => t > 0 ? Math.max(2, Math.round(v / t * 100)) : 0;
@@ -4805,12 +4857,12 @@ function WorkspaceCalculator() {
               <div className="wrap">
                 {tab === 0 && <OverviewTab onNavigate={setTab} />}
                 {tab === 1 && <UBBTab />}
-                {tab === 2 && <ArchitectureAdvisor />}
-                {tab === 3 && <ROICalculatorTab />}
+                {tab === 2 && <HowToGate name="arch"><ArchitectureAdvisor /></HowToGate>}
+                {tab === 3 && <HowToGate name="roi"><ROICalculatorTab /></HowToGate>}
                 {tab === 4 && <GartnerResearch />}
-                {tab === 5 && <PersonaROI />}
-                {tab === 6 && <AgentAdvisor />}
-                {tab === 7 && <WorkspaceCalculator />}
+                {tab === 5 && <HowToGate name="persona"><PersonaROI /></HowToGate>}
+                {tab === 6 && <HowToGate name="agent"><AgentAdvisor /></HowToGate>}
+                {tab === 7 && <HowToGate name="workspace"><WorkspaceCalculator /></HowToGate>}
               </div>
             </main>
           </div>
