@@ -3025,9 +3025,9 @@ function UBBCalculator() {
   useLocalizeSubtree(locRef);
   const loc = React.useContext(LocaleContext);
   const LB = ({
-    'pt-BR': { lic: 'Licença ativa: ', inc: ' créditos incluídos/usuário/mês', promo: ' (promo até 2026-09-01)', seats: ' seats · ', devs: ' devs ativos', pooled: 'pool de ', cmo: ' créditos/mês' },
-    'es': { lic: 'Licencia activa: ', inc: ' créditos incluidos/usuario/mes', promo: ' (promo hasta 2026-09-01)', seats: ' seats · ', devs: ' devs activos', pooled: 'pool de ', cmo: ' créditos/mes' }
-  })[loc] || { lic: 'Active license: ', inc: ' included credits/user/mo', promo: ' (promo thru 2026-09-01)', seats: ' seats · ', devs: ' active devs', pooled: 'pooled ', cmo: ' credits/mo' };
+    'pt-BR': { lic: 'Licença ativa: ', inc: ' créditos incluídos/usuário/mês', promo: ' (promo até 2026-09-01)', seats: ' seats · ', devs: ' devs ativos', pooled: 'pool de ', cmo: ' créditos/mês', emptyT: 'Informe a quantidade de seats para começar', emptyB: 'Este painel fica em branco até você definir quantos seats do Copilot possui. Preencha o plano e os seats abaixo, e o resumo da licença, o pool e a conta mensal aparecerão.' },
+    'es': { lic: 'Licencia activa: ', inc: ' créditos incluidos/usuario/mes', promo: ' (promo hasta 2026-09-01)', seats: ' seats · ', devs: ' devs activos', pooled: 'pool de ', cmo: ' créditos/mes', emptyT: 'Ingresa la cantidad de seats para empezar', emptyB: 'Este panel queda en blanco hasta que definas cuántos seats de Copilot tienes. Completa el plan y los seats abajo, y el resumen de licencia, el pool y la factura mensual aparecerán.' }
+  })[loc] || { lic: 'Active license: ', inc: ' included credits/user/mo', promo: ' (promo thru 2026-09-01)', seats: ' seats · ', devs: ' active devs', pooled: 'pooled ', cmo: ' credits/mo', emptyT: 'Enter your seat count to begin', emptyB: 'This panel stays blank until you set how many Copilot seats you have. Fill in the plan and seats below, and the license summary, pool and monthly bill will appear.' };
   const W = {
     maxWidth: 1140,
     margin: '0 auto'
@@ -3063,7 +3063,7 @@ function UBBCalculator() {
 
   /* ── Plan & population ── */
   const [plan, setPlan] = useState("business");
-  const [seats, setSeats] = useState(500);
+  const [seats, setSeats] = useState(0);
   const [adoption, setAdoption] = useState(70);
   const [promo, setPromo] = useState(true);
   const [workDays, setWorkDays] = useState(21);
@@ -3236,6 +3236,7 @@ function UBBCalculator() {
   }, [plan, seats, adoption, promo, workDays, rates, chatN, chatIn, chatOut, agentN, agIter, agIn, agOut, revWk, revCr, cacheShare, mixI, mixL, mixM, mixF, conc, lv]);
   const c$ = n => '$' + Math.round(n).toLocaleString();
   const cr = n => Math.round(n).toLocaleString();
+  const hasInput = seats > 0;
   const kpiC = (cl, bg) => ({
     background: bg,
     borderRadius: 8,
@@ -3255,7 +3256,7 @@ function UBBCalculator() {
     style: secH
   }, "GitHub Copilot Usage-Based Billing Calculator"), /*#__PURE__*/React.createElement("div", {
     style: secSub
-  }, "Since 2026-06-01 every GitHub Copilot plan meters chat, Agent mode, the cloud coding agent and code review in GitHub AI Credits (1 credit = $0.01), computed from input, output and cached tokens at per-model rates. Code completions and Next Edit Suggestions stay unlimited on paid plans. Verify live rates at docs.github.com before quoting a client.")), /*#__PURE__*/React.createElement("div", {
+  }, "Since 2026-06-01 every GitHub Copilot plan meters chat, Agent mode, the cloud coding agent and code review in GitHub AI Credits (1 credit = $0.01), computed from input, output and cached tokens at per-model rates. Code completions and Next Edit Suggestions stay unlimited on paid plans. Verify live rates at docs.github.com before quoting a client.")), hasInput && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -3273,7 +3274,7 @@ function UBBCalculator() {
     style: {
       fontWeight: 700
     }
-  }, LB.lic + R.P.nm), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(promo ? R.P.promo : R.P.inc) + LB.inc + (promo ? LB.promo : "")), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(seats) + LB.seats + cr(R.active) + LB.devs), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + LB.pooled + cr(R.poolInc) + LB.cmo)), /*#__PURE__*/React.createElement("div", {
+  }, LB.lic + R.P.nm), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(promo ? R.P.promo : R.P.inc) + LB.inc + (promo ? LB.promo : "")), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(seats) + LB.seats + cr(R.active) + LB.devs), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + LB.pooled + cr(R.poolInc) + LB.cmo)), hasInput && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(5,1fr)',
@@ -3385,7 +3386,28 @@ function UBBCalculator() {
       fontSize: 10,
       color: '#8A8886'
     }
-  }, "of ", workDays, " working days"))), /*#__PURE__*/React.createElement("div", {
+  }, "of ", workDays, " working days"))), !hasInput && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '28px 22px',
+      margin: '0 0 16px',
+      border: '1px dashed #C7E0F4',
+      background: '#F7FBFE',
+      borderRadius: 10,
+      textAlign: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: '#0A4A7A',
+      marginBottom: 6
+    }
+  }, LB.emptyT), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12.5,
+      color: '#605E5C'
+    }
+  }, LB.emptyB)), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: '380px 1fr',
@@ -3417,7 +3439,9 @@ function UBBCalculator() {
   }, "Seats"), /*#__PURE__*/React.createElement("input", {
     type: "number",
     style: inp,
-    value: seats,
+    min: 0,
+    placeholder: "0",
+    value: seats || '',
     onChange: e => setSeats(Number(e.target.value) || 0)
   }))), /*#__PURE__*/React.createElement(Slider, {
     label: "Active developers",
@@ -3519,7 +3543,7 @@ function UBBCalculator() {
     style: inp,
     value: agOut,
     onChange: e => setAgOut(Number(e.target.value) || 0)
-  }))), /*#__PURE__*/React.createElement("div", {
+  }))), hasInput && /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10.5,
       color: '#8A8886',
@@ -3702,7 +3726,7 @@ function UBBCalculator() {
       textAlign: 'right',
       height: 24
     }
-  })))))))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  })))))))))), /*#__PURE__*/React.createElement("div", null, hasInput && /*#__PURE__*/React.createElement("div", {
     className: "card"
   }, /*#__PURE__*/React.createElement("div", {
     style: secH
@@ -3718,7 +3742,7 @@ function UBBCalculator() {
       color: '#8A8886',
       marginTop: 4
     }
-  }, "Completions and Next Edit Suggestions are not in this chart because they never consume credits.")), /*#__PURE__*/React.createElement("div", {
+  }, "Completions and Next Edit Suggestions are not in this chart because they never consume credits.")), hasInput && /*#__PURE__*/React.createElement("div", {
     className: "card"
   }, /*#__PURE__*/React.createElement("div", {
     style: secH
