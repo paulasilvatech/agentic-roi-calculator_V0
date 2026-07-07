@@ -110,6 +110,11 @@ assert(app.includes('useLocalizeSubtree'), 'Ported tabs must use the localizatio
 const ported = read('src/ported-i18n.js');
 assert(!/[\u2013\u2014]/.test(ported), 'ported-i18n.js must not contain en dash or em dash characters.');
 
+// No legacy premium-request unit (PRU): only the current AI Credits model is modeled.
+assert(!/premium request/i.test(app), 'App must not reference the legacy premium-request unit.');
+assert(!/premium request/i.test(ported), 'Dictionary must not reference the legacy premium-request unit.');
+assert(!app.includes('legacyTotal') && !app.includes('Legacy PRU'), 'Legacy PRU comparison must be fully removed.');
+
 console.log('Calculator verification passed.');
 console.log(`Models: ${advisorData.MODELS.length}`);
 console.log(`Presets: ${advisorData.PRESETS.length}`);

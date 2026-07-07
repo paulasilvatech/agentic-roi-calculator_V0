@@ -3023,6 +3023,11 @@ function creditsForCall(rate, inTok, outTok, cachedShare, cacheWriteShare) {
 function UBBCalculator() {
   const locRef = React.useRef(null);
   useLocalizeSubtree(locRef);
+  const loc = React.useContext(LocaleContext);
+  const LB = ({
+    'pt-BR': { lic: 'Licença ativa: ', inc: ' créditos incluídos/usuário/mês', promo: ' (promo até 2026-09-01)', seats: ' seats · ', devs: ' devs ativos', pooled: 'pool de ', cmo: ' créditos/mês' },
+    'es': { lic: 'Licencia activa: ', inc: ' créditos incluidos/usuario/mes', promo: ' (promo hasta 2026-09-01)', seats: ' seats · ', devs: ' devs activos', pooled: 'pool de ', cmo: ' créditos/mes' }
+  })[loc] || { lic: 'Active license: ', inc: ' included credits/user/mo', promo: ' (promo thru 2026-09-01)', seats: ' seats · ', devs: ' active devs', pooled: 'pooled ', cmo: ' credits/mo' };
   const W = {
     maxWidth: 1140,
     margin: '0 auto'
@@ -3195,13 +3200,6 @@ function UBBCalculator() {
     if (conc === "field") exhaustDay = exhaustDay / 1.35; /* heavy-tail front-loads consumption */
     exhaustDay = Math.min(workDays, Math.round(exhaustDay * 10) / 10);
 
-    /* Legacy premium request comparison (annual plans kept PRU with raised multipliers on 2026-06-01) */
-    const legacyReqDay = chatN + agentN * agIter + revWk / 5;
-    const legacyMult = mixI / 100 * 0 + mixL / 100 * 1 + mixM / 100 * 3 + mixF / 100 * 27; /* Opus moved to 27x */
-    const legacyIncl = plan === "business" ? 300 : 1000;
-    const legacyOverReq = Math.max(0, legacyReqDay * legacyMult * workDays - legacyIncl);
-    const legacyUserMo = legacyOverReq * 0.04;
-    const legacyTotal = seatUsd + legacyUserMo * active;
     const feat = [{
       lbl: "Chat interactions",
       val: chatCrDay * workDays * leverMult,
@@ -3229,7 +3227,6 @@ function UBBCalculator() {
       billMo,
       utilPct,
       exhaustDay,
-      legacyTotal,
       feat,
       leverMult,
       savedMo,
@@ -3276,7 +3273,7 @@ function UBBCalculator() {
     style: {
       fontWeight: 700
     }
-  }, "Active license: " + R.P.nm), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(promo ? R.P.promo : R.P.inc) + " included credits/user/mo" + (promo ? " (promo thru 2026-09-01)" : "")), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(seats) + " seats \u00b7 " + cr(R.active) + " active devs"), /*#__PURE__*/React.createElement("span", null, " \u00b7 pooled " + cr(R.poolInc) + " credits/mo")), /*#__PURE__*/React.createElement("div", {
+  }, LB.lic + R.P.nm), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(promo ? R.P.promo : R.P.inc) + LB.inc + (promo ? LB.promo : "")), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + cr(seats) + LB.seats + cr(R.active) + LB.devs), /*#__PURE__*/React.createElement("span", null, " \u00b7 " + LB.pooled + cr(R.poolInc) + LB.cmo)), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(5,1fr)',
@@ -3770,68 +3767,6 @@ function UBBCalculator() {
       color: '#107C10'
     }
   }, c$(R.savedMo), " / month"))), /*#__PURE__*/React.createElement("div", {
-    className: "card"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: secH
-  }, "Legacy premium requests vs Usage-Based Billing"), /*#__PURE__*/React.createElement("div", {
-    style: secSub
-  }, "Annual plans kept premium request pricing until expiry, with multipliers raised on 2026-06-01: Claude Opus 4.7 to 27x, GPT-5.4 to 6x, code review at 13x, overage at $0.04 per request."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: 10
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: '#FDF3F4',
-      border: '1px solid #F1BBBC',
-      borderRadius: 8,
-      padding: '12px',
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      color: '#D13438',
-      textTransform: 'uppercase'
-    }
-  }, "Legacy PRU model"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 20,
-      fontWeight: 800
-    }
-  }, c$(R.legacyTotal)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      color: '#8A8886'
-    }
-  }, "same usage, raised multipliers")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: '#EFF6FC',
-      border: '1px solid #C7E0F4',
-      borderRadius: 8,
-      padding: '12px',
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      color: '#0078D4',
-      textTransform: 'uppercase'
-    }
-  }, "AI Credits model"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 20,
-      fontWeight: 800
-    }
-  }, c$(R.billMo)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      color: '#8A8886'
-    }
-  }, "seats ", c$(R.seatUsd), " + overage ", c$(R.overUsd))))), /*#__PURE__*/React.createElement("div", {
     className: "card"
   }, /*#__PURE__*/React.createElement("div", {
     style: secH

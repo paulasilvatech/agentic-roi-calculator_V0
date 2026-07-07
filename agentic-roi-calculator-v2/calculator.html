@@ -1208,11 +1208,17 @@
       }
 
       .persona-btn {
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        align-items: center;
+        column-gap: 10px;
+        row-gap: 2px;
         border: 1.5px solid var(--border);
         border-radius: var(--radius-md);
-        padding: 11px 8px;
+        padding: 11px 12px;
         cursor: pointer;
-        text-align: center;
+        text-align: left;
         font-family: inherit;
         background: #fff;
         transition: var(--transition)
@@ -1232,6 +1238,8 @@
       }
 
       .persona-icon {
+        grid-column: 1;
+        grid-row: 1 / 3;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1239,21 +1247,24 @@
         height: 28px;
         border-radius: 6px;
         background: var(--bg-page);
-        flex-shrink: 0;
-        margin-right: 8px
+        flex-shrink: 0
       }
 
       .persona-name {
-        font-size: 10.5px;
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 11px;
         font-weight: 600;
         color: #323130;
         line-height: 1.25
       }
 
       .persona-wave {
-        font-size: 9px;
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 9.5px;
         color: var(--text-muted);
-        margin-top: 2px
+        line-height: 1.2
       }
 
       /* ── Gartner cards ── */
@@ -1817,7 +1828,7 @@
         JavaScript is required for the interactive ROI calculator. <a href="../index.html">Return to the Knowledge
           Hub</a>.</p>
     </noscript>
-    <script src="i18n.js?v=f0ebc0a455"></script>
+    <script src="i18n.js?v=6042e86dfa"></script>
     <script>
       // Dictionary lives in i18n.js (window.I18N_STRINGS). Author Software Global Black Belt, paulasilva@microsoft.com
       const I18N = window.I18N_STRINGS || { en: {}, 'pt-BR': {}, es: {} };
@@ -1843,8 +1854,8 @@
       })();
     </script>
     <div id="root"></div>
-    <script src="agent_advisor_data.js?v=f0ebc0a455"></script>
-    <script src="dist/app.js?v=f0ebc0a455"></script>
+    <script src="agent_advisor_data.js?v=6042e86dfa"></script>
+    <script src="dist/app.js?v=6042e86dfa"></script>
   </body>
 
 </html>

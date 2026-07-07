@@ -76,11 +76,7 @@ export const PORTED_I18N = {
   "Savings from levers": { "pt-BR": "Economia das alavancas", "es": "Ahorro de las palancas" },
   "/ month": { "pt-BR": "/ mês", "es": "/ mes" },
 
-  // ---- UBB: legacy comparison / governance ----
-  "Legacy premium requests vs Usage-Based Billing": { "pt-BR": "Premium requests legados vs Cobrança por Uso", "es": "Premium requests heredados vs Facturación por Uso" },
-  "Legacy PRU model": { "pt-BR": "Modelo PRU legado", "es": "Modelo PRU heredado" },
-  "same usage, raised multipliers": { "pt-BR": "mesmo uso, multiplicadores elevados", "es": "mismo uso, multiplicadores elevados" },
-  "AI Credits model": { "pt-BR": "Modelo de AI Credits", "es": "Modelo de AI Credits" },
+  // ---- UBB: governance ----
   "seats": { "pt-BR": "seats", "es": "seats" },
   "+ overage": { "pt-BR": "+ excedente", "es": "+ excedente" },
   "Governance checklist": { "pt-BR": "Checklist de governança", "es": "Lista de gobernanza" },
@@ -95,7 +91,6 @@ export const PORTED_I18N = {
   "Defaults from the GitHub Docs models and pricing page as read on 2026-07-03. Rates are a moving target; every cell is editable.": { "pt-BR": "Padrões da página de modelos e preços do GitHub Docs conforme lida em 2026-07-03. As taxas mudam; toda célula é editável.", "es": "Valores por defecto de la página de modelos y precios de GitHub Docs leída el 2026-07-03. Las tarifas cambian; cada celda es editable." },
   "Completions and Next Edit Suggestions are not in this chart because they never consume credits.": { "pt-BR": "Completions e Next Edit Suggestions não estão neste gráfico porque nunca consomem créditos.", "es": "Completions y Next Edit Suggestions no están en este gráfico porque nunca consumen créditos." },
   "Each lever reduces metered consumption independently; the effects compound. Combined multiplier now: x": { "pt-BR": "Cada alavanca reduz o consumo tarifado de forma independente; os efeitos se compõem. Multiplicador combinado agora: x", "es": "Cada palanca reduce el consumo tarifado de forma independiente; los efectos se componen. Multiplicador combinado ahora: x" },
-  "Annual plans kept premium request pricing until expiry, with multipliers raised on 2026-06-01: Claude Opus 4.7 to 27x, GPT-5.4 to 6x, code review at 13x, overage at $0.04 per request.": { "pt-BR": "Planos anuais mantiveram o preço de premium requests até expirar, com multiplicadores elevados em 2026-06-01: Claude Opus 4.7 a 27x, GPT-5.4 a 6x, code review a 13x, excedente a US$ 0,04 por request.", "es": "Los planes anuales mantuvieron el precio de premium requests hasta expirar, con multiplicadores elevados el 2026-06-01: Claude Opus 4.7 a 27x, GPT-5.4 a 6x, code review a 13x, excedente a US$ 0,04 por request." },
   "Credits are pooled at the billing entity: one heavy agent session can drain the shared pool early in the cycle": { "pt-BR": "Os créditos são agrupados na entidade de cobrança: uma sessão de agente pesada pode drenar o pool compartilhado cedo no ciclo", "es": "Los créditos se agrupan en la entidad de facturación: una sesión de agente pesada puede drenar el pool compartido temprano en el ciclo" },
   "Budgets exist at four levels: user, cost center, organization and enterprise; set them before, not after, the first overage": { "pt-BR": "Orçamentos existem em quatro níveis: usuário, centro de custo, organização e enterprise; defina-os antes, não depois, do primeiro excedente", "es": "Los presupuestos existen en cuatro niveles: usuario, centro de costo, organización y enterprise; defínelos antes, no después, del primer excedente" },
   "Stop usage at budget limit is OFF by default for enterprise and cost center budgets; enable it explicitly or charges continue past the limit": { "pt-BR": "Parar uso no limite do orçamento vem DESLIGADO por padrão para orçamentos de enterprise e centro de custo; ative-o explicitamente ou as cobranças continuam além do limite", "es": "Detener el uso en el límite del presupuesto viene APAGADO por defecto para presupuestos de enterprise y centro de costo; actívalo explícitamente o los cargos continúan más allá del límite" },
