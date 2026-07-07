@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "specky": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "specky-sdd@3.7.3",
+        "serve"
+      ]
+    }
+  }
+}
