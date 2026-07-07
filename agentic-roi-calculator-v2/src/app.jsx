@@ -735,7 +735,7 @@ import { PORTED_I18N, PORTED_I18N_REVERSE } from './ported-i18n.js';
           </div>
 
           {/* Architecture Hero Band */}
-          <div style={{ background: 'var(--bg-card)', borderLeft: `4px solid ${arch.color}`, color: 'var(--text-primary)', borderRadius: 10, padding: '22px 28px', color: 'var(--text-primary)', marginBottom: 18, boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ background: 'var(--bg-card)', borderLeft: `4px solid ${arch.color}`, color: 'var(--text-primary)', borderRadius: 10, padding: '22px 28px', marginBottom: 18, boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
               <div style={{ flex: 1, minWidth: 200 }}>
                 <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.5px', color: 'var(--text-secondary)', marginBottom: 6 }}>Recommended Architecture</div>
