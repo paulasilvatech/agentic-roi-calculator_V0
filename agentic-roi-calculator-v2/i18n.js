@@ -40,6 +40,8 @@
       nav4Desc: 'Evidence base: Productivity Paradox, Outcome-Driven Metrics, headcount impact, AI capability framework',
       nav5Desc: 'Per-persona ROI calculator across the 24 SDLC roles, with headcount, salary, and breakdown projections',
       nav6Desc: 'Architecture recommendations per persona: custom agents, MCP servers, skills, and GitHub Copilot extensions',
+      nav7Label: 'Workspace Tokens',
+      nav7Desc: 'Token-level cost of governed context: instructions, prompt files, custom agents, MCP tools and skills, governed vs naked repo, and routing savings per task',
 
       /* Overview: UBB highlight */
       ovUbbBadge: 'NEW \u00b7 JUN 2026',
@@ -95,6 +97,11 @@
       ovCardAgentB2: 'MCP server list mapped to persona workflows',
       ovCardAgentB3: 'GitHub Copilot Skills with implementation guidance',
       ovCardAgentB4: 'Technology complexity and adoption risk scores',
+      ovCardWorkspaceDesc: 'Token-level cost of a governed repository: how instructions, prompt files, custom agents, MCP tools and skills shape every request.',
+      ovCardWorkspaceB1: 'Governed repo vs naked repo token overhead',
+      ovCardWorkspaceB2: 'Ask, Edit, Plan and Agent mode token profiles',
+      ovCardWorkspaceB3: 'Routing savings per task type',
+      ovCardWorkspaceB4: 'Cost per model tier and per execution mode',
 
       /* Overview: disclaimer */
       ovDisclaimerStrong: 'Gartner: Time Saved Is Not Money Saved.',
@@ -179,8 +186,8 @@
       nav3Desc: 'Modelo financeiro completo com custos de time, economia de processo, NPV, IRR, cen\u00e1rios e tabelas de sensibilidade',
       nav4Desc: 'Base de evid\u00eancias: Paradoxo da Produtividade, M\u00e9tricas Orientadas a Resultado, impacto no quadro de pessoal, framework de capacidades de IA',
       nav5Desc: 'Calculadora de ROI por persona nas 24 fun\u00e7\u00f5es do SDLC, com quadro de pessoal, sal\u00e1rio e proje\u00e7\u00f5es detalhadas',
-      nav6Desc: 'Recomenda\u00e7\u00f5es de arquitetura por persona: agentes customizados, servidores MCP, skills e extens\u00f5es do GitHub Copilot',
-
+      nav6Desc: 'Recomenda\u00e7\u00f5es de arquitetura por persona: agentes customizados, servidores MCP, skills e extens\u00f5es do GitHub Copilot',      nav7Label: 'Tokens de Workspace',
+      nav7Desc: 'Custo em tokens do contexto governado: instruções, prompt files, agentes customizados, ferramentas MCP e skills, repo governado vs repo cru, e economia de roteamento por tarefa',
       /* Overview: UBB highlight */
       ovUbbBadge: 'NOVO \u00b7 JUN 2026',
       ovUbbKicker: 'COBRAN\u00c7A POR USO \u00b7 AI CREDITS',
@@ -235,6 +242,11 @@
       ovCardAgentB2: 'Lista de servidores MCP mapeada aos fluxos da persona',
       ovCardAgentB3: 'Skills do GitHub Copilot com orienta\u00e7\u00e3o de implementa\u00e7\u00e3o',
       ovCardAgentB4: 'Pontua\u00e7\u00e3o de complexidade tecnol\u00f3gica e risco de ado\u00e7\u00e3o',
+      ovCardWorkspaceDesc: 'Custo em tokens de um repositório governado: como instruções, prompt files, agentes customizados, ferramentas MCP e skills moldam cada request.',
+      ovCardWorkspaceB1: 'Overhead de tokens: repo governado vs repo cru',
+      ovCardWorkspaceB2: 'Perfis de tokens dos modos Ask, Edit, Plan e Agent',
+      ovCardWorkspaceB3: 'Economia de roteamento por tipo de tarefa',
+      ovCardWorkspaceB4: 'Custo por tier de modelo e por modo de execução',
 
       /* Overview: disclaimer */
       ovDisclaimerStrong: 'Gartner: Tempo Economizado N\u00e3o \u00c9 Dinheiro Economizado.',
@@ -320,6 +332,8 @@
       nav4Desc: 'Base de evidencia: Paradoja de la Productividad, M\u00e9tricas Orientadas a Resultados, impacto en la plantilla, framework de capacidades de IA',
       nav5Desc: 'Calculadora de ROI por persona en los 24 roles del SDLC, con plantilla, salario y proyecciones detalladas',
       nav6Desc: 'Recomendaciones de arquitectura por persona: agentes personalizados, servidores MCP, skills y extensiones de GitHub Copilot',
+      nav7Label: 'Tokens de Workspace',
+      nav7Desc: 'Costo en tokens del contexto gobernado: instrucciones, prompt files, agentes personalizados, herramientas MCP y skills, repo gobernado vs repo desnudo, y ahorro de enrutamiento por tarea',
 
       /* Overview: UBB highlight */
       ovUbbBadge: 'NUEVO \u00b7 JUN 2026',
@@ -375,6 +389,11 @@
       ovCardAgentB2: 'Lista de servidores MCP mapeada a los flujos de la persona',
       ovCardAgentB3: 'Skills de GitHub Copilot con orientaci\u00f3n de implementaci\u00f3n',
       ovCardAgentB4: 'Puntuaci\u00f3n de complejidad tecnol\u00f3gica y riesgo de adopci\u00f3n',
+      ovCardWorkspaceDesc: 'Costo en tokens de un repositorio gobernado: cómo instrucciones, prompt files, agentes personalizados, herramientas MCP y skills moldean cada request.',
+      ovCardWorkspaceB1: 'Overhead de tokens: repo gobernado vs repo desnudo',
+      ovCardWorkspaceB2: 'Perfiles de tokens de los modos Ask, Edit, Plan y Agent',
+      ovCardWorkspaceB3: 'Ahorro de enrutamiento por tipo de tarea',
+      ovCardWorkspaceB4: 'Costo por tier de modelo y por modo de ejecución',
 
       /* Overview: disclaimer */
       ovDisclaimerStrong: 'Gartner: El Tiempo Ahorrado No Es Dinero Ahorrado.',

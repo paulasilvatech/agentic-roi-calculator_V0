@@ -1,0 +1,9 @@
+# Playwright MCP exploration snapshots (test artifacts)
+.playwright-mcp/
+
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+*.log

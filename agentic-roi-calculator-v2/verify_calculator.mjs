@@ -28,6 +28,8 @@ const personaArchitectures = dataSandbox.window.AGENT_ARCHITECTURE_DATA;
 const i18n = i18nSandbox.window.I18N_STRINGS;
 const staticCopy = i18nSandbox.window.I18N_STATIC_COPY;
 const html = read('calculator.html');
+const app = read('src/app.jsx');
+const appAll = `${html}\n${app}`;
 
 assert(advisorData, 'ADVISOR_DATA must be defined.');
 assert(advisorData.GITHUB_COPILOT?.asOf, 'GitHub Copilot pricing asOf is required.');
@@ -71,16 +73,38 @@ for (const locale of ['en', 'pt-BR', 'es']) {
 }
 
 assert(!/[\u2013\u2014]/.test(html), 'HTML must not contain en dash or em dash characters.');
+assert(!/[\u2013\u2014]/.test(app), 'src/app.jsx must not contain en dash or em dash characters.');
 assert(!/[\u2013\u2014]/.test(read('i18n.js')), 'i18n.js must not contain en dash or em dash characters.');
 assert(!/[\u2013\u2014]/.test(read('agent_advisor_data.js')), 'agent_advisor_data.js must not contain en dash or em dash characters.');
 assert(!html.includes('NaN'), 'HTML must not contain a literal NaN string.');
-assert(!html.includes('const STATIC_COPY = {'), 'Static-copy dictionary must not be duplicated in calculator.html.');
-assert(html.includes('window.I18N_STATIC_COPY'), 'calculator.html must consume I18N_STATIC_COPY from i18n.js.');
-assert(!/exact replica|andyhayes/i.test(html), 'HTML must not reference external replica wording.');
-assert(html.includes('ROI_FORMULA_VERSION'), 'ROI formula version must be rendered from code.');
-assert(html.includes('agentic-roi-scenarios.json'), 'Scenario JSON export must exist.');
-assert(html.includes('agentic-roi-scenarios.csv'), 'Scenario CSV export must exist.');
-assert(html.includes('agentic-roi-scenarios.md'), 'Scenario Markdown export must exist.');
+assert(!appAll.includes('const STATIC_COPY = {'), 'Static-copy dictionary must not be duplicated in the app source.');
+assert(appAll.includes('window.I18N_STATIC_COPY'), 'App must consume I18N_STATIC_COPY from i18n.js.');
+assert(!/exact replica|andyhayes/i.test(appAll), 'App must not reference external replica wording.');
+assert(appAll.includes('ROI_FORMULA_VERSION'), 'ROI formula version must be rendered from code.');
+assert(appAll.includes('agentic-roi-scenarios.json'), 'Scenario JSON export must exist.');
+assert(appAll.includes('agentic-roi-scenarios.csv'), 'Scenario CSV export must exist.');
+assert(appAll.includes('agentic-roi-scenarios.md'), 'Scenario Markdown export must exist.');
+
+// Build-layout guards: the app must be prebuilt (no in-browser Babel, no CDN React).
+assert(html.includes('dist/app.js'), 'calculator.html must load the prebuilt dist/app.js.');
+assert(!html.includes('type="text/babel"'), 'calculator.html must not use in-browser Babel.');
+assert(!/unpkg\.com.*(react|babel)/i.test(html), 'calculator.html must not load React or Babel from a CDN.');
+assert(fs.existsSync(path.join(root, 'dist/app.js')), 'dist/app.js must be built (run: npm run build).');
+
+// Parity guards: v2 must match v1 scope (8 modules) with the ported calculators.
+for (const locale of ['en', 'pt-BR', 'es']) {
+  for (let i = 0; i <= 7; i++) {
+    assert(i18n[locale]?.[`nav${i}Label`], `Locale ${locale} must define nav${i}Label (8 modules).`);
+  }
+}
+assert(app.includes('function UBBCalculator'), 'Ported UBBCalculator component must be present.');
+assert(app.includes('function WorkspaceCalculator'), 'Ported WorkspaceCalculator component must be present.');
+assert(app.includes('tab === 7'), 'App must route the 8th (Workspace) tab.');
+assert(app.includes('const WS_MODES') && app.includes('const WS_TIERS') && app.includes('const WS_TASKS'), 'Workspace token datasets must be present.');
+assert(app.includes('const UBB_DEFAULT_RATES') && app.includes('const UBB_PLANS'), 'UBB rate card and plans must be present.');
+assert(app.includes('Active license'), 'UBB must render the active-license banner.');
+assert(!app.includes('GPT-4.1'), 'Stale GPT-4.1 model name must not appear in the app.');
+assert(!html.includes('renderUBBPanel'), 'Dead vanilla UBB panel must be removed from calculator.html.');
 
 console.log('Calculator verification passed.');
 console.log(`Models: ${advisorData.MODELS.length}`);
