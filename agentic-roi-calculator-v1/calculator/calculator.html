@@ -30,7 +30,7 @@ html{scroll-behavior:smooth;font-size:15px}
   --c-red:#F25022;--c-green:#7FBA00;--c-blue:#00A4EF;--c-yellow:#FFB900;
   --c-red-50:#FFF0EB;--c-green-50:#F1F8E3;--c-blue-50:#E5F6FD;--c-yellow-50:#FFF7E0;
   --c-red-700:#B33816;--c-green-700:#5A8500;--c-blue-700:#0076AC;--c-yellow-700:#B88500;
-  --c-purple:#7B52AB;--c-teal:#00B294;--c-orange:#FFB900;
+  --c-purple:#0076AC;--c-teal:#5A8500;--c-orange:#FFB900;
   --bg-page:#F7F7F5;--bg-alt:#ECECE8;--bg-card:#FFFFFF;--border:#E5E5E0;--border-light:#ECECE8;--border-2:#CECEC7;
   --text-primary:#1A1A1A;--text-secondary:#3A3A3A;--text-muted:#737373;--text-subtle:#A8A8A4;
   --shadow-sm:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.04);
@@ -72,7 +72,12 @@ button{font-family:inherit;cursor:pointer}
 .deck-chrome__lang-btn{background:none;border:none;font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);padding:5px 9px;cursor:pointer;border-radius:3px;transition:all 0.15s}
 .deck-chrome__lang-btn:hover{color:var(--text-primary)}
 .deck-chrome__lang-btn[aria-current="true"]{background:var(--text-primary);color:#FFFFFF}
-@media (max-width:760px){.deck-chrome{padding:0 14px}.deck-chrome__text{display:none}}
+@media (max-width:760px){
+  .deck-chrome{padding:0 16px}
+  /* keep only the name on small screens (separators and role/topic collapse) */
+  .deck-chrome__text{font-size:0}
+  .deck-chrome__text strong{font-size:11px;letter-spacing:0.16em}
+}
 
 /* legacy topbar kept for backward compat (now hidden, hub-topbar replaces) */
 .topbar{display:none}
@@ -83,7 +88,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* ── Sidebar nav ── */
 .app-sidebar{position:sticky;top:60px;align-self:start;height:calc(100vh - 60px);overflow-y:auto;background:var(--bg-card);border-right:1px solid var(--border);padding:28px 0 28px;display:flex;flex-direction:column;gap:6px}
-@media(max-width:960px){.app-sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:14px 0;flex-direction:row;overflow-x:auto}}
+@media(max-width:960px){.app-sidebar{position:sticky;top:60px;z-index:40;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:8px 10px;flex-direction:row;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}.app-sidebar::-webkit-scrollbar{display:none}}
 .sidebar-eyebrow{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);padding:0 24px 8px;margin-bottom:6px;border-bottom:1px solid var(--border)}
 @media(max-width:960px){.sidebar-eyebrow{display:none}}
 .sidebar-link{display:flex;align-items:center;gap:12px;padding:11px 24px;font-family:var(--font-sans);font-size:13.5px;font-weight:500;color:var(--text-secondary);background:none;border:none;border-left:3px solid transparent;cursor:pointer;text-align:left;transition:color .15s,background .15s,border-color .15s;letter-spacing:-0.005em;width:100%}
@@ -96,13 +101,13 @@ button{font-family:inherit;cursor:pointer}
 .sidebar-link.on .sidebar-link__num{color:var(--c-blue)}
 .sidebar-link__label{flex:1}
 @media(max-width:960px){
-  .sidebar-link{border-left:none;border-bottom:3px solid transparent;padding:10px 14px;flex-shrink:0;width:auto}
-  .sidebar-link.on{border-bottom-color:var(--c-blue);background:none}
+  .sidebar-link{border-left:none;border-bottom:3px solid transparent;padding:12px 14px;flex-shrink:0;width:auto;min-height:44px;border-radius:6px 6px 0 0;scroll-snap-align:start}
+  .sidebar-link.on{border-bottom-color:var(--c-blue);background:var(--c-blue-50)}
 }
 
 /* ── Main content area ── */
 .app-main{padding:32px 40px 40px;min-width:0;overflow-x:hidden}
-@media(max-width:760px){.app-main{padding:24px 20px}}
+@media(max-width:760px){.app-main{padding:clamp(20px,5vw,24px) clamp(16px,4.5vw,20px) 36px}}
 
 /* ── Compact hero (now inside main) ── */
 .hdr{background:transparent;padding:0 0 24px;color:var(--text-primary);border-bottom:1px solid var(--border);margin-bottom:32px}
@@ -173,7 +178,7 @@ a.deck-brand:hover{opacity:0.7}
 .stat-num{font-size:40px;font-weight:800;line-height:1;letter-spacing:-1.5px;margin-bottom:5px}
 .stat-card.c-blue .stat-num{color:var(--c-blue-700)}.stat-card.c-green .stat-num{color:var(--c-green-700)}
 .stat-card.c-yellow .stat-num{color:var(--c-yellow-700)}.stat-card.c-red .stat-num{color:var(--c-red-700)}
-.stat-card.c-purple .stat-num{color:#6B3FA0}.stat-card.c-teal .stat-num{color:#006B5A}
+.stat-card.c-purple .stat-num{color:#0076AC}.stat-card.c-teal .stat-num{color:#5A8500}
 .stat-sub{font-size:12px;color:var(--text-muted);line-height:1.45}
 .stat-badge{display:inline-block;font-size:10px;font-weight:700;border-radius:100px;padding:2px 9px;margin-top:7px}
 
@@ -207,25 +212,25 @@ a.deck-brand:hover{opacity:0.7}
 .tbl td{padding:9px 12px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);vertical-align:middle;line-height:1.4}
 .tbl tbody tr:hover td{background:#F5F9FE}
 .tbl tr:last-child td{border-bottom:none}
-.tbl tr.hi td{background:#EFF6FC}
+.tbl tr.hi td{background:#E5F6FD}
 .tbl .g{color:var(--c-green);font-weight:700}.tbl .m{color:var(--text-muted)}.tbl .b{color:var(--c-blue);font-weight:700}
 
 /* ── Notes ── */
 .note{font-size:11.5px;color:var(--text-secondary);line-height:1.55;padding:10px 14px;background:#FAF9F8;border-radius:var(--radius-sm);border-left:3px solid var(--border)}
 .note.warn{border-left-color:var(--c-yellow);background:#FFFBF0}
-.note.err{border-left-color:var(--c-red);background:#FDF3F4}
-.note.info{border-left-color:var(--c-blue);background:#EFF6FC}
+.note.err{border-left-color:var(--c-red);background:#FFF0EB}
+.note.info{border-left-color:var(--c-blue);background:#E5F6FD}
 
 /* ── Pills ── */
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .pill{font-size:11.5px;color:var(--text-secondary);background:#F3F2F1;border:1px solid var(--border);border-radius:100px;padding:4px 12px;transition:var(--transition)}
 .pill strong{color:var(--text-primary);font-weight:700}
-.pill:hover{background:#EFF6FC;border-color:#C7E0F4;color:var(--c-blue)}
+.pill:hover{background:#E5F6FD;border-color:#C7E0F4;color:var(--c-blue)}
 
 /* ── Presets ── */
 .preset-strip{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
 .preset-btn{padding:6px 15px;font-size:12px;font-weight:600;border-radius:100px;border:1.5px solid var(--border);background:#F8F7F6;color:var(--text-secondary);cursor:pointer;transition:var(--transition);font-family:inherit}
-.preset-btn:hover{border-color:var(--c-blue);background:#EFF6FC;color:var(--c-blue)}
+.preset-btn:hover{border-color:var(--c-blue);background:#E5F6FD;color:var(--c-blue)}
 .preset-btn.on{background:var(--c-blue);border-color:var(--c-blue);color:#fff;box-shadow:0 2px 8px rgba(0,164,239,.2)}
 
 /* ── Divider ── */
@@ -238,8 +243,8 @@ a.deck-brand:hover{opacity:0.7}
 .sc-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
 @media(max-width:700px){.sc-strip{grid-template-columns:1fr}}
 .sc{border-radius:var(--radius-md);border:1.5px solid;padding:16px 18px}
-.sc.best{border-color:#9FD99F;background:#F1FAF1}
-.sc.exp{border-color:#C7E0F4;background:#EFF6FC;box-shadow:0 0 0 2px rgba(0,164,239,.12)}
+.sc.best{border-color:#9FD99F;background:#F1F8E3}
+.sc.exp{border-color:#C7E0F4;background:#E5F6FD;box-shadow:0 0 0 2px rgba(0,164,239,.12)}
 .sc.worst{border-color:var(--border);background:#FAF9F8}
 .sc-tag{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
 .sc.best .sc-tag{color:var(--c-green)}.sc.exp .sc-tag{color:var(--c-blue)}.sc.worst .sc-tag{color:var(--text-muted)}
@@ -259,8 +264,8 @@ a.deck-brand:hover{opacity:0.7}
 @media(max-width:1000px){.persona-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.persona-grid{grid-template-columns:repeat(3,1fr)}}
 .persona-btn{border:1.5px solid var(--border);border-radius:var(--radius-md);padding:11px 8px;cursor:pointer;text-align:center;font-family:inherit;background:#fff;transition:var(--transition)}
-.persona-btn:hover{border-color:var(--c-blue);background:#EFF6FC;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-.persona-btn.on{border-color:var(--c-blue);background:#EFF6FC;box-shadow:0 0 0 2px rgba(0,164,239,.2)}
+.persona-btn:hover{border-color:var(--c-blue);background:#E5F6FD;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.persona-btn.on{border-color:var(--c-blue);background:#E5F6FD;box-shadow:0 0 0 2px rgba(0,164,239,.2)}
 .persona-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--bg-page);flex-shrink:0;margin-right:8px}
 .persona-name{font-size:10.5px;font-weight:600;color:#323130;line-height:1.25}
 .persona-wave{font-size:9px;color:var(--text-muted);margin-top:2px}
@@ -323,7 +328,7 @@ a.deck-brand:hover{opacity:0.7}
 .footer-license{margin:12px 0 0;font-size:12px;color:#A8A8A4}
 @media (max-width:720px){.footer-btn{min-width:100%}.footer-meta{flex-direction:column;gap:8px}}
 .reset-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text-secondary);background:#FAF9F8;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:5px 12px;cursor:pointer;font-family:inherit;transition:var(--transition)}
-.reset-btn:hover{background:#EFF6FC;border-color:var(--c-blue);color:var(--c-blue)}
+.reset-btn:hover{background:#E5F6FD;border-color:var(--c-blue);color:var(--c-blue)}
 
 /* ── Wave timeline ── */
 .wave-timeline{display:flex;gap:0;margin-bottom:20px;overflow-x:auto}
@@ -343,7 +348,7 @@ a.deck-brand:hover{opacity:0.7}
 .callout-body{font-size:12px;color:var(--text-secondary);line-height:1.6}
 .callout.gartner{background:#FFF8F0;border-color:#F0D4A8}
 .callout.warning{background:#FFFBF0;border-color:#FFD875}
-.callout.critical{background:#FDF3F4;border-color:#F1A7A9}
+.callout.critical{background:#FFF0EB;border-color:#F1A7A9}
 
 
 /* ── UX improvements: focus-visible, smooth interactions ── */
@@ -354,7 +359,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--c-blue);outline-off
 .hero-band:hover{box-shadow:var(--shadow-md);border-color:var(--border-2)}
 input[type=range]{accent-color:var(--c-blue)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
-.ubb-btn{font:600 12px Inter,sans-serif;padding:7px 12px;border:1px solid #DDD9D2;background:#fff;border-radius:6px;cursor:pointer;color:#1A1A1A}.ubb-btn:hover{border-color:#0078D4;color:#0076AC}
+.ubb-btn{font:600 12px Inter,sans-serif;padding:7px 12px;border:1px solid #DDD9D2;background:#fff;border-radius:6px;cursor:pointer;color:#1A1A1A}.ubb-btn:hover{border-color:#1A1A1A;color:#1A1A1A}
 </style>
 </head>
 <body>
@@ -512,7 +517,7 @@ const PERSONAS = [{
   agentCost: 668,
   implCost: 800,
   trainCost: 300,
-  color: "#5C2D91"
+  color: "#0076AC"
 }, {
   id: "arquiteto",
   name: "Solution Architect",
@@ -529,7 +534,7 @@ const PERSONAS = [{
   agentCost: 2268,
   implCost: 1200,
   trainCost: 400,
-  color: "#5C2D91"
+  color: "#0076AC"
 }, {
   id: "desenvolvedor",
   name: "Modern Developer",
@@ -835,7 +840,7 @@ const PERSONAS = [{
   agentCost: 2268,
   implCost: 1500,
   trainCost: 500,
-  color: "#5C2D91"
+  color: "#0076AC"
 }, {
   id: "ux-designer",
   name: "UX / Product Designer",
@@ -852,7 +857,7 @@ const PERSONAS = [{
   agentCost: 868,
   implCost: 600,
   trainCost: 200,
-  color: "#5C2D91"
+  color: "#0076AC"
 }, {
   id: "eng-manager",
   name: "Engineering Manager",
@@ -913,7 +918,7 @@ const WAVES = [{
   n: 3,
   name: "Optimization",
   time: "Months 7-12",
-  color: "#5C2D91",
+  color: "#0076AC",
   profiles: PERSONAS.filter(p => p.wave === 3)
 }];
 
@@ -1015,7 +1020,7 @@ function OverviewTab({
   const tabs = [{
     idx: 2,
     color: 'var(--c-green)',
-    bg: '#F1FAF1',
+    bg: '#F1F8E3',
     border: '#9FD99F',
     titleKey: 'nav2Label',
     descKey: 'ovCardArchDesc',
@@ -1031,7 +1036,7 @@ function OverviewTab({
   }, {
     idx: 4,
     color: 'var(--c-yellow-700)',
-    bg: '#FEF6F0',
+    bg: '#FFF7E0',
     border: '#F4C9A8',
     titleKey: 'nav4Label',
     descKey: 'ovCardGartnerDesc',
@@ -1039,14 +1044,14 @@ function OverviewTab({
   }, {
     idx: 5,
     color: 'var(--c-blue)',
-    bg: '#EFF6FC',
+    bg: '#E5F6FD',
     border: '#C7E0F4',
     titleKey: 'nav5Label',
     descKey: 'ovCardPersonaDesc',
     bulletKeys: ['ovCardPersonaB1', 'ovCardPersonaB2', 'ovCardPersonaB3', 'ovCardPersonaB4']
   }, {
     idx: 6,
-    color: '#5C2D91',
+    color: '#0076AC',
     bg: '#F5F0FF',
     border: '#D4B8F0',
     titleKey: 'nav6Label',
@@ -1080,7 +1085,7 @@ function OverviewTab({
     clr: '#F25022'
   }, {
     key: 'ovChip5',
-    clr: '#B4A0FF'
+    clr: '#0076AC'
   }];
   return /*#__PURE__*/React.createElement("div", {
     style: W
@@ -1088,7 +1093,7 @@ function OverviewTab({
     onClick: () => onNavigate(1),
     style: {
       cursor: 'pointer',
-      background: 'linear-gradient(135deg,#0078D4 0%,#00A4EF 100%)',
+      background: 'linear-gradient(135deg,#0076AC 0%,#00A4EF 100%)',
       borderRadius: 'var(--radius-md)',
       padding: '26px 36px',
       color: '#fff',
@@ -1609,7 +1614,7 @@ function PersonaROI() {
   })), p.name, ", ROI Analysis"), /*#__PURE__*/React.createElement("span", {
     className: "r-badge",
     style: {
-      background: R.roi >= 500 ? "#DFF6DD" : "#EFF6FC",
+      background: R.roi >= 500 ? "#F1F8E3" : "#E5F6FD",
       color: R.roi >= 500 ? "var(--c-green)" : "var(--c-blue)"
     }
   }, Nf(R.roi), "% ROI")), /*#__PURE__*/React.createElement("div", {
@@ -1711,7 +1716,7 @@ function PersonaROI() {
     l: "Compliance savings",
     v: R.benComp,
     total: R.totalBen,
-    color: "#8764B8"
+    color: "#0076AC"
   }), /*#__PURE__*/React.createElement("div", {
     className: "divider"
   }), /*#__PURE__*/React.createElement("div", {
@@ -1932,7 +1937,7 @@ function GartnerResearch() {
     className: "insight-card",
     style: {
       borderColor: "var(--c-red)",
-      background: "#FDF3F4"
+      background: "#FFF0EB"
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "ic-num",
@@ -1968,7 +1973,7 @@ function GartnerResearch() {
     className: "insight-card",
     style: {
       borderColor: "var(--c-green)",
-      background: "#F1FAF1"
+      background: "#F1F8E3"
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "ic-num",
@@ -2009,7 +2014,7 @@ function GartnerResearch() {
   }, {
     l: "Reducing Work Hours",
     h: 0.7,
-    c: "#8764B8",
+    c: "#0076AC",
     type: "Valuable"
   }, {
     l: "Non-Value Additional Work",
@@ -2069,7 +2074,7 @@ function GartnerResearch() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      background: "#EFF6FC",
+      background: "#E5F6FD",
       borderRadius: 8,
       padding: 14,
       textAlign: "center"
@@ -2096,7 +2101,7 @@ function GartnerResearch() {
     }
   }, "per user / year")), /*#__PURE__*/React.createElement("div", {
     style: {
-      background: "#FDF3F4",
+      background: "#FFF0EB",
       borderRadius: 8,
       padding: 14,
       textAlign: "center"
@@ -2125,7 +2130,7 @@ function GartnerResearch() {
     style: {
       textAlign: "center",
       padding: 12,
-      background: "#FDF3F4",
+      background: "#FFF0EB",
       borderRadius: 8,
       border: "1.5px solid #F1A7A9"
     }
@@ -2275,7 +2280,7 @@ function GartnerResearch() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      background: "#EFF6FC",
+      background: "#E5F6FD",
       padding: 16,
       borderRight: "1px solid #E1DFDD"
     }
@@ -2366,7 +2371,7 @@ function GartnerResearch() {
     className: "bcp-card",
     style: {
       borderColor: "var(--c-blue)",
-      background: "#EFF6FC"
+      background: "#E5F6FD"
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "bcp-tag",
@@ -2396,7 +2401,7 @@ function GartnerResearch() {
     className: "bcp-card",
     style: {
       borderColor: "var(--c-green)",
-      background: "#F1FAF1"
+      background: "#F1F8E3"
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "bcp-tag",
@@ -2425,20 +2430,20 @@ function GartnerResearch() {
   }, "Requires redesigns of jobs, work and processes. Where Agentic DevOps with custom agents makes real impact.")), /*#__PURE__*/React.createElement("div", {
     className: "bcp-card",
     style: {
-      borderColor: "#5C2D91",
+      borderColor: "#0076AC",
       background: "#F5F0FF"
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "bcp-tag",
     style: {
-      color: "#5C2D91"
+      color: "#0076AC"
     }
   }, "Upend"), /*#__PURE__*/React.createElement("div", {
     className: "bcp-desc"
   }, "Create new products and markets"), /*#__PURE__*/React.createElement("div", {
     className: "bcp-metric",
     style: {
-      color: "#5C2D91"
+      color: "#0076AC"
     }
   }, "0-30% headcount change"), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2538,7 +2543,7 @@ function GartnerResearch() {
     icon: "",
     t: "Design for Human+AI Collaboration",
     d: "Make agent decisions and confidence visible so humans can easily approve, correct, and guide execution.",
-    c: "#5C2D91"
+    c: "#0076AC"
   }, {
     icon: "",
     t: "Engineer for Low Cognitive Load",
@@ -2595,7 +2600,7 @@ function GartnerResearch() {
     l: "High Investment",
     v: "19%",
     c: "var(--c-green)",
-    bg: "#F1FAF1"
+    bg: "#F1F8E3"
   }, {
     l: "Conservative",
     v: "42%",
@@ -2610,7 +2615,7 @@ function GartnerResearch() {
     l: "No Investment / Unsure",
     v: "19%",
     c: "var(--c-red)",
-    bg: "#FDF3F4"
+    bg: "#FFF0EB"
   }].map(r => /*#__PURE__*/React.createElement("div", {
     key: r.l,
     style: {
@@ -2663,7 +2668,7 @@ function getArchPattern(cfg) {
   if (n >= 4 && hasHandoff && nMcps >= 4) return {
     type: 'Orchestration',
     score: Math.min(14, n * 2 + nMcps),
-    color: '#5C2D91',
+    color: '#0076AC',
     reason: 'Complex multi-step workflows requiring coordination between specialized agents with external system integrations'
   };
   if (n >= 3 || hasHandoff) return {
@@ -2728,7 +2733,7 @@ function AgentAdvisor() {
   const typeColors = {
     Gen: 'var(--c-green)',
     Aut: 'var(--c-blue)',
-    Exp: '#5C2D91',
+    Exp: '#0076AC',
     Val: 'var(--c-red)',
     Sug: 'var(--c-yellow-700)'
   };
@@ -2963,7 +2968,7 @@ function AgentAdvisor() {
     style: {
       fontSize: 10,
       color: 'var(--c-blue)',
-      background: '#EFF6FC',
+      background: '#E5F6FD',
       border: '1px solid #C7E0F4',
       borderRadius: 4,
       padding: '2px 7px',
@@ -3065,7 +3070,7 @@ function AgentAdvisor() {
     t: 'Skills',
     d: `.github/skills/, ${totalSkills} skills defined`,
     c: '#D4C5F0',
-    cc: '#5C2D91'
+    cc: '#0076AC'
   }].map(l => /*#__PURE__*/React.createElement("div", {
     key: l.n,
     style: {
@@ -3125,7 +3130,7 @@ function AgentAdvisor() {
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      background: '#F1FAF1',
+      background: '#F1F8E3',
       color: 'var(--c-green)',
       padding: '3px 10px',
       borderRadius: 100,
@@ -3170,7 +3175,7 @@ function AgentAdvisor() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       background: '#F5F0FF',
-      color: '#5C2D91',
+      color: '#0076AC',
       padding: '4px 12px',
       borderRadius: 100,
       fontSize: 11,
@@ -3206,7 +3211,7 @@ function AgentAdvisor() {
   }, p.name, ", AI Capability Impact Analysis"), /*#__PURE__*/React.createElement("span", {
     className: "r-badge",
     style: {
-      background: avgTimeSave >= 85 ? '#DFF6DD' : avgTimeSave >= 70 ? '#EFF6FC' : '#FFFBF0',
+      background: avgTimeSave >= 85 ? '#F1F8E3' : avgTimeSave >= 70 ? '#E5F6FD' : '#FFFBF0',
       color: avgTimeSave >= 85 ? 'var(--c-green)' : avgTimeSave >= 70 ? 'var(--c-blue)' : '#7A5700'
     }
   }, avgTimeSave, "% avg automation")), /*#__PURE__*/React.createElement("div", {
@@ -3356,7 +3361,7 @@ function AgentAdvisor() {
       fontSize: 11,
       fontWeight: 700,
       color: 'var(--c-green)',
-      background: '#DFF6DD',
+      background: '#F1F8E3',
       padding: '2px 8px',
       borderRadius: 100
     }
@@ -3391,7 +3396,7 @@ function AgentAdvisor() {
   }, {
     phase: 'Phase 3: Production',
     time: 'Week 5-6',
-    color: '#5C2D91',
+    color: '#0076AC',
     steps: ['Deploy remaining agents: ' + cfg.ag.slice(2).map(a => a.n).join(', '), 'Set up monitoring and feedback loops', 'Train team on new workflows', 'Schedule model reviews and optimization cycles']
   }].map(ph => /*#__PURE__*/React.createElement("div", {
     key: ph.phase,
@@ -3538,7 +3543,7 @@ function AgentAdvisor() {
   }, {
     l: 'Total Year 1',
     v: $c(p.agentCost + p.implCost + p.trainCost),
-    c: '#5C2D91'
+    c: '#0076AC'
   }].map(x => /*#__PURE__*/React.createElement("div", {
     key: x.l,
     style: {
@@ -4054,7 +4059,7 @@ function ArchitectureAdvisor() {
     low: '#605E5C'
   };
   const confBg = {
-    high: '#DFF6DD',
+    high: '#F1F8E3',
     medium: '#FFFBF0',
     low: '#FAF9F8'
   };
@@ -4204,7 +4209,7 @@ function ArchitectureAdvisor() {
       cursor: 'pointer',
       textAlign: 'left',
       border: `1.5px solid ${inputType === it.id ? 'var(--c-blue)' : '#E1DFDD'}`,
-      background: inputType === it.id ? '#EFF6FC' : '#fff'
+      background: inputType === it.id ? '#E5F6FD' : '#fff'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -4245,7 +4250,7 @@ function ArchitectureAdvisor() {
       cursor: 'pointer',
       textAlign: 'left',
       border: `1.5px solid ${selPreset === p ? 'var(--c-blue)' : '#E1DFDD'}`,
-      background: selPreset === p ? '#EFF6FC' : '#FAFAFA'
+      background: selPreset === p ? '#E5F6FD' : '#FAFAFA'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -4348,7 +4353,7 @@ function ArchitectureAdvisor() {
       fontSize: 12,
       color: 'var(--c-blue)',
       fontWeight: 600,
-      background: '#EFF6FC',
+      background: '#E5F6FD',
       padding: '6px 12px',
       borderRadius: 100
     }
@@ -4399,7 +4404,7 @@ function ArchitectureAdvisor() {
     key: a.v,
     onClick: () => setAccuracy(a.v),
     style: {
-      ...optBtn(accuracy === a.v, '#5C2D91'),
+      ...optBtn(accuracy === a.v, '#0076AC'),
       flex: 1,
       padding: '10px 6px'
     }
@@ -4441,7 +4446,7 @@ function ArchitectureAdvisor() {
         cursor: 'pointer',
         textAlign: 'left',
         border: `1.5px solid ${active ? 'var(--c-blue)' : '#E1DFDD'}`,
-        background: active ? '#EFF6FC' : '#FAFAFA'
+        background: active ? '#E5F6FD' : '#FAFAFA'
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -4990,7 +4995,7 @@ function ArchitectureAdvisor() {
       borderRadius: 100,
       fontSize: 11,
       fontWeight: 700,
-      background: st.primary.provider === 'Anthropic' ? '#EFF6FC' : '#DFF6DD',
+      background: st.primary.provider === 'Anthropic' ? '#E5F6FD' : '#F1F8E3',
       color: st.primary.provider === 'Anthropic' ? 'var(--c-blue)' : 'var(--c-green)',
       border: `1.5px solid ${st.primary.provider === 'Anthropic' ? 'var(--c-blue)' : 'var(--c-green)'}`
     }
@@ -5103,7 +5108,7 @@ function ArchitectureAdvisor() {
     }
   }, "→"), /*#__PURE__*/React.createElement("div", {
     style: {
-      background: st.primary?.provider === 'Anthropic' ? '#EFF6FC' : '#F1FAF1',
+      background: st.primary?.provider === 'Anthropic' ? '#E5F6FD' : '#F1F8E3',
       border: `2px solid ${st.primary?.provider === 'Anthropic' ? 'var(--c-blue)' : 'var(--c-green)'}`,
       borderRadius: 8,
       padding: '10px 12px',
@@ -5138,7 +5143,7 @@ function ArchitectureAdvisor() {
     }
   }, "→"), /*#__PURE__*/React.createElement("div", {
     style: {
-      background: '#DFF6DD',
+      background: '#F1F8E3',
       border: '1.5px solid var(--c-green)',
       borderRadius: 8,
       padding: '10px 14px',
@@ -5234,7 +5239,7 @@ function ArchitectureAdvisor() {
       padding: '7px 10px',
       borderRadius: 6,
       marginBottom: 4,
-      background: r.bold ? '#EFF6FC' : 'transparent',
+      background: r.bold ? '#E5F6FD' : 'transparent',
       border: r.bold ? '1px solid var(--c-blue)30' : 'none'
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -5306,7 +5311,7 @@ function ArchitectureAdvisor() {
     items: ['Write prompt templates for each pipeline step', 'Build orchestration logic and agent handoffs', 'Implement error handling and retry logic', ...(archScore.isMulti ? ['Configure inter-agent communication format'] : [])]
   }, {
     phase: '3. Testing',
-    color: '#5C2D91',
+    color: '#0076AC',
     items: ['Test with representative real-world inputs', 'Benchmark recommended vs alternative models', 'Run A/B test: single agent vs multi-agent', 'Validate edge cases and failure modes']
   }, {
     phase: '4. Deployment',
@@ -5413,7 +5418,7 @@ function SecPanel({
       fontSize: 9,
       fontWeight: 700,
       color: 'var(--c-blue)',
-      background: '#EFF6FC',
+      background: '#E5F6FD',
       padding: '1px 7px',
       borderRadius: 100,
       border: '1px solid var(--c-blue)80'
@@ -6013,7 +6018,7 @@ function ROICalculatorTab() {
     }, {
       lbl: 'Error Reduction',
       val: errS,
-      clr: '#5C2D91'
+      clr: '#0076AC'
     }, {
       lbl: 'SLA Compliance',
       val: slaS,
@@ -6034,7 +6039,7 @@ function ROICalculatorTab() {
     }, {
       lbl: 'Human Review',
       val: revC,
-      clr: '#5C2D91'
+      clr: '#0076AC'
     }, {
       lbl: 'Operators',
       val: opC,
@@ -6343,10 +6348,12 @@ function ROICalculatorTab() {
   const mom = n => n == null ? 'n/a' : Math.round(n * 10) / 10 + ' mo';
   const rclr = v => v >= 100 ? 'var(--c-green)' : v >= 0 ? 'var(--c-blue)' : 'var(--c-red)';
   const kpiC = (cl, bg) => ({
-    background: bg,
+    background: 'var(--bg-card)',
     borderRadius: 8,
-    padding: '12px',
-    border: '1px solid ' + cl + '28',
+    padding: '14px 12px',
+    border: '1px solid var(--border)',
+    borderTop: '3px solid ' + cl,
+    boxShadow: 'var(--shadow-sm)',
     textAlign: 'center'
   });
   const kpis = [{
@@ -6355,28 +6362,28 @@ function ROICalculatorTab() {
     val: cm(R.totSave),
     sub: 'before impl costs',
     clr: 'var(--c-green)',
-    bg: '#F1FAF1'
+    bg: '#F1F8E3'
   }, {
     lbl: 'First Year ROI',
     icon: 'target',
     val: pct(R.roiY1),
     sub: 'net after impl costs',
     clr: rclr(R.roiY1),
-    bg: R.roiY1 >= 0 ? '#EFF6FC' : '#FDF3F4'
+    bg: R.roiY1 >= 0 ? '#E5F6FD' : '#FFF0EB'
   }, {
     lbl: 'Payback Period',
     icon: 'zap',
     val: mom(R.payMo),
     sub: 'time to break even',
     clr: 'var(--c-yellow-700)',
-    bg: '#FEF6F0'
+    bg: '#FFF7E0'
   }, {
     lbl: '3-Year ROI',
     icon: 'trendingUp',
     val: pct(R.roi3),
     sub: 'cumulative return',
     clr: rclr(R.roi3),
-    bg: R.roi3 >= 0 ? '#F5F0FF' : '#FDF3F4'
+    bg: R.roi3 >= 0 ? '#F5F0FF' : '#FFF0EB'
   }];
   const formulaLedgerRows = [{
     metric: tr('roiLedgerLaborMetric'),
@@ -6453,12 +6460,12 @@ function ROICalculatorTab() {
     onClick: exportCurrentScenario,
     style: {
       fontSize: 11,
-      padding: '5px 14px',
-      border: '1px solid var(--c-blue)',
+      padding: '6px 14px',
+      border: '1px solid var(--border-2)',
       borderRadius: 6,
-      background: '#EFF6FC',
+      background: '#fff',
       cursor: 'pointer',
-      color: 'var(--c-blue)',
+      color: 'var(--text-primary)',
       fontWeight: 600
     }
   }, tr('roiExportScenario')))), /*#__PURE__*/React.createElement("div", {
@@ -6471,7 +6478,7 @@ function ROICalculatorTab() {
   }, tr('roiStatusSub')), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(4,1fr)',
+      gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))',
       gap: 8,
       marginBottom: 10
     }
@@ -6486,7 +6493,7 @@ function ROICalculatorTab() {
   }, {
     l: tr('roiPricingAsOf'),
     v: R.pricingAsOf,
-    c: '#5C2D91'
+    c: '#0076AC'
   }, {
     l: tr('roiScenarioSaved'),
     v: 'localStorage',
@@ -6566,9 +6573,9 @@ function ROICalculatorTab() {
     onClick: saveCurrentScenario,
     className: "ubb-btn",
     style: {
-      background: '#0078D4',
+      background: '#1A1A1A',
       color: '#fff',
-      borderColor: '#0078D4'
+      borderColor: '#1A1A1A'
     }
   }, tr('roiSaveScenario')), /*#__PURE__*/React.createElement("button", {
     onClick: loadAutosavedDraft,
@@ -6762,7 +6769,7 @@ function ROICalculatorTab() {
       padding: '6px 14px',
       border: '1px dashed var(--c-blue)',
       borderRadius: 6,
-      background: '#EFF6FC',
+      background: '#E5F6FD',
       cursor: 'pointer',
       color: 'var(--c-blue)',
       width: '100%',
@@ -6915,7 +6922,7 @@ function ROICalculatorTab() {
     }
   }, Math.round(R.bSave * 100), "%"), " · Error reduction: ", /*#__PURE__*/React.createElement("strong", {
     style: {
-      color: '#5C2D91'
+      color: '#0076AC'
     }
   }, Math.round(R.bErr * 100), "%")), [{
     lbl: 'Simple Tasks',
@@ -6934,7 +6941,7 @@ function ROICalculatorTab() {
     desc: '35% savings · 60% error reduction',
     key: 'cplx',
     val: cplx,
-    clr: '#5C2D91'
+    clr: '#0076AC'
   }].map(t => /*#__PURE__*/React.createElement("div", {
     key: t.key,
     style: {
@@ -7000,7 +7007,7 @@ function ROICalculatorTab() {
   }, "Model Tier"), /*#__PURE__*/React.createElement("div", {
     style: g3
   }, Object.entries(MODS).map(([k, m]) => {
-    const clr = k === 'economy' ? 'var(--c-green)' : k === 'mid' ? 'var(--c-blue)' : '#5C2D91';
+    const clr = k === 'economy' ? 'var(--c-green)' : k === 'mid' ? 'var(--c-blue)' : '#0076AC';
     return /*#__PURE__*/React.createElement("div", {
       key: k,
       onClick: () => setMTier(k),
@@ -7059,7 +7066,7 @@ function ROICalculatorTab() {
     k: 'orchestration',
     lbl: 'Orchestration',
     ds: '8× tokens',
-    clr: '#5C2D91'
+    clr: '#0076AC'
   }].map(a => /*#__PURE__*/React.createElement("div", {
     key: a.k,
     onClick: () => setACplx(a.k),
@@ -7276,7 +7283,7 @@ function ROICalculatorTab() {
       borderRadius: 6,
       padding: '7px 6px',
       cursor: 'pointer',
-      background: licM === lm.k ? '#EFF6FC' : '#fff',
+      background: licM === lm.k ? '#E5F6FD' : '#fff',
       textAlign: 'center',
       transition: 'all .15s'
     }
@@ -7491,7 +7498,7 @@ function ROICalculatorTab() {
     style: g2
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      background: '#FDF3F4',
+      background: '#FFF0EB',
       borderRadius: 6,
       padding: '9px',
       textAlign: 'center'
@@ -7510,7 +7517,7 @@ function ROICalculatorTab() {
     }
   }, cm(R.ctBefore))), /*#__PURE__*/React.createElement("div", {
     style: {
-      background: '#F1FAF1',
+      background: '#F1F8E3',
       borderRadius: 6,
       padding: '9px',
       textAlign: 'center'
@@ -7714,7 +7721,7 @@ function ROICalculatorTab() {
     lbl: 'Errors Avoided/Year',
     val: Math.round(R.errAvoid).toLocaleString(),
     sub: c$(R.errS) + ' in error cost savings',
-    clr: '#5C2D91'
+    clr: '#0076AC'
   }, {
     ic: 'link',
     lbl: 'Handovers Eliminated',
@@ -7902,7 +7909,7 @@ function ROICalculatorTab() {
       style: {
         height: '100%',
         width: wPct + '%',
-        background: i === 0 ? 'var(--c-blue)' : i === 1 ? '#5C2D91' : i === 2 ? 'var(--c-green)' : 'var(--c-yellow-700)',
+        background: i === 0 ? 'var(--c-blue)' : i === 1 ? '#0076AC' : i === 2 ? 'var(--c-green)' : 'var(--c-yellow-700)',
         borderRadius: 4,
         opacity: 1 - i * 0.07
       }
@@ -8979,7 +8986,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
       state.modes=state.modes.filter(function(k){ return !!MODES[k]; }); if(!state.modes.length) state.modes=[Object.keys(MODES)[0]];
       if(state.modes.indexOf(state.mode)<0) state.mode=state.modes[0];
       var chkBase='display:inline-flex;align-items:center;gap:6px;border:1px solid #DDD9D2;border-radius:14px;padding:5px 11px;font:12px Inter;cursor:pointer;background:#fff;user-select:none';
-      var chkOn=';border-color:#0078D4;background:#EAF3FB;color:#0a4a7a;font-weight:600';
+      var chkOn=';border-color:#00A4EF;background:#E5F6FD;color:#0076AC;font-weight:600';
       function modeLabel(k){ var ml=TR.modeLabels[k]; return ml?(ml[LOC==='pt-BR'?'pt':LOC]||ml.en):((MODES[k]&&MODES[k].label)||k); }
       function modeChecks(){ return Object.keys(MODES).map(function(k){ var on=state.modes.indexOf(k)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mode="'+k+'"'+(on?' checked':'')+'>'+modeLabel(k)+(k===state.mode?' <span style="color:#8A8886;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
       function modelChecks(){ return ALL.map(function(m){ var on=state.models.indexOf(m.model)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mdl="'+m.model.replace(/"/g,'&quot;')+'"'+(on?' checked':'')+'>'+m.model+' <span style="color:#8A8886;font-weight:400">$'+m.input.toFixed(2)+'/$'+m.output.toFixed(2)+'</span>'+(m.model===state.model?' <span style="color:#8A8886;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
@@ -9007,7 +9014,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
         +'<b style="font:700 13px Inter,sans-serif">'+L('scn')+'</b>'
         +'<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center">'
         +'<input id="gh-scn-name" placeholder="'+L('scnName')+'" style="padding:7px 10px;border:1px solid #DDD9D2;border-radius:6px;font:12px Inter;min-width:180px">'
-        +'<button id="gh-save" class="ubb-btn" style="background:#0078D4;color:#fff;border:none">'+L('save')+'</button>'
+        +'<button id="gh-save" class="ubb-btn" style="background:#1A1A1A;color:#fff;border:none">'+L('save')+'</button>'
         +'<button id="gh-exp-json" class="ubb-btn">'+L('expJson')+'</button>'
         +'<label class="ubb-btn" style="cursor:pointer">'+L('impJson')+'<input id="gh-imp-json" type="file" accept=".json" style="display:none"></label>'
         +'<button id="gh-exp-xls" class="ubb-btn">'+L('expXls')+'</button>'
