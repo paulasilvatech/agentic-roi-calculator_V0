@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><rect x="0" y="0" width="8" height="8" fill="%23F25022"/><rect x="9" y="0" width="8" height="8" fill="%237FBA00"/><rect x="0" y="9" width="8" height="8" fill="%2300A4EF"/><rect x="9" y="9" width="8" height="8" fill="%23FFB900"/></svg>'>
+<title>Agentic AI ROI Toolkit · Paula Silva</title>
+<meta name="description" content="Plan agentic AI investments with rigor: 24 SDLC personas, token economics, agent archetypes, NPV modeling, and an interactive calculator with Gartner-anchored research.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agentic AI ROI Toolkit · Paula Silva">
+<meta property="og:description" content="Plan agentic AI investments with rigor: 24 SDLC personas, token economics, agent archetypes, NPV modeling, and an interactive calculator with Gartner-anchored research.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agentic AI ROI Toolkit · Paula Silva">
+<meta name="twitter:description" content="Plan agentic AI investments with rigor: 24 SDLC personas, token economics, agent archetypes, NPV modeling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & tokens (mirrors calculator.html) ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+:root{
+  --c-red:#F25022;--c-green:#7FBA00;--c-blue:#00A4EF;--c-yellow:#FFB900;
+  --c-red-50:#FFF0EB;--c-green-50:#F1F8E3;--c-blue-50:#E5F6FD;--c-yellow-50:#FFF7E0;
+  --c-red-700:#B33816;--c-green-700:#5A8500;--c-blue-700:#0076AC;--c-yellow-700:#B88500;
+  --bg:#F7F7F5;--bg-alt:#ECECE8;--paper:#FFFFFF;--rule:#E5E5E0;--rule-2:#CECEC7;
+  --ink:#1A1A1A;--ink-2:#3A3A3A;--ink-3:#737373;--ink-4:#A8A8A4;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.04);
+  --shadow-md:0 2px 6px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 14px rgba(0,0,0,.07),0 12px 32px rgba(0,0,0,.08);
+  --radius-sm:6px;--radius-md:8px;--radius-lg:12px;
+  --transition:all .18s cubic-bezier(.4,0,.2,1);
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+body{font-family:var(--font-sans);font-size:15px;line-height:1.6;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,svg{max-width:100%}
+a{color:inherit}
+
+/* ── i18n: only the active language is visible ── */
+[data-lang]{display:none}
+[data-lang].lang-active{display:inline}
+
+/* ── Top color bar ── */
+.color-bar{display:flex;height:4px}
+.color-bar span{flex:1}
+.color-bar span:nth-child(1){background:var(--c-red)}
+.color-bar span:nth-child(2){background:var(--c-green)}
+.color-bar span:nth-child(3){background:var(--c-yellow)}
+.color-bar span:nth-child(4){background:var(--c-blue)}
+
+/* ── Header chrome ── */
+.chrome{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 28px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.chrome__brand{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);text-decoration:none}
+.chrome__logo{display:grid;grid-template-columns:8px 8px;grid-template-rows:8px 8px;gap:1.5px;flex:none}
+.chrome__logo span:nth-child(1){background:var(--c-red)}
+.chrome__logo span:nth-child(2){background:var(--c-green)}
+.chrome__logo span:nth-child(3){background:var(--c-blue)}
+.chrome__logo span:nth-child(4){background:var(--c-yellow)}
+.chrome__brand strong{color:var(--ink);font-weight:600}
+.chrome__right{display:flex;align-items:center;gap:14px}
+.chrome__cta{display:none;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ink);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;transition:var(--transition)}
+.chrome__cta:hover{background:var(--c-blue-700)}
+@media(min-width:760px){.chrome__cta{display:inline-block}}
+.lang{display:flex;border:1px solid var(--rule);border-radius:var(--radius-sm);overflow:hidden;background:var(--paper)}
+.lang button{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;padding:7px 11px;border:none;background:transparent;color:var(--ink-3);cursor:pointer;transition:var(--transition)}
+.lang button[aria-current="true"]{background:var(--ink);color:#fff}
+.lang button:not([aria-current="true"]):hover{background:var(--bg-alt);color:var(--ink)}
+
+/* ── Layout ── */
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+section{padding:56px 0}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--c-blue);flex:none}
+.eyebrow--plain::before{display:none}
+h1,h2,h3{line-height:1.2;font-weight:600;color:var(--ink)}
+.lead{font-size:15.5px;color:var(--ink-2);max-width:720px}
+
+/* ── Hero ── */
+.hero{padding:64px 0 40px}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media(max-width:900px){.hero__grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(30px,4.6vw,46px);letter-spacing:-.02em;margin:16px 0 18px}
+.hero .lead{font-size:16px;margin-bottom:28px}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;text-decoration:none;border-radius:var(--radius-md);padding:13px 22px;transition:var(--transition);border:1.5px solid transparent}
+.btn--primary{background:var(--ink);color:#fff;box-shadow:var(--shadow-md)}
+.btn--primary:hover{background:var(--c-blue-700);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.btn--ghost{background:var(--paper);color:var(--ink);border-color:var(--rule-2)}
+.btn--ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn .arrow{font-weight:400}
+.hero__art{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:14px}
+
+/* ── Stats ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-md);padding:20px 22px;box-shadow:var(--shadow-sm)}
+.stat b{display:block;font-size:26px;font-weight:600;letter-spacing:-.01em}
+.stat span{font-size:12.5px;color:var(--ink-3)}
+
+/* ── Cards / pillars ── */
+.section-head{margin-bottom:30px}
+.section-head h2{font-size:clamp(22px,3vw,30px);margin:12px 0 10px;letter-spacing:-.01em}
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.cards-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards-4{grid-template-columns:1fr}}
+.pillar{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--c-green);border-radius:var(--radius-md);padding:22px;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.pillar:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.pillar .num{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--c-green-700)}
+.pillar h3{font-size:16px;margin:8px 0 8px}
+.pillar p{font-size:13px;color:var(--ink-2)}
+
+/* ── Stack glance ── */
+.stack{display:flex;flex-direction:column;gap:10px;max-width:760px}
+.layer{display:grid;grid-template-columns:130px 1fr;gap:18px;background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--rule-2);border-radius:var(--radius-md);padding:16px 20px;box-shadow:var(--shadow-sm)}
+@media(max-width:560px){.layer{grid-template-columns:1fr}}
+.layer--red{border-left-color:var(--c-red)}
+.layer--yellow{border-left-color:var(--c-yellow)}
+.layer--green{border-left-color:var(--c-green)}
+.layer--blue{border-left-color:var(--c-blue)}
+.layer .num{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;color:var(--ink-3);padding-top:3px}
+.layer b{display:block;font-size:14.5px;font-weight:600}
+.layer p{font-size:13px;color:var(--ink-2)}
+
+/* ── Token metric cards ── */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.cards-3{grid-template-columns:1fr}}
+.metric{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-md);padding:24px;box-shadow:var(--shadow-sm);border-top:3px solid var(--rule-2)}
+.metric--green{border-top-color:var(--c-green)}
+.metric--blue{border-top-color:var(--c-blue)}
+.metric--yellow{border-top-color:var(--c-yellow)}
+.metric .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;color:var(--ink-3)}
+.metric .big{font-size:34px;font-weight:600;letter-spacing:-.02em;margin:10px 0 2px}
+.metric .sub{font-size:12px;color:var(--ink-3);margin-bottom:12px}
+.metric p{font-size:13px;color:var(--ink-2)}
+
+/* ── Insight items ── */
+.insight{border-top:1px solid var(--rule)}
+.insight--alt{background:var(--bg-alt)}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.insight-grid{grid-template-columns:1fr}}
+.insight-grid--5{grid-template-columns:repeat(3,1fr)}
+.item{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-md);padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px}
+.item .art{min-height:64px;display:flex;align-items:center}
+.item .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.item .kicker--green{color:var(--c-green-700)}
+.item .kicker--blue{color:var(--c-blue-700)}
+.item .kicker--yellow{color:var(--c-yellow-700)}
+.item .kicker--red{color:var(--c-red-700)}
+.item h3{font-size:15.5px}
+.item p{font-size:13px;color:var(--ink-2)}
+.item .note{font-size:11.5px;color:var(--ink-3);border-top:1px dashed var(--rule);padding-top:10px;margin-top:auto}
+
+/* ── Simulation block ── */
+.sim-browser{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;max-width:760px}
+.sim-browser__chrome{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg-alt);border-bottom:1px solid var(--rule)}
+.sim-browser__dots{display:flex;gap:5px}
+.sim-browser__dot{width:10px;height:10px;border-radius:50%}
+.sim-browser__dot--r{background:var(--c-red)}
+.sim-browser__dot--y{background:var(--c-yellow)}
+.sim-browser__dot--g{background:var(--c-green)}
+.sim-browser__url{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:4px 10px;flex:1}
+.sim-browser__content{padding:20px 22px}
+.bar-wrap{max-width:760px;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bar-row{display:grid;grid-template-columns:180px 1fr 46px;align-items:center;gap:12px;font-size:13px}
+@media(max-width:560px){.bar-row{grid-template-columns:120px 1fr 40px}}
+.bar-row__label{color:var(--ink-2)}
+.bar-row__track{height:8px;background:var(--bg-alt);border-radius:4px;overflow:hidden;display:block}
+.bar-row__fill{display:block;height:100%;width:0;background:var(--bar-color,var(--c-blue));border-radius:4px;transition:width .9s cubic-bezier(.4,0,.2,1)}
+.bar-row__value{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-align:right}
+.callout{max-width:760px;margin-top:18px;background:var(--c-blue-50);border:1px solid var(--c-blue);border-radius:var(--radius-md);padding:14px 18px;font-size:13.5px;color:var(--ink-2)}
+.callout strong{display:block;color:var(--ink);margin-bottom:2px}
+
+/* ── Formats ── */
+.formats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.formats{grid-template-columns:1fr}}
+.format{display:block;background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-md);padding:24px;box-shadow:var(--shadow-sm);text-decoration:none;transition:var(--transition);border-top:3px solid var(--c-green)}
+.format:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--c-green)}
+.format .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;color:var(--c-green-700)}
+.format h3{font-size:17px;margin:10px 0 8px}
+.format p{font-size:13px;color:var(--ink-2)}
+.format .meta{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:14px}
+
+/* ── Closing ── */
+.closing{background:var(--ink);color:#F0F0F0;text-align:center;border-top:4px solid var(--c-blue)}
+.closing h2{color:#fff;font-size:clamp(22px,3.4vw,32px);margin-bottom:22px;letter-spacing:-.01em}
+.closing .btn--primary{background:#fff;color:var(--ink)}
+.closing .btn--primary:hover{background:var(--c-blue);color:#fff}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--rule);padding:26px 0;font-size:12.5px;color:var(--ink-3)}
+footer .container{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ── Reveal animation ── */
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+[data-reveal].revealed{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}.bar-row__fill{transition:none}}
+</style>
+</head>
+<body>
+<noscript>
+  <p style="margin:16px 28px;font-size:13px;color:#3A3A3A;background:#FFF7E0;padding:10px 14px;border:1px solid #FFB900;border-radius:6px;">JavaScript is disabled. The language switcher and animations require JavaScript, but all content below is readable, and the calculator link still works.</p>
+</noscript>
+
+<div class="color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<header class="chrome">
+  <a class="chrome__brand" href="#top">
+    <span class="chrome__logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+    <span><strong>Paula Silva</strong>&nbsp;| Software Global Black Belt · Agentic AI ROI Toolkit</span>
+  </a>
+  <div class="chrome__right">
+    <a class="chrome__cta" href="agentic-roi-calculator/calculator.html">
+      <span data-lang="en" class="lang-active">Open the calculator</span><span data-lang="pt-br">Abrir a calculadora</span><span data-lang="es">Abrir la calculadora</span>
+    </a>
+    <nav class="lang" aria-label="Language">
+      <button type="button" data-locale="en" aria-current="true">EN</button>
+      <button type="button" data-locale="pt-br">PT</button>
+      <button type="button" data-locale="es">ES</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ── Hero ── -->
+<section class="hero container">
+  <div class="hero__grid">
+    <div>
+      <p class="eyebrow" data-reveal>
+        <span data-lang="en" class="lang-active">Business case · ROI calculator · v1.0.0</span><span data-lang="pt-br">Business case · Calculadora de ROI · v1.0.0</span><span data-lang="es">Business case · Calculadora de ROI · v1.0.0</span>
+      </p>
+      <h1 data-reveal>
+        <span data-lang="en" class="lang-active">Plan the agentic AI investment before you build it.</span><span data-lang="pt-br">Planeje o investimento em IA agêntica antes de construir.</span><span data-lang="es">Planifica la inversión en IA agéntica antes de construirla.</span>
+      </h1>
+      <p class="lead" data-reveal>
+        <span data-lang="en" class="lang-active">Agentic AI projects fail more often from missing economics than from missing technology. This page walks you through the planning lens: token costs, agent archetypes, the questions every CFO will ask, the pitfalls that kill payback. Then opens an interactive calculator that turns it into a defensible business case.</span><span data-lang="pt-br">Projetos de IA agêntica falham mais por falta de economia do que por falta de tecnologia. Esta página guia o planejamento: custo de tokens, arquétipos de agente, perguntas que todo CFO faz, armadilhas que matam o payback. Depois abre uma calculadora interativa que vira business case defensável.</span><span data-lang="es">Los proyectos de IA agéntica fallan más por falta de economía que por falta de tecnología. Esta página guía la planificación: costo de tokens, arquetipos de agente, preguntas del CFO, trampas que matan el payback. Luego abre una calculadora interactiva que se vuelve business case defendible.</span>
+      </p>
+      <div class="hero__actions" data-reveal>
+        <a class="btn btn--primary" href="agentic-roi-calculator/calculator.html">
+          <span data-lang="en" class="lang-active">Open the ROI calculator</span><span data-lang="pt-br">Abrir a calculadora de ROI</span><span data-lang="es">Abrir la calculadora de ROI</span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="btn btn--ghost" href="#lenses">
+          <span data-lang="en" class="lang-active">Read the planning guide</span><span data-lang="pt-br">Ler o guia de planejamento</span><span data-lang="es">Leer la guía de planificación</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__art" data-reveal>
+      <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four lenses of agentic AI planning">
+        <defs>
+          <linearGradient id="ha-bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ECECE8" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#F7F7F5" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="500" height="380" fill="url(#ha-bg)" rx="12"/>
+        <g transform="translate(40,30)">
+          <g transform="translate(0,0)">
+            <rect width="200" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="0.8"/>
+            <rect x="0" y="0" width="3" height="78" fill="#7FBA00"/>
+            <text x="14" y="22" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" letter-spacing="0.16em" fill="#737373">LENS I, ECONOMIC</text>
+            <text x="14" y="44" font-family="Inter,sans-serif" font-size="14" font-weight="500" fill="#1A1A1A">$ Conversion action</text>
+            <line x1="14" y1="56" x2="120" y2="56" stroke="#E5E5E0" stroke-width="0.6"/>
+            <text x="14" y="68" font-family="Inter,sans-serif" font-size="10" fill="#737373">Capacity reuse, error cost, throughput</text>
+          </g>
+          <g transform="translate(220,0)">
+            <rect width="200" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="0.8"/>
+            <rect x="0" y="0" width="3" height="78" fill="#FFB900"/>
+            <text x="14" y="22" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" letter-spacing="0.16em" fill="#737373">LENS II, UNIT-COST</text>
+            <text x="14" y="44" font-family="Inter,sans-serif" font-size="14" font-weight="500" fill="#1A1A1A">Tokens per task</text>
+            <g transform="translate(14,56)">
+              <rect x="0" y="0" width="40" height="6" fill="#FFB900" rx="1"/>
+              <rect x="44" y="0" width="60" height="6" fill="#FFB900" opacity=".5" rx="1"/>
+              <rect x="108" y="0" width="56" height="6" fill="#FFB900" opacity=".25" rx="1"/>
+            </g>
+            <text x="14" y="76" font-family="Inter,sans-serif" font-size="10" fill="#737373">Inference + cache + retries</text>
+          </g>
+          <g transform="translate(0,98)">
+            <rect width="200" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="0.8"/>
+            <rect x="0" y="0" width="3" height="78" fill="#00A4EF"/>
+            <text x="14" y="22" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" letter-spacing="0.16em" fill="#737373">LENS III, ARCHITECTURE</text>
+            <text x="14" y="44" font-family="Inter,sans-serif" font-size="14" font-weight="500" fill="#1A1A1A">Single, multi, autonomous</text>
+            <g transform="translate(14,54)" stroke="#00A4EF" stroke-width="1.2" fill="none" stroke-linecap="round">
+              <circle cx="6" cy="10" r="6"/>
+              <line x1="14" y1="10" x2="42" y2="10"/>
+              <circle cx="50" cy="10" r="6"/>
+              <line x1="58" y1="10" x2="86" y2="10"/>
+              <circle cx="94" cy="10" r="6"/>
+            </g>
+          </g>
+          <g transform="translate(220,98)">
+            <rect width="200" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="0.8"/>
+            <rect x="0" y="0" width="3" height="78" fill="#F25022"/>
+            <text x="14" y="22" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" letter-spacing="0.16em" fill="#737373">LENS IV, PERSONA</text>
+            <text x="14" y="44" font-family="Inter,sans-serif" font-size="14" font-weight="500" fill="#1A1A1A">24 SDLC roles</text>
+            <g transform="translate(14,55)" fill="#F25022">
+              <rect x="0" y="0" width="6" height="14" rx="1"/>
+              <rect x="9" y="3" width="6" height="11" rx="1" opacity=".85"/>
+              <rect x="18" y="6" width="6" height="8" rx="1" opacity=".7"/>
+              <rect x="27" y="2" width="6" height="12" rx="1" opacity=".55"/>
+              <rect x="36" y="4" width="6" height="10" rx="1" opacity=".4"/>
+              <rect x="45" y="7" width="6" height="7" rx="1" opacity=".3"/>
+              <rect x="54" y="1" width="6" height="13" rx="1" opacity=".5"/>
+              <rect x="63" y="5" width="6" height="9" rx="1" opacity=".7"/>
+              <rect x="72" y="3" width="6" height="11" rx="1" opacity=".85"/>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(40,206)">
+          <rect width="420" height="60" rx="6" fill="#1A1A1A" stroke="#1A1A1A"/>
+          <text x="20" y="26" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" letter-spacing="0.18em" fill="rgba(240,240,240,.6)">OUTPUT, CFO-READY</text>
+          <text x="20" y="50" font-family="Inter,sans-serif" font-size="20" font-weight="500" fill="#F0F0F0">NPV $4.2M, payback 8 mo</text>
+          <g transform="translate(310,18)" stroke="rgba(240,240,240,.7)" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="0 24 18 14 36 18 54 6 72 10 90 0"/>
+            <line x1="0" y1="28" x2="90" y2="28" opacity=".25"/>
+          </g>
+        </g>
+        <text x="40" y="290" font-family="JetBrains Mono,monospace" font-size="10" font-weight="500" letter-spacing="0.14em" fill="#737373">PLAN BY LENS, DEFEND BY NUMBERS</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ── -->
+<section class="container" style="padding-top:0">
+  <div class="stats" data-reveal>
+    <div class="stat"><b>24</b><span><span data-lang="en" class="lang-active">SDLC personas modeled</span><span data-lang="pt-br">Personas do SDLC modelados</span><span data-lang="es">Personas del SDLC modelados</span></span></div>
+    <div class="stat"><b>6</b><span><span data-lang="en" class="lang-active">Gartner reports anchored</span><span data-lang="pt-br">Relatórios Gartner ancorados</span><span data-lang="es">Informes Gartner anclados</span></span></div>
+    <div class="stat"><b>30-60%</b><span><span data-lang="en" class="lang-active">Typical productivity uplift range</span><span data-lang="pt-br">Ganho típico de produtividade</span><span data-lang="es">Aumento típico de productividad</span></span></div>
+    <div class="stat"><b>&lt;12 mo</b><span><span data-lang="en" class="lang-active">Payback in median scenarios</span><span data-lang="pt-br">Payback em cenários medianos</span><span data-lang="es">Payback en escenarios medianos</span></span></div>
+  </div>
+</section>
+
+<!-- ── Four lenses ── -->
+<section class="container" id="lenses">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow"><span data-lang="en" class="lang-active">Plan it</span><span data-lang="pt-br">Planeje</span><span data-lang="es">Planifícalo</span></p>
+    <h2><span data-lang="en" class="lang-active">The four lenses of agentic AI planning.</span><span data-lang="pt-br">As quatro lentes do planejamento de IA agêntica.</span><span data-lang="es">Las cuatro lentes de la planificación de IA agéntica.</span></h2>
+    <p class="lead"><span data-lang="en" class="lang-active">Before you scope a build, you need to look at the same investment from four angles. Skip any one and the proposal collapses on the second meeting with finance.</span><span data-lang="pt-br">Antes de escopo de construção, é preciso olhar o mesmo investimento por quatro ângulos. Pular qualquer um e a proposta cai na segunda reunião com finanças.</span><span data-lang="es">Antes de definir el alcance, hay que mirar la misma inversión desde cuatro ángulos. Saltar cualquiera y la propuesta cae en la segunda reunión con finanzas.</span></p>
+  </div>
+  <div class="cards-4" data-reveal>
+    <div class="pillar">
+      <span class="num">I</span>
+      <h3><span data-lang="en" class="lang-active">The economic lens</span><span data-lang="pt-br">A lente econômica</span><span data-lang="es">La lente económica</span></h3>
+      <p><span data-lang="en" class="lang-active">Productivity uplift only counts when it converts to a Conversion Action: capacity reuse, error cost reduction, throughput, revenue capacity. Time saved alone is zero.</span><span data-lang="pt-br">Ganho de produtividade só conta quando vira uma Ação de Conversão: reuso de capacidade, redução de custo de erro, throughput, capacidade de receita. Tempo economizado sozinho é zero.</span><span data-lang="es">La mejora de productividad solo cuenta cuando se convierte en una Acción de Conversión: reuso de capacidad, reducción de costo de error, throughput, capacidad de ingresos. El tiempo ahorrado solo es cero.</span></p>
+    </div>
+    <div class="pillar">
+      <span class="num">II</span>
+      <h3><span data-lang="en" class="lang-active">The unit-cost lens</span><span data-lang="pt-br">A lente de custo unitário</span><span data-lang="es">La lente de costo unitario</span></h3>
+      <p><span data-lang="en" class="lang-active">Inference is rarely the dominant cost at first run. It becomes dominant when you 10x usage. Plan token economics before scale, not after the bill arrives.</span><span data-lang="pt-br">Inferência raramente é o custo dominante no primeiro uso. Vira dominante quando você 10x a utilização. Planeje economia de tokens antes de escalar, não depois da conta chegar.</span><span data-lang="es">La inferencia rara vez es el costo dominante al inicio. Se vuelve dominante cuando 10x el uso. Planifica la economía de tokens antes de escalar, no cuando llegue la cuenta.</span></p>
+    </div>
+    <div class="pillar">
+      <span class="num">III</span>
+      <h3><span data-lang="en" class="lang-active">The architecture lens</span><span data-lang="pt-br">A lente de arquitetura</span><span data-lang="es">La lente de arquitectura</span></h3>
+      <p><span data-lang="en" class="lang-active">Single agent, multi-agent pipeline, or autonomous agent? The wrong archetype turns a six-month build into a two-year rebuild. Choose by task shape, not by team enthusiasm.</span><span data-lang="pt-br">Single agent, multi-agent pipeline ou agente autônomo? O arquétipo errado transforma um build de seis meses em um rebuild de dois anos. Escolha pela forma da tarefa, não pelo entusiasmo do time.</span><span data-lang="es">¿Single agent, multi-agent pipeline o agente autónomo? El arquetipo incorrecto convierte un build de seis meses en un rebuild de dos años. Elige por la forma de la tarea, no por el entusiasmo del equipo.</span></p>
+    </div>
+    <div class="pillar">
+      <span class="num">IV</span>
+      <h3><span data-lang="en" class="lang-active">The persona lens</span><span data-lang="pt-br">A lente de persona</span><span data-lang="es">La lente de persona</span></h3>
+      <p><span data-lang="en" class="lang-active">A developer ROI is not a QA ROI is not an SRE ROI. The same agent platform delivers very different value per role. Plan investments persona by persona, not as one monolith.</span><span data-lang="pt-br">O ROI do dev não é o ROI do QA, que não é o ROI do SRE. A mesma plataforma de agente entrega valores muito diferentes por papel. Planeje investimentos persona por persona, não como um monolito.</span><span data-lang="es">El ROI del dev no es el ROI del QA, que no es el ROI del SRE. La misma plataforma entrega valores muy distintos por rol. Planifica inversiones persona por persona, no como un monolito.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stack at a glance ── -->
+<section class="container">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow"><span data-lang="en" class="lang-active">Stack at a glance</span><span data-lang="pt-br">O stack em uma vista</span><span data-lang="es">El stack en una vista</span></p>
+    <h2><span data-lang="en" class="lang-active">The four lenses, stacked.</span><span data-lang="pt-br">As quatro lentes, empilhadas.</span><span data-lang="es">Las cuatro lentes, apiladas.</span></h2>
+    <p class="lead"><span data-lang="en" class="lang-active">Each lens depends on the one below it. Skip the foundation and the upper layers collapse on contact with finance.</span><span data-lang="pt-br">Cada lente depende da de baixo. Pular a base e as camadas superiores caem no primeiro contato com finanças.</span><span data-lang="es">Cada lente depende de la inferior. Saltar la base y las capas superiores caen en el primer contacto con finanzas.</span></p>
+  </div>
+  <div class="stack" data-reveal>
+    <div class="layer layer--red">
+      <span class="num">IV · OUTPUT</span>
+      <div>
+        <b><span data-lang="en" class="lang-active">CFO-ready business case</span><span data-lang="pt-br">Business case pronto para CFO</span><span data-lang="es">Business case listo para CFO</span></b>
+        <p><span data-lang="en" class="lang-active">NPV, IRR, payback. The number you defend in the boardroom.</span><span data-lang="pt-br">VPL, TIR, payback. O número que você defende na diretoria.</span><span data-lang="es">VAN, TIR, payback. El número que defiendes en el directorio.</span></p>
+      </div>
+    </div>
+    <div class="layer layer--yellow">
+      <span class="num">III · PERSONA</span>
+      <div>
+        <b><span data-lang="en" class="lang-active">24 SDLC roles</span><span data-lang="pt-br">24 papéis do SDLC</span><span data-lang="es">24 roles del SDLC</span></b>
+        <p><span data-lang="en" class="lang-active">Per-role ROI. Developer, QA, SRE, security, product. Each one different.</span><span data-lang="pt-br">ROI por papel. Dev, QA, SRE, segurança, produto. Cada um diferente.</span><span data-lang="es">ROI por rol. Dev, QA, SRE, seguridad, producto. Cada uno distinto.</span></p>
+      </div>
+    </div>
+    <div class="layer layer--green">
+      <span class="num">II · ARCHITECTURE</span>
+      <div>
+        <b><span data-lang="en" class="lang-active">Single, multi, autonomous</span><span data-lang="pt-br">Single, multi, autônomo</span><span data-lang="es">Single, multi, autónomo</span></b>
+        <p><span data-lang="en" class="lang-active">The archetype shapes the cost curve. Pick before the model.</span><span data-lang="pt-br">O arquétipo molda a curva de custo. Escolha antes do modelo.</span><span data-lang="es">El arquetipo modela la curva de costo. Elige antes del modelo.</span></p>
+      </div>
+    </div>
+    <div class="layer layer--blue">
+      <span class="num">I · UNIT-COST</span>
+      <div>
+        <b><span data-lang="en" class="lang-active">Token economics</span><span data-lang="pt-br">Economia de tokens</span><span data-lang="es">Economía de tokens</span></b>
+        <p><span data-lang="en" class="lang-active">Inference + cache + retries per task. The foundation that breaks first.</span><span data-lang="pt-br">Inferência + cache + retries por tarefa. A base que quebra primeiro.</span><span data-lang="es">Inferencia + cache + retries por tarea. La base que rompe primero.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CFO metrics ── -->
+<section class="container">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow"><span data-lang="en" class="lang-active">Numbers worth defending</span><span data-lang="pt-br">Números que valem defender</span><span data-lang="es">Números que vale la pena defender</span></p>
+    <h2><span data-lang="en" class="lang-active">Three CFO-grade metrics, three sources.</span><span data-lang="pt-br">Três métricas grau CFO, três fontes.</span><span data-lang="es">Tres métricas grado CFO, tres fuentes.</span></h2>
+    <p class="lead"><span data-lang="en" class="lang-active">Anchor every claim to a number that survives audit. The toolkit ships with these three baselines per persona.</span><span data-lang="pt-br">Ancore toda alegação a um número que sobreviva à auditoria. O toolkit entrega estes três baselines por persona.</span><span data-lang="es">Ancla cada afirmación a un número que sobreviva a la auditoría. El toolkit entrega estos tres baselines por persona.</span></p>
+  </div>
+  <div class="cards-3" data-reveal>
+    <div class="metric metric--green">
+      <span class="kicker"><span data-lang="en" class="lang-active">NPV · 5 YEARS</span><span data-lang="pt-br">VPL · 5 ANOS</span><span data-lang="es">VAN · 5 AÑOS</span></span>
+      <div class="big">$4.2M</div>
+      <div class="sub"><span data-lang="en" class="lang-active">median scenario, 24 personas, 100 FTE</span><span data-lang="pt-br">cenário mediano, 24 personas, 100 FTE</span><span data-lang="es">escenario mediano, 24 personas, 100 FTE</span></div>
+      <p><span data-lang="en" class="lang-active">5-year net present value at a 10% discount rate. Computed from per-persona productivity uplift, HITL discount, capacity reuse rate, and conversion to a CFO-tracked metric.</span><span data-lang="pt-br">Valor presente líquido em 5 anos a 10% de desconto. Calculado a partir de uplift de produtividade por persona, desconto HITL, taxa de reuso de capacidade e conversão para uma métrica que o CFO já acompanha.</span><span data-lang="es">Valor presente neto a 5 años con tasa de descuento del 10%. Calculado a partir del uplift de productividad por persona, descuento HITL, tasa de reuso de capacidad y conversión a métrica que el CFO ya rastrea.</span></p>
+    </div>
+    <div class="metric metric--blue">
+      <span class="kicker"><span data-lang="en" class="lang-active">PAYBACK · MEDIAN</span><span data-lang="pt-br">PAYBACK · MEDIANO</span><span data-lang="es">PAYBACK · MEDIANO</span></span>
+      <div class="big">8 mo</div>
+      <div class="sub"><span data-lang="en" class="lang-active">across 24 personas at default settings</span><span data-lang="pt-br">nas 24 personas com config padrão</span><span data-lang="es">a través de 24 personas con config default</span></div>
+      <p><span data-lang="en" class="lang-active">Time to recover the implementation cost. Below 12 months in the median scenario, below 6 months for high-uplift personas (developer, QA, SRE), above 18 months for low-uplift personas (compliance, audit).</span><span data-lang="pt-br">Tempo para recuperar o custo de implementação. Abaixo de 12 meses no cenário mediano, abaixo de 6 meses para personas de alto uplift (dev, QA, SRE), acima de 18 meses para personas de baixo uplift (compliance, audit).</span><span data-lang="es">Tiempo para recuperar el costo de implementación. Menos de 12 meses en el escenario mediano, menos de 6 meses para personas de alto uplift (dev, QA, SRE), más de 18 meses para personas de bajo uplift (compliance, audit).</span></p>
+    </div>
+    <div class="metric metric--yellow">
+      <span class="kicker"><span data-lang="en" class="lang-active">UPLIFT · TYPICAL</span><span data-lang="pt-br">UPLIFT · TÍPICO</span><span data-lang="es">UPLIFT · TÍPICO</span></span>
+      <div class="big">30-60%</div>
+      <div class="sub"><span data-lang="en" class="lang-active">productivity uplift, before HITL discount</span><span data-lang="pt-br">ganho de produtividade, antes do desconto HITL</span><span data-lang="es">mejora de productividad, antes del descuento HITL</span></div>
+      <p><span data-lang="en" class="lang-active">Range observed across the 24 personas at the default settings. The toolkit subtracts the HITL discount and the capacity reuse rate before converting to dollars, so do not use the raw uplift in any CFO-facing slide.</span><span data-lang="pt-br">Faixa observada nas 24 personas com config padrão. O toolkit subtrai o desconto HITL e a taxa de reuso de capacidade antes de converter para dólar, então não use o uplift bruto em nenhum slide do CFO.</span><span data-lang="es">Rango observado en las 24 personas con config default. El toolkit resta el descuento HITL y la tasa de reuso de capacidad antes de convertir a dólares, así que no uses el uplift bruto en ningún slide del CFO.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Token economics primer ── -->
+<section class="insight">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span data-lang="en" class="lang-active">Token economics primer</span><span data-lang="pt-br">Primer de economia de tokens</span><span data-lang="es">Primer de economía de tokens</span></p>
+      <h2><span data-lang="en" class="lang-active">Tokens are the new compute.</span><span data-lang="pt-br">Tokens são a nova computação.</span><span data-lang="es">Los tokens son el nuevo compute.</span></h2>
+      <p class="lead"><span data-lang="en" class="lang-active">Three numbers determine whether your agentic AI project survives contact with finance.</span><span data-lang="pt-br">Três números determinam se o projeto sobrevive ao primeiro contato com finanças.</span><span data-lang="es">Tres números determinan si el proyecto sobrevive al primer contacto con finanzas.</span></p>
+    </div>
+    <div class="insight-grid" data-reveal>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg"><g font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.12em"><text x="0" y="14" fill="#737373">FORMULA</text></g><g transform="translate(0,22)" font-family="Inter,sans-serif"><rect x="0" y="0" width="80" height="34" rx="5" fill="#FFFFFF" stroke="#7FBA00" stroke-width="1"/><text x="40" y="14" text-anchor="middle" font-size="9" fill="#737373" font-family="JetBrains Mono,monospace" letter-spacing="0.12em">TOKENS</text><text x="40" y="28" text-anchor="middle" font-size="13" fill="#1A1A1A" font-weight="500">~3.2k</text><text x="92" y="22" font-size="16" fill="#737373" font-weight="300">×</text><rect x="106" y="0" width="80" height="34" rx="5" fill="#FFFFFF" stroke="#FFB900" stroke-width="1"/><text x="146" y="14" text-anchor="middle" font-size="9" fill="#737373" font-family="JetBrains Mono,monospace" letter-spacing="0.12em">$/MTOK</text><text x="146" y="28" text-anchor="middle" font-size="13" fill="#1A1A1A" font-weight="500">$2.50</text><text x="198" y="22" font-size="16" fill="#737373" font-weight="300">=</text><rect x="212" y="0" width="68" height="34" rx="5" fill="#1A1A1A" stroke="#1A1A1A"/><text x="246" y="14" text-anchor="middle" font-size="9" fill="rgba(240,240,240,.65)" font-family="JetBrains Mono,monospace" letter-spacing="0.12em">COST</text><text x="246" y="28" text-anchor="middle" font-size="13" fill="#F0F0F0" font-weight="500">$0.008</text></g></svg></div>
+        <span class="kicker kicker--green"><span data-lang="en" class="lang-active">Cost per task</span><span data-lang="pt-br">Custo por tarefa</span><span data-lang="es">Costo por tarea</span></span>
+        <h3><span data-lang="en" class="lang-active">Input + output tokens × model price.</span><span data-lang="pt-br">Tokens de entrada + saída × preço do modelo.</span><span data-lang="es">Tokens de entrada + salida × precio del modelo.</span></h3>
+        <p><span data-lang="en" class="lang-active">A single agent run costs the model price times the tokens consumed. The math is linear, but the inputs hide three traps: hidden context, retry storms, and growing prompt templates that 3x cost over six months.</span><span data-lang="pt-br">Uma execução de agente custa o preço do modelo vezes os tokens consumidos. A conta é linear, mas as entradas escondem três armadilhas: contexto escondido, retry storms e templates de prompt que crescem e triplicam o custo em seis meses.</span><span data-lang="es">Una ejecución de agente cuesta el precio del modelo por los tokens consumidos. La matemática es lineal, pero las entradas esconden tres trampas: contexto oculto, retry storms y plantillas de prompt que crecen y triplican el costo en seis meses.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Anchor: Microsoft Learn, Azure AI Foundry pricing per 1M tokens.</span><span data-lang="pt-br">Âncora: Microsoft Learn, preço do Azure AI Foundry por 1M de tokens.</span><span data-lang="es">Ancla: Microsoft Learn, precio de Azure AI Foundry por 1M de tokens.</span></span>
+      </div>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 260 64" xmlns="http://www.w3.org/2000/svg"><g font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.12em"><text x="0" y="14" fill="#737373">MONTHLY BUDGET PER PERSONA</text></g><g transform="translate(0,24)"><rect x="0" y="0" width="240" height="14" rx="4" fill="#ECECE8"/><rect x="0" y="0" width="156" height="14" rx="4" fill="#7FBA00"/><rect x="156" y="0" width="48" height="14" fill="#FFB900"/><rect x="204" y="0" width="36" height="14" rx="0" fill="#F25022"/><line x1="156" y1="-4" x2="156" y2="20" stroke="#1A1A1A" stroke-width="1" stroke-dasharray="2 2"/><line x1="204" y1="-4" x2="204" y2="20" stroke="#1A1A1A" stroke-width="1" stroke-dasharray="2 2"/></g><g font-family="Inter,sans-serif" font-size="10" fill="#3A3A3A" transform="translate(0,52)"><text x="0" y="0">$0</text><text x="148" y="0">target</text><text x="196" y="0">1.3x cap</text></g></svg></div>
+        <span class="kicker kicker--green"><span data-lang="en" class="lang-active">Cost ceiling per persona</span><span data-lang="pt-br">Teto de custo por persona</span><span data-lang="es">Techo de costo por persona</span></span>
+        <h3><span data-lang="en" class="lang-active">Set it before you ship.</span><span data-lang="pt-br">Defina antes de entregar.</span><span data-lang="es">Defínelo antes de entregar.</span></h3>
+        <p><span data-lang="en" class="lang-active">A monthly cost ceiling per persona is the only enforcement mechanism that scales. Without it, the prompt librarian and the developer compete for the same token budget and the developer always wins because their feature ships first.</span><span data-lang="pt-br">Um teto de custo mensal por persona é o único mecanismo de enforcement que escala. Sem isso, o bibliotecário de prompts e o developer disputam o mesmo orçamento e o developer sempre ganha porque a feature dele entrega primeiro.</span><span data-lang="es">Un techo de costo mensual por persona es el único mecanismo de enforcement que escala. Sin eso, el bibliotecario de prompts y el developer compiten por el mismo presupuesto y el developer siempre gana porque su feature entrega primero.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Recipe: monthly Azure budget alert per persona, hard limit at 1.3x.</span><span data-lang="pt-br">Receita: alerta de orçamento Azure mensal por persona, limite duro em 1,3x.</span><span data-lang="es">Receta: alerta de presupuesto Azure mensual por persona, límite duro en 1,3x.</span></span>
+      </div>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 260 64" xmlns="http://www.w3.org/2000/svg"><g font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.12em" fill="#737373"><text x="0" y="12">WITHOUT CACHE</text><text x="0" y="42">WITH CACHE</text></g><g transform="translate(110,0)"><rect x="0" y="3" width="150" height="12" rx="3" fill="#F25022"/><text x="156" y="13" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#3A3A3A">100%</text><rect x="0" y="33" width="22" height="12" rx="3" fill="#7FBA00"/><text x="28" y="43" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#3A3A3A">15%</text></g><g transform="translate(0,52)"><rect x="110" y="0" width="150" height="3" rx="1" fill="#7FBA00" opacity=".25"/><text x="186" y="-2" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="0.14em" fill="#5A8500" font-weight="600" text-anchor="middle">85% SAVED</text></g></svg></div>
+        <span class="kicker kicker--green"><span data-lang="en" class="lang-active">Caching strategy</span><span data-lang="pt-br">Estratégia de cache</span><span data-lang="es">Estrategia de caché</span></span>
+        <h3><span data-lang="en" class="lang-active">Prompt caching wins by 60-90%.</span><span data-lang="pt-br">Cache de prompt economiza 60-90%.</span><span data-lang="es">El caché de prompt ahorra 60-90%.</span></h3>
+        <p><span data-lang="en" class="lang-active">Repeated context (system prompts, RAG chunks, code snippets) is the largest free saving available. Modern providers offer prompt caching that cuts the input token bill by 60 to 90 percent on stable workloads. Stable equals templated, not creative.</span><span data-lang="pt-br">Contexto repetido (system prompts, chunks RAG, snippets de código) é a maior economia gratuita disponível. Provedores modernos oferecem cache de prompt que corta a conta de tokens de entrada em 60 a 90 por cento em workloads estáveis. Estável significa templated, não criativo.</span><span data-lang="es">El contexto repetido (system prompts, chunks RAG, snippets de código) es el mayor ahorro gratuito disponible. Los proveedores modernos ofrecen caché de prompt que corta la cuenta de tokens de entrada en 60 a 90 por ciento en workloads estables. Estable significa templated, no creativo.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Anchor: Anthropic prompt caching, GPT-4o context caching, AWS Bedrock cache.</span><span data-lang="pt-br">Âncora: Anthropic prompt caching, GPT-4o context caching, AWS Bedrock cache.</span><span data-lang="es">Ancla: Anthropic prompt caching, GPT-4o context caching, AWS Bedrock cache.</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Agent archetypes ── -->
+<section class="insight insight--alt">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span data-lang="en" class="lang-active">Agent archetypes</span><span data-lang="pt-br">Arquétipos de agente</span><span data-lang="es">Arquetipos de agente</span></p>
+      <h2><span data-lang="en" class="lang-active">Choose the archetype before you choose the model.</span><span data-lang="pt-br">Escolha o arquétipo antes de escolher o modelo.</span><span data-lang="es">Elige el arquetipo antes de elegir el modelo.</span></h2>
+      <p class="lead"><span data-lang="en" class="lang-active">These three archetypes cover 90% of agentic AI use cases. Each one has a different cost curve, different governance burden, and different failure modes.</span><span data-lang="pt-br">Estes três arquétipos cobrem 90% dos casos de uso. Cada um tem curva de custo, carga de governança e modos de falha diferentes.</span><span data-lang="es">Estos tres arquetipos cubren el 90% de casos. Cada uno tiene curva de costo, carga de gobernanza y modos de falla diferentes.</span></p>
+    </div>
+    <div class="insight-grid" data-reveal>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="40" cy="30" r="18" stroke="#00A4EF" stroke-width="1.5" fill="rgba(0,164,239,.08)"/><text x="40" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="500" fill="#0076AC" stroke="none">A1</text><line x1="62" y1="30" x2="86" y2="30" stroke="#00A4EF" stroke-width="1.5" stroke-dasharray="3 3"/><g transform="translate(96,12)" stroke="#00A4EF" stroke-width="1.4"><rect x="0" y="0" width="32" height="14" rx="3"/><rect x="0" y="20" width="32" height="14" rx="3"/><rect x="36" y="0" width="32" height="14" rx="3"/><rect x="36" y="20" width="32" height="14" rx="3"/></g><text x="180" y="34" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="0.12em" fill="#737373" stroke="none">4 TOOLS</text></svg></div>
+        <span class="kicker kicker--blue"><span data-lang="en" class="lang-active">Archetype 01</span><span data-lang="pt-br">Arquétipo 01</span><span data-lang="es">Arquetipo 01</span></span>
+        <h3>Single Agent</h3>
+        <p><span data-lang="en" class="lang-active">One agent, focused tools, bounded scope. Use when the task fits in one prompt and one decision tree. Cheapest to build, easiest to govern, lowest ceiling. The right starting point for 70% of teams.</span><span data-lang="pt-br">Um agente, ferramentas focadas, escopo delimitado. Use quando a tarefa cabe em um prompt e uma árvore de decisão. Mais barato de construir, mais fácil de governar, teto mais baixo. O ponto de partida certo para 70% dos times.</span><span data-lang="es">Un agente, herramientas enfocadas, alcance delimitado. Úsalo cuando la tarea cabe en un prompt y un árbol de decisión. Más barato de construir, más fácil de gobernar, techo más bajo. El punto de partida correcto para 70% de los equipos.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Best for: focused automation, well-defined tasks, narrow tooling.</span><span data-lang="pt-br">Ideal para: automação focada, tarefas bem definidas, tooling restrito.</span><span data-lang="es">Ideal para: automatización enfocada, tareas bien definidas, tooling acotado.</span></span>
+      </div>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none"><g transform="translate(0,15)"><circle cx="14" cy="14" r="13" stroke="#FFB900" stroke-width="1.5" fill="rgba(255,185,0,.08)"/><text x="14" y="18" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#B88500" stroke="none">P</text><line x1="28" y1="14" x2="56" y2="14" stroke="#FFB900" stroke-width="1.5"/><polyline points="50 9 56 14 50 19" stroke="#FFB900" stroke-width="1.5"/><circle cx="70" cy="14" r="13" stroke="#FFB900" stroke-width="1.5" fill="rgba(255,185,0,.08)"/><text x="70" y="18" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#B88500" stroke="none">R</text><line x1="84" y1="14" x2="112" y2="14" stroke="#FFB900" stroke-width="1.5"/><polyline points="106 9 112 14 106 19" stroke="#FFB900" stroke-width="1.5"/><circle cx="126" cy="14" r="13" stroke="#FFB900" stroke-width="1.5" fill="rgba(255,185,0,.08)"/><text x="126" y="18" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#B88500" stroke="none">E</text><line x1="140" y1="14" x2="168" y2="14" stroke="#FFB900" stroke-width="1.5"/><polyline points="162 9 168 14 162 19" stroke="#FFB900" stroke-width="1.5"/><circle cx="182" cy="14" r="13" stroke="#FFB900" stroke-width="1.5" fill="rgba(255,185,0,.08)"/><text x="182" y="18" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#B88500" stroke="none">V</text></g><g font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="0.1em" fill="#737373" stroke="none" transform="translate(0,52)"><text x="14" y="0" text-anchor="middle">PLAN</text><text x="70" y="0" text-anchor="middle">FETCH</text><text x="126" y="0" text-anchor="middle">EXEC</text><text x="182" y="0" text-anchor="middle">VERIFY</text></g></svg></div>
+        <span class="kicker kicker--yellow"><span data-lang="en" class="lang-active">Archetype 02</span><span data-lang="pt-br">Arquétipo 02</span><span data-lang="es">Arquetipo 02</span></span>
+        <h3>Multi-Agent Pipeline</h3>
+        <p><span data-lang="en" class="lang-active">A handoff chain of specialized agents (planner, retriever, executor, reviewer). Use when the task has distinct stages with different model needs and a verifiable output between each stage. Higher cost, much higher ceiling, much harder to debug.</span><span data-lang="pt-br">Uma cadeia de handoff de agentes especializados (planner, retriever, executor, reviewer). Use quando a tarefa tem estágios distintos com necessidades de modelo diferentes e saída verificável entre cada um. Custo maior, teto muito maior, debug muito mais difícil.</span><span data-lang="es">Una cadena de handoff de agentes especializados (planner, retriever, executor, reviewer). Úsalo cuando la tarea tiene etapas distintas con necesidades de modelo diferentes y salida verificable entre cada una. Costo mayor, techo mucho mayor, debug mucho más difícil.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Best for: complex workflows, mixed reasoning depth, audit-required steps.</span><span data-lang="pt-br">Ideal para: workflows complexos, raciocínio em níveis distintos, passos auditáveis.</span><span data-lang="es">Ideal para: workflows complejos, razonamiento en niveles distintos, pasos auditables.</span></span>
+      </div>
+      <div class="item">
+        <div class="art"><svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="120" cy="30" r="22" stroke="#F25022" stroke-width="1.5" fill="rgba(242,80,34,.08)"/><text x="120" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="500" fill="#B33816" stroke="none">A∞</text><ellipse cx="120" cy="30" rx="44" ry="14" stroke="#F25022" stroke-width="1" stroke-dasharray="3 3" opacity=".6"/><ellipse cx="120" cy="30" rx="60" ry="22" stroke="#F25022" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/><circle cx="76" cy="30" r="3" fill="#F25022"/><circle cx="164" cy="30" r="3" fill="#F25022"/><circle cx="120" cy="8" r="3" fill="#F25022" opacity=".7"/><circle cx="120" cy="52" r="3" fill="#F25022" opacity=".5"/><text x="180" y="58" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="0.1em" fill="#737373" stroke="none">DYNAMIC TOOLS</text></svg></div>
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Archetype 03</span><span data-lang="pt-br">Arquétipo 03</span><span data-lang="es">Arquetipo 03</span></span>
+        <h3><span data-lang="en" class="lang-active">Autonomous Agent</span><span data-lang="pt-br">Agente autônomo</span><span data-lang="es">Agente autónomo</span></h3>
+        <p><span data-lang="en" class="lang-active">Open-ended scope, dynamic tool selection, long-running. Use only when the task genuinely cannot be decomposed in advance and the cost of human-in-the-loop blocks adoption. The most expensive, hardest to govern, most fragile, but unlocks tasks the other archetypes cannot.</span><span data-lang="pt-br">Escopo aberto, seleção dinâmica de ferramentas, longa execução. Use apenas quando a tarefa genuinamente não pode ser decomposta antes e o custo de human-in-the-loop bloqueia adoção. Mais caro, mais difícil de governar, mais frágil, mas destrava tarefas que os outros arquétipos não conseguem.</span><span data-lang="es">Alcance abierto, selección dinámica de herramientas, larga ejecución. Úsalo solo cuando la tarea genuinamente no puede descomponerse antes y el costo de human-in-the-loop bloquea adopción. El más caro, más difícil de gobernar, más frágil, pero desbloquea tareas que los otros arquetipos no pueden.</span></p>
+        <span class="note"><span data-lang="en" class="lang-active">Best for: research, exploration, long-horizon planning. Always under human approval gates.</span><span data-lang="pt-br">Ideal para: pesquisa, exploração, planejamento de longo prazo. Sempre sob portões de aprovação humana.</span><span data-lang="es">Ideal para: investigación, exploración, planificación de largo horizonte. Siempre bajo puertas de aprobación humana.</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Pitfalls ── -->
+<section class="insight">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span data-lang="en" class="lang-active">Common pitfalls</span><span data-lang="pt-br">Armadilhas comuns</span><span data-lang="es">Trampas comunes</span></p>
+      <h2><span data-lang="en" class="lang-active">The five mistakes that kill ROI before launch.</span><span data-lang="pt-br">Os cinco erros que matam o ROI antes do launch.</span><span data-lang="es">Los cinco errores que matan el ROI antes del launch.</span></h2>
+      <p class="lead"><span data-lang="en" class="lang-active">Each one looks reasonable in the kickoff meeting. Each one becomes a postmortem.</span><span data-lang="pt-br">Cada um parece razoável na reunião de kickoff. Cada um vira postmortem.</span><span data-lang="es">Cada uno parece razonable en el kickoff. Cada uno termina en postmortem.</span></p>
+    </div>
+    <div class="insight-grid" data-reveal>
+      <div class="item">
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Pitfall 01</span><span data-lang="pt-br">Armadilha 01</span><span data-lang="es">Trampa 01</span></span>
+        <h3><span data-lang="en" class="lang-active">Counting saved time as saved money.</span><span data-lang="pt-br">Contar tempo economizado como dinheiro economizado.</span><span data-lang="es">Contar tiempo ahorrado como dinero ahorrado.</span></h3>
+        <p><span data-lang="en" class="lang-active">Productivity multiplied by salary is not a P&amp;L line. The CFO never approves it. Convert to capacity reuse, error cost reduction, or revenue capacity, with a named conversion action.</span><span data-lang="pt-br">Produtividade vezes salário não é uma linha de P&amp;L. O CFO nunca aprova. Converta em reuso de capacidade, redução de custo de erro ou capacidade de receita, com uma ação de conversão nomeada.</span><span data-lang="es">Productividad por salario no es una línea de P&amp;L. El CFO nunca aprueba. Convierte en reuso de capacidad, reducción de costo de error o capacidad de ingreso, con una acción de conversión nombrada.</span></p>
+      </div>
+      <div class="item">
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Pitfall 02</span><span data-lang="pt-br">Armadilha 02</span><span data-lang="es">Trampa 02</span></span>
+        <h3><span data-lang="en" class="lang-active">Ignoring HITL discount.</span><span data-lang="pt-br">Ignorar o desconto de HITL.</span><span data-lang="es">Ignorar el descuento de HITL.</span></h3>
+        <p><span data-lang="en" class="lang-active">Human-in-the-loop review eats some of the productivity gain. Subtract it. Track it. Aim to reduce it through better controls, never by skipping review on irreversible actions.</span><span data-lang="pt-br">Revisão humana come parte do ganho. Subtraia. Acompanhe. Mire reduzir via melhores controles, nunca pulando revisão em ações irreversíveis.</span><span data-lang="es">La revisión humana se come parte de la ganancia. Réstalo. Mídelo. Apunta a reducirlo vía mejores controles, nunca saltando revisión en acciones irreversibles.</span></p>
+      </div>
+      <div class="item">
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Pitfall 03</span><span data-lang="pt-br">Armadilha 03</span><span data-lang="es">Trampa 03</span></span>
+        <h3><span data-lang="en" class="lang-active">Skipping the eval harness.</span><span data-lang="pt-br">Pular o eval harness.</span><span data-lang="es">Saltar el eval harness.</span></h3>
+        <p><span data-lang="en" class="lang-active">No eval set, no measurable quality, no defensible savings. The eval set is what lets you prove that the agent did not just shift the work to a different team. Build it before the first deploy.</span><span data-lang="pt-br">Sem eval set, sem qualidade mensurável, sem economia defensável. O eval set é o que prova que o agente não apenas transferiu o trabalho para outro time. Construa antes do primeiro deploy.</span><span data-lang="es">Sin eval set, no hay calidad medible, no hay ahorro defendible. El eval set es lo que prueba que el agente no solo trasladó el trabajo a otro equipo. Constrúyelo antes del primer deploy.</span></p>
+      </div>
+      <div class="item">
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Pitfall 04</span><span data-lang="pt-br">Armadilha 04</span><span data-lang="es">Trampa 04</span></span>
+        <h3><span data-lang="en" class="lang-active">Picking a model before picking an archetype.</span><span data-lang="pt-br">Escolher modelo antes de escolher arquétipo.</span><span data-lang="es">Elegir modelo antes de elegir arquetipo.</span></h3>
+        <p><span data-lang="en" class="lang-active">Model selection is the last decision, not the first. Pick the archetype, design the pipeline, then pick the model that fits per stage. Reverse the order and you optimize for the wrong cost line.</span><span data-lang="pt-br">Seleção de modelo é a última decisão, não a primeira. Escolha o arquétipo, desenhe o pipeline, depois escolha o modelo certo por estágio. Inverta a ordem e você otimiza para a linha de custo errada.</span><span data-lang="es">La selección de modelo es la última decisión, no la primera. Elige el arquetipo, diseña el pipeline, luego elige el modelo correcto por etapa. Invierte el orden y optimizas para la línea de costo equivocada.</span></p>
+      </div>
+      <div class="item">
+        <span class="kicker kicker--red"><span data-lang="en" class="lang-active">Pitfall 05</span><span data-lang="pt-br">Armadilha 05</span><span data-lang="es">Trampa 05</span></span>
+        <h3><span data-lang="en" class="lang-active">Treating governance as a checkbox.</span><span data-lang="pt-br">Tratar governança como checkbox.</span><span data-lang="es">Tratar gobernanza como checkbox.</span></h3>
+        <p><span data-lang="en" class="lang-active">Audit trail, IP boundary, model selection list, reversibility, skill review board. These are not slides, they are the difference between a pilot that scales and a pilot that gets quietly turned off after the security review.</span><span data-lang="pt-br">Audit trail, fronteira de IP, lista de modelos aprovados, reversibilidade, conselho de revisão de skills. Não são slides, são a diferença entre um piloto que escala e um piloto desligado em silêncio após a revisão de segurança.</span><span data-lang="es">Audit trail, frontera de IP, lista de modelos aprobados, reversibilidad, consejo de revisión de skills. No son slides, son la diferencia entre un piloto que escala y un piloto apagado en silencio después de la revisión de seguridad.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── See it in action ── -->
+<section class="container">
+  <div class="section-head" data-reveal>
+    <p class="eyebrow"><span data-lang="en" class="lang-active">See it in action</span><span data-lang="pt-br">Veja em ação</span><span data-lang="es">Velo en acción</span></p>
+    <h2><span data-lang="en" class="lang-active">How the ROI calculator scores an agentic program.</span><span data-lang="pt-br">Como a calculadora de ROI pontua um programa agêntico.</span><span data-lang="es">Cómo la calculadora de ROI puntúa un programa agéntico.</span></h2>
+  </div>
+  <div class="sim-browser" data-reveal>
+    <div class="sim-browser__chrome">
+      <div class="sim-browser__dots">
+        <span class="sim-browser__dot sim-browser__dot--r"></span>
+        <span class="sim-browser__dot sim-browser__dot--y"></span>
+        <span class="sim-browser__dot sim-browser__dot--g"></span>
+      </div>
+      <div class="sim-browser__url">agentic-roi-calculator/calculator.html</div>
+    </div>
+    <div class="sim-browser__content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:#737373;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;">INPUTS</div>
+          <div style="font-size:12px;color:#3A3A3A;line-height:1.9;">
+            <span data-lang="en" class="lang-active">Engineers</span><span data-lang="pt-br">Engenheiros</span><span data-lang="es">Ingenieros</span>: <strong>240</strong><br>
+            <span data-lang="en" class="lang-active">Loaded cost / engineer</span><span data-lang="pt-br">Custo total / engenheiro</span><span data-lang="es">Costo total / ingeniero</span>: <strong>$185k</strong><br>
+            <span data-lang="en" class="lang-active">PR cycle time</span><span data-lang="pt-br">Tempo de ciclo de PR</span><span data-lang="es">Tiempo de ciclo de PR</span>: <strong>4.2 d</strong><br>
+            <span data-lang="en" class="lang-active">Adoption target</span><span data-lang="pt-br">Meta de adoção</span><span data-lang="es">Meta de adopción</span>: <strong>65%</strong>
+          </div>
+        </div>
+        <div style="background:#F8F8F4;padding:14px 16px;border-radius:6px;border-left:3px solid #7FBA00;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:#737373;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;">
+            <span data-lang="en" class="lang-active">YEAR 1 OUTPUT</span><span data-lang="pt-br">RESULTADO ANO 1</span><span data-lang="es">RESULTADO AÑO 1</span>
+          </div>
+          <div style="font-size:24px;font-weight:600;color:#1A1A1A;">$11.4M</div>
+          <div style="font-size:11px;color:#737373;margin-top:4px;">
+            <span data-lang="en" class="lang-active">capacity reclaimed, net of platform cost</span><span data-lang="pt-br">capacidade recuperada, líquida do custo de plataforma</span><span data-lang="es">capacidad recuperada, neta del costo de plataforma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bar-wrap" data-reveal>
+    <div class="bar-row" data-pct="0.62" style="--bar-color:var(--c-green);">
+      <span class="bar-row__label"><span data-lang="en" class="lang-active">Capacity reclaimed</span><span data-lang="pt-br">Capacidade recuperada</span><span data-lang="es">Capacidad recuperada</span></span>
+      <span class="bar-row__track"><span class="bar-row__fill"></span></span>
+      <span class="bar-row__value">62%</span>
+    </div>
+    <div class="bar-row" data-pct="0.48" style="--bar-color:var(--c-blue);">
+      <span class="bar-row__label"><span data-lang="en" class="lang-active">Cycle-time cut</span><span data-lang="pt-br">Redução de ciclo</span><span data-lang="es">Reducción de ciclo</span></span>
+      <span class="bar-row__track"><span class="bar-row__fill"></span></span>
+      <span class="bar-row__value">48%</span>
+    </div>
+    <div class="bar-row" data-pct="0.34" style="--bar-color:var(--c-yellow);">
+      <span class="bar-row__label"><span data-lang="en" class="lang-active">Defect-cost avoided</span><span data-lang="pt-br">Custo de defeito evitado</span><span data-lang="es">Coste de defecto evitado</span></span>
+      <span class="bar-row__track"><span class="bar-row__fill"></span></span>
+      <span class="bar-row__value">34%</span>
+    </div>
+    <div class="bar-row" data-pct="0.65" style="--bar-color:var(--c-blue-700);">
+      <span class="bar-row__label"><span data-lang="en" class="lang-active">Adoption rate</span><span data-lang="pt-br">Taxa de adoção</span><span data-lang="es">Tasa de adopción</span></span>
+      <span class="bar-row__track"><span class="bar-row__fill"></span></span>
+      <span class="bar-row__value">65%</span>
+    </div>
+  </div>
+  <div class="callout" data-reveal>
+    <strong><span data-lang="en" class="lang-active">ROI is a function of adoption.</span><span data-lang="pt-br">ROI é uma função da adoção.</span><span data-lang="es">El ROI es una función de la adopción.</span></strong>
+    <span data-lang="en" class="lang-active">Doubling tool seats while halving active usage halves ROI on paper. The calculator forces you to model adoption, not just license count.</span><span data-lang="pt-br">Dobrar licenças e cortar uso ativo pela metade derruba o ROI na conta. A calculadora força modelar adoção, não só contagem de licenças.</span><span data-lang="es">Duplicar licencias y reducir el uso activo a la mitad reduce el ROI en el papel. La calculadora obliga a modelar adopción, no solo el conteo de licencias.</span>
+  </div>
+</section>
+
+<!-- ── Two surfaces ── -->
+<section class="container">
+  <div class="section-head" data-reveal>
+    <h2><span data-lang="en" class="lang-active">Two surfaces, one rigorous business case.</span><span data-lang="pt-br">Duas superfícies, um business case rigoroso.</span><span data-lang="es">Dos superficies, un business case riguroso.</span></h2>
+  </div>
+  <div class="formats" data-reveal>
+    <a class="format" href="agentic-roi-calculator/calculator.html">
+      <span class="kicker">INTERACTIVE TOOL · v1.0.0</span>
+      <h3><span data-lang="en" class="lang-active">ROI Calculator (interactive)</span><span data-lang="pt-br">Calculadora de ROI (interativa)</span><span data-lang="es">Calculadora de ROI (interactiva)</span></h3>
+      <p><span data-lang="en" class="lang-active">Live calculator with sliders, scenarios, NPV, IRR, sensitivity tables, persona-specific deep dives, an architecture advisor, and the GitHub Copilot usage-based-billing simulator. Run it during the customer conversation.</span><span data-lang="pt-br">Calculadora ao vivo com sliders, cenários, VPL, TIR, tabelas de sensibilidade, deep-dives por persona, advisor de arquitetura e o simulador de usage-based billing do GitHub Copilot. Rode na conversa com o cliente.</span><span data-lang="es">Calculadora en vivo con sliders, escenarios, VAN, TIR, tablas de sensibilidad, deep-dives por persona, advisor de arquitectura y el simulador de usage-based billing de GitHub Copilot. Ejecútala en la conversación con el cliente.</span></p>
+      <span class="meta"><span data-lang="en" class="lang-active">HTML · React · EN/PT/ES · works offline</span><span data-lang="pt-br">HTML · React · EN/PT/ES · funciona offline</span><span data-lang="es">HTML · React · EN/PT/ES · funciona offline</span></span>
+    </a>
+    <a class="format" href="Agentic_AI_ROI_Toolkit_v3_0_0_2026-07-03.html">
+      <span class="kicker">CLASSIC TOOLKIT · v3.0.0</span>
+      <h3><span data-lang="en" class="lang-active">Agentic AI ROI Toolkit (classic)</span><span data-lang="pt-br">Agentic AI ROI Toolkit (clássico)</span><span data-lang="es">Agentic AI ROI Toolkit (clásico)</span></h3>
+      <p><span data-lang="en" class="lang-active">The original single-file toolkit: overview, architecture advisor, ROI calculator, Gartner research library, ROI by persona, agent advisor, UBB calculator and workspace token planner in eight tabs.</span><span data-lang="pt-br">O toolkit original em arquivo único: visão geral, advisor de arquitetura, calculadora de ROI, biblioteca de pesquisas Gartner, ROI por persona, agent advisor, calculadora UBB e planejador de tokens em oito abas.</span><span data-lang="es">El toolkit original en archivo único: visión general, advisor de arquitectura, calculadora de ROI, biblioteca de investigación Gartner, ROI por persona, agent advisor, calculadora UBB y planificador de tokens en ocho pestañas.</span></p>
+      <span class="meta"><span data-lang="en" class="lang-active">HTML · single file · 8 tabs</span><span data-lang="pt-br">HTML · arquivo único · 8 abas</span><span data-lang="es">HTML · archivo único · 8 pestañas</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ── Closing ── -->
+<section class="closing">
+  <div class="container" data-reveal>
+    <h2><span data-lang="en" class="lang-active">Plan it once, defend it forever.</span><span data-lang="pt-br">Planeje uma vez, defenda para sempre.</span><span data-lang="es">Planifícalo una vez, defiéndelo para siempre.</span></h2>
+    <a class="btn btn--primary" href="agentic-roi-calculator/calculator.html">
+      <span data-lang="en" class="lang-active">Open the ROI calculator</span><span data-lang="pt-br">Abrir a calculadora de ROI</span><span data-lang="es">Abrir la calculadora de ROI</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span>Paula Silva · Software Global Black Belt</span>
+    <span><a href="mailto:paulasilva@microsoft.com">paulasilva@microsoft.com</a></span>
+    <span>Agentic AI ROI Toolkit · Sources: Gartner G00837723, G00799085, G00841080, G00846878, G00823006, G00825224</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Trilingual switcher; shares the roi-locale key with the calculator ── */
+  var MAP = { 'en':'en', 'pt-br':'pt-BR', 'es':'es' };
+  function normalize(loc){
+    loc = String(loc || 'en').toLowerCase();
+    if (loc.indexOf('pt') === 0) return 'pt-br';
+    if (loc.indexOf('es') === 0) return 'es';
+    return 'en';
+  }
+  function setLocale(loc){
+    loc = normalize(loc);
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      el.classList.toggle('lang-active', el.getAttribute('data-lang') === loc);
+    });
+    document.documentElement.setAttribute('lang', MAP[loc]);
+    document.querySelectorAll('.lang button').forEach(function(b){
+      if (b.dataset.locale === loc) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
+    });
+    try { localStorage.setItem('roi-locale', MAP[loc]); } catch(_){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLocale(b.dataset.locale); });
+  });
+  var saved = null;
+  try { saved = localStorage.getItem('roi-locale'); } catch(_){}
+  setLocale(saved || navigator.language || 'en');
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('revealed'); });
+  }
+
+  /* ── Animated metric bars ── */
+  function fillBars(){
+    document.querySelectorAll('.bar-row').forEach(function(row){
+      var pct = parseFloat(row.getAttribute('data-pct')) || 0;
+      var fill = row.querySelector('.bar-row__fill');
+      if (fill) fill.style.width = (pct * 100) + '%';
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var barWrap = document.querySelector('.bar-wrap');
+    if (barWrap) {
+      var bio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { fillBars(); bio.disconnect(); }
+        });
+      }, { threshold: 0.2 });
+      bio.observe(barWrap);
+    }
+  } else {
+    fillBars();
+  }
+})();
+</script>
+</body>
+</html>
