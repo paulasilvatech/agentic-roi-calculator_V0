@@ -330,7 +330,7 @@ a.deck-brand:hover{opacity:0.7}
 .footer-brand img{width:22px;height:22px}
 .footer-brand .footer-brand__div{color:#3A3A36}
 .footer-title{font-size:clamp(28px,3.4vw,44px);font-weight:500;letter-spacing:-0.02em;line-height:1.1;color:#F0F0F0;margin:0;max-width:880px}
-.footer-sub{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A4;margin:0 0 18px}
+.footer-sub{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6A6A6A;margin:0 0 18px}
 .footer-cta{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 32px}
 .footer-btn{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;background:rgba(255,255,255,0.04);border:1px solid rgba(240,240,240,0.18);border-radius:8px;color:#F0F0F0;text-decoration:none;transition:border-color 0.15s ease,background 0.15s ease,transform 0.15s ease;min-width:240px}
 .footer-btn:hover{border-color:rgba(240,240,240,0.36);background:rgba(255,255,255,0.08);transform:translateY(-1px)}
@@ -338,10 +338,10 @@ a.deck-brand:hover{opacity:0.7}
 .footer-btn--primary:hover{background:rgba(0,164,239,0.22);border-color:rgba(0,164,239,0.7)}
 .footer-btn svg{color:currentColor;flex-shrink:0;width:20px;height:20px}
 .footer-btn-label{display:flex;flex-direction:column;gap:2px;text-align:left}
-.footer-btn-kicker{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A4}
+.footer-btn-kicker{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#6A6A6A}
 .footer-btn-value{font-size:14px;font-weight:500;color:#F0F0F0;letter-spacing:-0.005em}
-.footer-meta{display:flex;flex-wrap:wrap;gap:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A4;border-top:1px solid #2E2E2A;padding-top:18px;width:100%;justify-content:space-between}
-.footer-license{margin:12px 0 0;font-size:12px;color:#A8A8A4}
+.footer-meta{display:flex;flex-wrap:wrap;gap:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6A6A6A;border-top:1px solid #2E2E2A;padding-top:18px;width:100%;justify-content:space-between}
+.footer-license{margin:12px 0 0;font-size:12px;color:#6A6A6A}
 @media (max-width:720px){.footer-btn{min-width:100%}.footer-meta{flex-direction:column;gap:8px}}
 .reset-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text-secondary);background:#FAF9F8;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:5px 12px;cursor:pointer;font-family:inherit;transition:var(--transition)}
 .reset-btn:hover{background:#E5F6FD;border-color:var(--c-blue);color:var(--c-blue)}
@@ -1035,7 +1035,7 @@ function OverviewTab({
   };
   const tabs = [{
     idx: 2,
-    color: 'var(--c-green)',
+    color: 'var(--c-green-700)',
     bg: '#F1F8E3',
     border: '#9FD99F',
     titleKey: 'nav2Label',
@@ -1044,8 +1044,8 @@ function OverviewTab({
   }, {
     idx: 3,
     color: '#5A8500',
-    bg: '#F0FAF9',
-    border: '#99D6CE',
+    bg: '#F1F8E3',
+    border: '#9FD99F',
     titleKey: 'nav3Label',
     descKey: 'ovCardRoiDesc',
     bulletKeys: ['ovCardRoiB1', 'ovCardRoiB2', 'ovCardRoiB3', 'ovCardRoiB4']
@@ -1059,7 +1059,7 @@ function OverviewTab({
     bulletKeys: ['ovCardGartnerB1', 'ovCardGartnerB2', 'ovCardGartnerB3', 'ovCardGartnerB4']
   }, {
     idx: 5,
-    color: 'var(--c-blue)',
+    color: 'var(--c-blue-700)',
     bg: '#E5F6FD',
     border: '#C7E0F4',
     titleKey: 'nav5Label',
@@ -1769,7 +1769,7 @@ function PersonaROI() {
     l: "Training",
     v: p.trainCost,
     total: R.totalCost,
-    color: "#8A8886"
+    color: "#6A6A6A"
   }), /*#__PURE__*/React.createElement("div", {
     className: "divider"
   }), /*#__PURE__*/React.createElement("div", {
@@ -2100,7 +2100,7 @@ function GartnerResearch() {
     style: {
       fontSize: 10,
       fontWeight: 700,
-      color: "#8A8886",
+      color: "#6A6A6A",
       textTransform: "uppercase",
       letterSpacing: ".4px",
       marginBottom: 4
@@ -2114,7 +2114,7 @@ function GartnerResearch() {
   }, "$528"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: "#8A8886"
+      color: "#6A6A6A"
     }
   }, "per user / year")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2127,7 +2127,7 @@ function GartnerResearch() {
     style: {
       fontSize: 10,
       fontWeight: 700,
-      color: "#8A8886",
+      color: "#6A6A6A",
       textTransform: "uppercase",
       letterSpacing: ".4px",
       marginBottom: 4
@@ -2141,7 +2141,7 @@ function GartnerResearch() {
   }, "$1,091"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: "#8A8886"
+      color: "#6A6A6A"
     }
   }, "per user / year"))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2160,7 +2160,7 @@ function GartnerResearch() {
   }, "Financial Return = -52%"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: "#8A8886",
+      color: "#6A6A6A",
       marginTop: 2
     }
   }, "When using \"Defend\" pattern only (3% daily time savings)")), /*#__PURE__*/React.createElement("div", {
@@ -2334,7 +2334,7 @@ function GartnerResearch() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: "#8A8886",
+      color: "#6A6A6A",
       textTransform: "uppercase",
       letterSpacing: ".4px",
       marginBottom: 10
@@ -2351,7 +2351,7 @@ function GartnerResearch() {
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      color: "#8A8886"
+      color: "#6A6A6A"
     }
   }, "-"), m)))), /*#__PURE__*/React.createElement("div", {
     className: "note info",
@@ -2676,7 +2676,7 @@ function getArchPattern(cfg) {
   if (!cfg) return {
     type: 'Single Agent',
     score: 3,
-    color: 'var(--c-green)',
+    color: 'var(--c-green-700)',
     reason: 'Simple task automation with minimal orchestration needs'
   };
   const n = cfg.ag.length;
@@ -2691,13 +2691,13 @@ function getArchPattern(cfg) {
   if (n >= 3 || hasHandoff) return {
     type: 'Multi-Agent Pipeline',
     score: Math.min(14, n * 2 + nMcps - 2),
-    color: 'var(--c-blue)',
+    color: 'var(--c-blue-700)',
     reason: 'Sequential processing chain where each agent handles a specialized task and hands off to the next'
   };
   return {
     type: 'Single Agent',
     score: Math.min(14, n + nMcps),
-    color: 'var(--c-green)',
+    color: 'var(--c-green-700)',
     reason: 'Focused automation with direct tool access, minimal coordination overhead'
   };
 }
@@ -2962,7 +2962,7 @@ function AgentAdvisor() {
   }, a.n), a.h && a.h !== 0 && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       background: '#F3F2F1',
       borderRadius: 100,
       padding: '2px 8px'
@@ -2984,7 +2984,7 @@ function AgentAdvisor() {
     key: ti,
     style: {
       fontSize: 10,
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       background: '#E5F6FD',
       border: '1px solid #C7E0F4',
       borderRadius: 4,
@@ -3120,7 +3120,7 @@ function AgentAdvisor() {
   }, l.t), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       fontFamily: 'monospace'
     }
   }, l.d))))))), subTab === 1 && /*#__PURE__*/React.createElement("div", {
@@ -3148,7 +3148,7 @@ function AgentAdvisor() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       background: '#F1F8E3',
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       padding: '3px 10px',
       borderRadius: 100,
       fontSize: 11,
@@ -3166,7 +3166,7 @@ function AgentAdvisor() {
   }, m.d), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       fontStyle: 'italic'
     }
   }, "→ ", m.f))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -3202,7 +3202,7 @@ function AgentAdvisor() {
   }, s.n)), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       fontFamily: 'monospace',
       marginBottom: 4
     }
@@ -3366,7 +3366,7 @@ function AgentAdvisor() {
     }
   }, b.b), /*#__PURE__*/React.createElement("td", {
     style: {
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       fontSize: 11
     }
   }, b.a), /*#__PURE__*/React.createElement("td", {
@@ -3377,7 +3377,7 @@ function AgentAdvisor() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       background: '#F1F8E3',
       padding: '2px 8px',
       borderRadius: 100
@@ -3385,7 +3385,7 @@ function AgentAdvisor() {
   }, "↑ ", b.p, "%")), /*#__PURE__*/React.createElement("td", {
     style: {
       fontSize: 10,
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, b.s))))))), subTab === 3 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "card"
@@ -3403,12 +3403,12 @@ function AgentAdvisor() {
   }, [{
     phase: 'Phase 1: Foundation',
     time: 'Week 1-2',
-    color: 'var(--c-green)',
+    color: 'var(--c-green-700)',
     steps: ['Configure API credentials and authentication', 'Set up .github/copilot-instructions.md with team context', 'Install and configure MCP servers: ' + cfg.mc.slice(0, 2).map(m => m.n).join(', '), 'Validate connectivity to all external systems']
   }, {
     phase: 'Phase 2: Agent Setup',
     time: 'Week 3-4',
-    color: 'var(--c-blue)',
+    color: 'var(--c-blue-700)',
     steps: ['Create agent files: ' + cfg.ag.slice(0, 2).map(a => a.n).join(', '), 'Design prompt templates for each skill', 'Configure handoff chains between agents', 'Test with representative real-world scenarios']
   }, {
     phase: 'Phase 3: Production',
@@ -3434,7 +3434,7 @@ function AgentAdvisor() {
   }, ph.phase), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 10
     }
   }, ph.time), ph.steps.map((s, i) => /*#__PURE__*/React.createElement("div", {
@@ -3573,7 +3573,7 @@ function AgentAdvisor() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 4
     }
   }, x.l), /*#__PURE__*/React.createElement("div", {
@@ -3916,7 +3916,7 @@ function ArchitectureAdvisor() {
     });
     return {
       score: s,
-      max: 14,
+      max: 15,
       isMulti: s >= 6,
       criteria
     };
@@ -4278,7 +4278,7 @@ function ArchitectureAdvisor() {
   }, p.name), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 2
     }
   }, ['Low', 'Med', 'High', 'V.High'][p.complexity], " complexity · ", ['Low', 'Med', 'High', 'Critical'][p.stakes], " stakes")))))), /*#__PURE__*/React.createElement("div", {
@@ -4368,7 +4368,7 @@ function ArchitectureAdvisor() {
   }, "month")), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 12,
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       fontWeight: 600,
       background: '#E5F6FD',
       padding: '6px 12px',
@@ -4410,7 +4410,7 @@ function ArchitectureAdvisor() {
   }, "How accurate does the response need to be? ", /*#__PURE__*/React.createElement("span", {
     style: {
       fontWeight: 400,
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, "Higher accuracy favors breaking work into focused sub-tasks")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -4495,7 +4495,7 @@ function ArchitectureAdvisor() {
     }, tc.prov), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 10.5,
-        color: '#8A8886',
+        color: '#6A6A6A',
         marginTop: 2
       }
     }, tc.sub)));
@@ -4533,7 +4533,7 @@ function ArchitectureAdvisor() {
     style: {
       fontSize: 13,
       fontWeight: 700,
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       minWidth: 90
     }
   }, wfSteps, " ", wfSteps === 1 ? 'step' : 'distinct steps')), /*#__PURE__*/React.createElement("div", {
@@ -4666,13 +4666,13 @@ function ArchitectureAdvisor() {
     style: {
       fontSize: 12,
       fontWeight: 700,
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       minWidth: 60
     }
   }, docSize < 1000 ? docSize + ' KB' : '1 MB+')), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 4
     }
   }, "Larger documents increase token usage and cost")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
@@ -4694,7 +4694,7 @@ function ArchitectureAdvisor() {
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 4
     }
   }, "More tools add routing overhead and system prompt tokens")))), /*#__PURE__*/React.createElement("div", {
@@ -4947,7 +4947,7 @@ function ArchitectureAdvisor() {
     style: secH
   }, "Pipeline Steps, Per-Step Model Selection"), /*#__PURE__*/React.createElement("div", {
     style: secSub
-  }, steps.length === 1 ? 'Single agent handles the full workflow' : `${steps.length}-agent pipeline with specialized roles`), /*#__PURE__*/React.createElement("div", {
+  }, !archScore.isMulti ? 'Single agent handles the full workflow' : `${steps.length}-agent pipeline with specialized roles`), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexDirection: 'column',
@@ -4984,7 +4984,7 @@ function ArchitectureAdvisor() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, "STEP ", idx + 1), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -5025,13 +5025,13 @@ function ArchitectureAdvisor() {
   }, st.primary.name), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       fontWeight: 600
     }
   }, fmt$(st.costPerExec), "/exec"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 10,
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, "| $", st.primary.costInput, "/$", st.primary.costOutput, " per 1M tok in/out"))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -5044,14 +5044,14 @@ function ArchitectureAdvisor() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 4
     }
   }, "TEMPERATURE"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 22,
       fontWeight: 800,
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, st.temp.toFixed(1)), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -5083,7 +5083,7 @@ function ArchitectureAdvisor() {
     }
   }, st.alt.name), /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, "· $", st.alt.costInput, "/$", st.alt.costOutput, " per 1M tokens")))))), /*#__PURE__*/React.createElement("div", {
     style: cardStyle
@@ -5120,7 +5120,7 @@ function ArchitectureAdvisor() {
     style: {
       flex: '0 0 24px',
       textAlign: 'center',
-      color: '#8A8886',
+      color: '#6A6A6A',
       fontSize: 16
     }
   }, "→"), /*#__PURE__*/React.createElement("div", {
@@ -5148,14 +5148,14 @@ function ArchitectureAdvisor() {
   }, st.primary?.name), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 2
     }
   }, fmt$(st.costPerExec), "/exec")))), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: '0 0 24px',
       textAlign: 'center',
-      color: '#8A8886',
+      color: '#6A6A6A',
       fontSize: 16
     }
   }, "→"), /*#__PURE__*/React.createElement("div", {
@@ -5166,7 +5166,7 @@ function ArchitectureAdvisor() {
       padding: '10px 14px',
       fontSize: 12,
       fontWeight: 700,
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       textAlign: 'center',
       minWidth: 70
     }
@@ -5206,7 +5206,7 @@ function ArchitectureAdvisor() {
     style: {
       fontSize: 11,
       fontWeight: 600,
-      color: i === 1 ? 'rgba(255,255,255,.8)' : '#8A8886',
+      color: i === 1 ? 'rgba(255,255,255,.8)' : '#6A6A6A',
       marginBottom: 6
     }
   }, c.l), /*#__PURE__*/React.createElement("div", {
@@ -5218,7 +5218,7 @@ function ArchitectureAdvisor() {
   }, c.v), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: i === 1 ? 'rgba(255,255,255,.7)' : '#8A8886',
+      color: i === 1 ? 'rgba(255,255,255,.7)' : '#6A6A6A',
       marginTop: 4
     }
   }, c.sub)))), /*#__PURE__*/React.createElement("div", {
@@ -5283,11 +5283,11 @@ function ArchitectureAdvisor() {
       className: "tbl"
     }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Criterion"), /*#__PURE__*/React.createElement("th", {
       style: {
-        color: 'var(--c-blue)'
+        color: 'var(--c-blue-700)'
       }
     }, "⬡ ", claudeM?.name || 'Claude Sonnet 4.5'), /*#__PURE__*/React.createElement("th", {
       style: {
-        color: 'var(--c-green)'
+        color: 'var(--c-green-700)'
       }
     }, "◎ ", openaiM?.name || 'GPT-5.4'))), /*#__PURE__*/React.createElement("tbody", null, [['Cost (in/out per 1M)', `$${claudeM?.costInput}/$${claudeM?.costOutput}`, `$${openaiM?.costInput}/$${openaiM?.costOutput}`], ['Best for', 'Nuanced reasoning, document analysis, instruction following, safe content', 'Structured output, code generation, broad tool ecosystem, JSON mode'], ['Context window', '200K tokens', '128K tokens'], ['Speed', 'Fast (Sonnet) / Slower (Opus)', 'Fast (4.1/4o) / Slower (o-series)'], ['Structured output', 'Good', 'Excellent (native JSON mode)'], ['Reasoning models', 'Sonnet 4.5 hybrid thinking', 'o4-mini / o3 series']].map(([crit, cl, oi], i) => /*#__PURE__*/React.createElement("tr", {
       key: i
@@ -5320,11 +5320,11 @@ function ArchitectureAdvisor() {
     }
   }, [{
     phase: '1. Setup',
-    color: 'var(--c-blue)',
+    color: 'var(--c-blue-700)',
     items: ['Configure API credentials (Anthropic + OpenAI)', 'Set up environment variables and API keys', 'Install SDK: `npm install @anthropic-ai/sdk openai`', 'Design system and repository-level instructions']
   }, {
     phase: '2. Development',
-    color: 'var(--c-green)',
+    color: 'var(--c-green-700)',
     items: ['Write prompt templates for each pipeline step', 'Build orchestration logic and agent handoffs', 'Implement error handling and retry logic', ...(archScore.isMulti ? ['Configure inter-agent communication format'] : [])]
   }, {
     phase: '3. Testing',
@@ -5377,7 +5377,7 @@ function ArchitectureAdvisor() {
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       lineHeight: 1.6,
       padding: '14px 0',
       borderTop: '1px solid #F3F2F1'
@@ -5434,7 +5434,7 @@ function SecPanel({
     style: {
       fontSize: 9,
       fontWeight: 700,
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       background: '#E5F6FD',
       padding: '1px 7px',
       borderRadius: 100,
@@ -5443,7 +5443,7 @@ function SecPanel({
   }, badge)), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 12,
-      color: '#8A8886',
+      color: '#6A6A6A',
       transition: 'transform .2s',
       transform: open ? 'rotate(90deg)' : 'none'
     }
@@ -5516,7 +5516,7 @@ function LineChart5yr({
   const range = maxV - minV || 1;
   const pad = {
     l: 52,
-    r: 8,
+    r: 20,
     t: 10,
     b: 22
   };
@@ -5535,6 +5535,8 @@ function LineChart5yr({
   return /*#__PURE__*/React.createElement("svg", {
     width: svgW,
     height: svgH,
+    viewBox: `0 0 ${svgW} ${svgH}`,
+    preserveAspectRatio: "xMidYMid meet",
     style: {
       width: '100%',
       height: 'auto',
@@ -5570,7 +5572,7 @@ function LineChart5yr({
       x: pad.l - 4,
       y: y + 3.5,
       fontSize: "8",
-      fill: "#8A8886",
+      fill: "#6A6A6A",
       textAnchor: "end"
     }, fmtY(v)));
   }), minV < 0 && /*#__PURE__*/React.createElement("line", {
@@ -5605,7 +5607,7 @@ function LineChart5yr({
     x: p.x,
     y: pad.t + H + 15,
     fontSize: "9",
-    fill: "#8A8886",
+    fill: "#6A6A6A",
     textAnchor: "middle"
   }, data[i].lbl))));
 }
@@ -6043,7 +6045,7 @@ function ROICalculatorTab() {
     }, {
       lbl: 'Compliance Savings',
       val: compS,
-      clr: '#00B294'
+      clr: 'var(--c-blue)'
     }, {
       lbl: 'Productivity Gains',
       val: prodS,
@@ -6072,7 +6074,7 @@ function ROICalculatorTab() {
     }, {
       lbl: 'Impl (amortized)',
       val: implAm,
-      clr: '#8A8886'
+      clr: '#6A6A6A'
     }].filter(b => b.val > 0);
     const scen = {
       best: {
@@ -6298,7 +6300,7 @@ function ROICalculatorTab() {
   const deleteSavedScenario = useCallback(name => {
     persistScenarioList(savedRoiScenarios.filter(item => item.name !== name));
   }, [savedRoiScenarios, persistScenarioList]);
-  const scenarioRows = () => [currentScenarioPayload, ...savedRoiScenarios];
+  const scenarioRows = () => [currentScenarioPayload, ...savedRoiScenarios.filter(r => r.name !== currentScenarioPayload.name)];
   const exportCurrentScenario = useCallback(() => {
     downloadFile('agentic-roi-current-scenario.json', 'application/json', JSON.stringify({
       ...currentScenarioPayload,
@@ -6332,7 +6334,7 @@ function ROICalculatorTab() {
     if (!file) return;
     try {
       const data = JSON.parse(await file.text());
-      const imported = Array.isArray(data.scenarios) ? data.scenarios : data.inputs ? [data] : [];
+      const imported = Array.isArray(data.scenarios) && data.scenarios.length ? data.scenarios : data.current ? [data.current] : data.inputs ? [data] : [];
       if (imported.length) {
         persistScenarioList([...imported, ...savedRoiScenarios].slice(0, 20));
         loadSavedScenario(imported[0]);
@@ -6363,7 +6365,7 @@ function ROICalculatorTab() {
   };
   const pct = n => (n >= 0 ? '+' : '') + Math.round(n) + '%';
   const mom = n => n == null ? 'n/a' : Math.round(n * 10) / 10 + ' mo';
-  const rclr = v => v >= 100 ? 'var(--c-green)' : v >= 0 ? 'var(--c-blue)' : 'var(--c-red)';
+  const rclr = v => v >= 100 ? 'var(--c-green-700)' : v >= 0 ? 'var(--c-blue-700)' : 'var(--c-red-700)';
   const kpiC = (cl, bg) => ({
     background: 'var(--bg-card)',
     borderRadius: 8,
@@ -6701,7 +6703,7 @@ function ROICalculatorTab() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 10
     }
   }, "Annual cost: ", /*#__PURE__*/React.createElement("strong", {
@@ -6737,15 +6739,22 @@ function ROICalculatorTab() {
     key: o
   }, o))), team.length > 1 && /*#__PURE__*/React.createElement("button", {
     onClick: () => setTeam(t => t.filter((_, j) => j !== i)),
+    "aria-label": "Remove resource level",
+    title: "Remove resource level",
     style: {
-      fontSize: 11,
-      color: 'var(--c-red)',
+      fontSize: 18,
+      lineHeight: 1,
+      color: 'var(--c-red-700)',
       background: 'none',
       border: 'none',
       cursor: 'pointer',
-      padding: '0 6px'
+      padding: '4px 8px',
+      minWidth: 32,
+      minHeight: 32,
+      borderRadius: 6,
+      flexShrink: 0
     }
-  })), /*#__PURE__*/React.createElement("div", {
+  }, "×")), /*#__PURE__*/React.createElement("div", {
     style: g3
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: lbl
@@ -6788,7 +6797,7 @@ function ROICalculatorTab() {
       borderRadius: 6,
       background: '#E5F6FD',
       cursor: 'pointer',
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       width: '100%',
       fontWeight: 600
     }
@@ -6871,7 +6880,7 @@ function ROICalculatorTab() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, pEff, "%")), /*#__PURE__*/React.createElement("input", {
     type: "range",
@@ -6930,12 +6939,12 @@ function ROICalculatorTab() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 10
     }
   }, "Blended time savings: ", /*#__PURE__*/React.createElement("strong", {
     style: {
-      color: 'var(--c-green)'
+      color: 'var(--c-green-700)'
     }
   }, Math.round(R.bSave * 100), "%"), " · Error reduction: ", /*#__PURE__*/React.createElement("strong", {
     style: {
@@ -6979,7 +6988,7 @@ function ROICalculatorTab() {
   }, t.lbl), " ", /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 10,
-      color: '#8A8886'
+      color: '#6A6A6A'
     }
   }, "(", t.desc, ")")), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -7046,7 +7055,7 @@ function ROICalculatorTab() {
     }, m.nm), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 9,
-        color: '#8A8886',
+        color: '#6A6A6A',
         marginTop: 2
       }
     }, m.ds), /*#__PURE__*/React.createElement("div", {
@@ -7105,7 +7114,7 @@ function ROICalculatorTab() {
   }, a.lbl), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 2
     }
   }, a.ds))))), /*#__PURE__*/React.createElement("div", {
@@ -7146,7 +7155,7 @@ function ROICalculatorTab() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, cache, "%")), /*#__PURE__*/React.createElement("input", {
     type: "range",
@@ -7162,7 +7171,7 @@ function ROICalculatorTab() {
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 8,
       background: '#F9F8F7',
       padding: '7px 10px',
@@ -7170,7 +7179,7 @@ function ROICalculatorTab() {
     }
   }, "API calls/yr: ", /*#__PURE__*/React.createElement("strong", null, Math.round(R.apiCls).toLocaleString()), " · Annual AI cost: ", /*#__PURE__*/React.createElement("strong", {
     style: {
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, c$(R.aiCost)))), /*#__PURE__*/React.createElement(SecPanel, {
     title: "Human-in-the-Loop",
@@ -7190,7 +7199,7 @@ function ROICalculatorTab() {
     style: {
       fontSize: 11,
       fontWeight: 700,
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, revPct, "%")), /*#__PURE__*/React.createElement("input", {
     type: "range",
@@ -7429,7 +7438,7 @@ function ROICalculatorTab() {
   }))), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 10,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 6,
       background: '#F9F8F7',
       padding: '7px 10px',
@@ -7509,9 +7518,9 @@ function ROICalculatorTab() {
     style: {
       fontSize: 10,
       fontWeight: 700,
-      color: 'var(--c-green)'
+      color: R.ctAfter <= R.ctBefore ? 'var(--c-green-700)' : 'var(--c-red-700)'
     }
-  }, "▼ ", Math.round((1 - R.ctAfter / R.ctBefore) * 100), "% reduction")), /*#__PURE__*/React.createElement("div", {
+  }, R.ctAfter <= R.ctBefore ? "▼ " + Math.round((1 - R.ctAfter / R.ctBefore) * 100) + "% reduction" : "▲ " + Math.round((R.ctAfter / R.ctBefore - 1) * 100) + "% increase")), /*#__PURE__*/React.createElement("div", {
     style: g2
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -7523,7 +7532,7 @@ function ROICalculatorTab() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 2
     }
   }, "BEFORE AI"), /*#__PURE__*/React.createElement("div", {
@@ -7542,14 +7551,14 @@ function ROICalculatorTab() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 2
     }
   }, "AFTER AI"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 20,
       fontWeight: 700,
-      color: 'var(--c-green)'
+      color: 'var(--c-green-700)'
     }
   }, cm(R.ctAfter))))), /*#__PURE__*/React.createElement("div", {
     className: "card",
@@ -7566,7 +7575,7 @@ function ROICalculatorTab() {
   }, "Scenario Analysis"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 8
     }
   }, "Best: +15% savings, -10% cost · Worst: -15% savings, +20% cost"), /*#__PURE__*/React.createElement("table", {
@@ -7618,13 +7627,13 @@ function ROICalculatorTab() {
   }, row.m), /*#__PURE__*/React.createElement("td", {
     style: {
       padding: '5px 7px',
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       fontWeight: 600
     }
   }, row.fmt(row.vs[0])), /*#__PURE__*/React.createElement("td", {
     style: {
       padding: '5px 7px',
-      color: 'var(--c-blue)',
+      color: 'var(--c-blue-700)',
       fontWeight: 600
     }
   }, row.fmt(row.vs[1])), /*#__PURE__*/React.createElement("td", {
@@ -7648,7 +7657,7 @@ function ROICalculatorTab() {
   }, "Cumulative Cash Flow (NPV)"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 8
     }
   }, disc, "% discount rate · ", grow, "% annual salary growth"), /*#__PURE__*/React.createElement(LineChart5yr, {
@@ -7672,12 +7681,12 @@ function ROICalculatorTab() {
   }, "Annual Savings Breakdown"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 10
     }
   }, "Total: ", /*#__PURE__*/React.createElement("strong", {
     style: {
-      color: 'var(--c-green)'
+      color: 'var(--c-green-700)'
     }
   }, c$(R.totSave))), /*#__PURE__*/React.createElement(HBarChart, {
     bars: R.breakdown,
@@ -7694,7 +7703,7 @@ function ROICalculatorTab() {
   }, "Annual Operating Cost"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginBottom: 10
     }
   }, "Total: ", /*#__PURE__*/React.createElement("strong", {
@@ -7941,7 +7950,7 @@ function ROICalculatorTab() {
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 9.5,
-      color: '#8A8886',
+      color: '#6A6A6A',
       marginTop: 10
     }
   }, "Impact = estimated annual savings delta from a ±15% change in each variable.")), /*#__PURE__*/React.createElement("div", {
@@ -7988,7 +7997,7 @@ function ROICalculatorTab() {
     style: {
       padding: '8px 10px',
       textAlign: 'right',
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       fontWeight: 600
     }
   }, c$(y.save)), /*#__PURE__*/React.createElement("td", {
@@ -8026,7 +8035,7 @@ function ROICalculatorTab() {
     style: {
       padding: '8px 10px',
       textAlign: 'right',
-      color: 'var(--c-green)',
+      color: 'var(--c-green-700)',
       fontWeight: 700
     }
   }, c$(R.yrs.reduce((s, y) => s + y.save, 0))), /*#__PURE__*/React.createElement("td", {
@@ -8041,14 +8050,14 @@ function ROICalculatorTab() {
       padding: '8px 10px',
       textAlign: 'right',
       fontWeight: 700,
-      color: 'var(--c-green)'
+      color: 'var(--c-green-700)'
     }
   }, c$(R.yrs.reduce((s, y) => s + y.net, 0))), /*#__PURE__*/React.createElement("td", {
     style: {
       padding: '8px 10px',
       textAlign: 'right',
       fontWeight: 700,
-      color: 'var(--c-blue)'
+      color: 'var(--c-blue-700)'
     }
   }, c$(R.yrs[R.yrs.length - 1].cum)))))));
 }
@@ -8773,6 +8782,7 @@ function App() {
   }, tr('navLabel')), tabs.map((t, i) => /*#__PURE__*/React.createElement("button", {
     key: i,
     className: `sidebar-link ${tab === i ? "on" : ""}`,
+    "aria-current": tab === i ? "page" : undefined,
     onClick: () => setTab(i)
   }, /*#__PURE__*/React.createElement("span", {
     className: "sidebar-link__num"
@@ -8990,7 +9000,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
     var card=null; /* container fornecido pelo React (UBBTab) */
     function money(n){ return 'US$ '+(n>=1000?Math.round(n).toLocaleString('en-US'):n.toFixed(2)); }
     function inp(id,label,html){ return '<label>'+label+'<br>'+html+'</label>'; }
-    function rows(arr,hasCW){ return arr.map(function(m){ return '<tr><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB">'+m.model+(m.note?' <span style="color:#8A8886;font-size:11px">· '+m.note+'</span>':'')+(m.longContext?' <span style="color:#B33816;font-size:11px">· &gt;'+(m.longContext.threshold/1000)+'K: $'+m.longContext.input.toFixed(2)+'/$'+m.longContext.output.toFixed(2)+'</span>':'')+'</td><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB;color:#605E5C">'+m.status+'</td><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB;color:#605E5C">'+m.category+'</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.input.toFixed(2)+'</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.cachedInput.toFixed(3)+'</td>'+(hasCW?'<td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">'+(m.cacheWrite?'$'+m.cacheWrite.toFixed(2):'n/a')+'</td>':'')+'<td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.output.toFixed(2)+'</td></tr>'; }).join(''); }
+    function rows(arr,hasCW){ return arr.map(function(m){ return '<tr><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB">'+m.model+(m.note?' <span style="color:#6A6A6A;font-size:11px">· '+m.note+'</span>':'')+(m.longContext?' <span style="color:#B33816;font-size:11px">· &gt;'+(m.longContext.threshold/1000)+'K: $'+m.longContext.input.toFixed(2)+'/$'+m.longContext.output.toFixed(2)+'</span>':'')+'</td><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB;color:#605E5C">'+m.status+'</td><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB;color:#605E5C">'+m.category+'</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.input.toFixed(2)+'</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.cachedInput.toFixed(3)+'</td>'+(hasCW?'<td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">'+(m.cacheWrite?'$'+m.cacheWrite.toFixed(2):'n/a')+'</td>':'')+'<td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">$'+m.output.toFixed(2)+'</td></tr>'; }).join(''); }
     function table(title,arr,hasCW){ return '<h3 style="font:700 15px Inter,sans-serif;margin:22px 0 6px">'+title+'</h3><table style="width:100%;border-collapse:collapse;font:12.5px Inter,sans-serif"><thead><tr style="text-align:left"><th style="padding:6px 10px;border-bottom:2px solid #111">'+L('thModel')+'</th><th style="padding:6px 10px;border-bottom:2px solid #111">'+L('thStatus')+'</th><th style="padding:6px 10px;border-bottom:2px solid #111">'+L('thCat')+'</th><th style="text-align:right;padding:6px 10px;border-bottom:2px solid #111">'+L('thIn')+'</th><th style="text-align:right;padding:6px 10px;border-bottom:2px solid #111">'+L('thCin')+'</th>'+(hasCW?'<th style="text-align:right;padding:6px 10px;border-bottom:2px solid #111">'+L('thCw')+'</th>':'')+'<th style="text-align:right;padding:6px 10px;border-bottom:2px solid #111">'+L('thOut')+'</th></tr></thead><tbody>'+rows(arr,hasCW)+'</tbody></table>'; }
     var S='width:100%;padding:6px;border:1px solid #DDD9D2;border-radius:6px';
     function build(){ if(!card) return;
@@ -9005,10 +9015,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
       var chkBase='display:inline-flex;align-items:center;gap:6px;border:1px solid #DDD9D2;border-radius:14px;padding:5px 11px;font:12px Inter;cursor:pointer;background:#fff;user-select:none';
       var chkOn=';border-color:#00A4EF;background:#E5F6FD;color:#0076AC;font-weight:600';
       function modeLabel(k){ var ml=TR.modeLabels[k]; return ml?(ml[LOC==='pt-BR'?'pt':LOC]||ml.en):((MODES[k]&&MODES[k].label)||k); }
-      function modeChecks(){ return Object.keys(MODES).map(function(k){ var on=state.modes.indexOf(k)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mode="'+k+'"'+(on?' checked':'')+'>'+modeLabel(k)+(k===state.mode?' <span style="color:#8A8886;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
-      function modelChecks(){ return ALL.map(function(m){ var on=state.models.indexOf(m.model)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mdl="'+m.model.replace(/"/g,'&quot;')+'"'+(on?' checked':'')+'>'+m.model+' <span style="color:#8A8886;font-weight:400">$'+m.input.toFixed(2)+'/$'+m.output.toFixed(2)+'</span>'+(m.model===state.model?' <span style="color:#8A8886;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
+      function modeChecks(){ return Object.keys(MODES).map(function(k){ var on=state.modes.indexOf(k)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mode="'+k+'"'+(on?' checked':'')+'>'+modeLabel(k)+(k===state.mode?' <span style="color:#6A6A6A;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
+      function modelChecks(){ return ALL.map(function(m){ var on=state.models.indexOf(m.model)>=0; return '<label style="'+chkBase+(on?chkOn:'')+'"><input type="checkbox" data-mdl="'+m.model.replace(/"/g,'&quot;')+'"'+(on?' checked':'')+'>'+m.model+' <span style="color:#6A6A6A;font-weight:400">$'+m.input.toFixed(2)+'/$'+m.output.toFixed(2)+'</span>'+(m.model===state.model?' <span style="color:#6A6A6A;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</label>'; }).join(''); }
       card.innerHTML='<p style="font:13px/1.6 Inter,sans-serif;color:#605E5C;margin:10px 0 4px">'+L('intro')+'</p>'
-        +'<p style="font:12px/1.6 Inter,sans-serif;color:#8A8886;margin:0 0 14px">'+L('asof')+' '+GH.asOf+' · '+L('per1m')+' · 1 AI Credit = US$ 0.01 · docs.github.com</p>'
+        +'<p style="font:12px/1.6 Inter,sans-serif;color:#6A6A6A;margin:0 0 14px">'+L('asof')+' '+GH.asOf+' · '+L('per1m')+' · 1 AI Credit = US$ 0.01 · docs.github.com</p>'
         +'<div id="ghsim" style="border:1px solid #C7E0F4;background:#F3F9FD;border-radius:10px;padding:18px 20px;margin:6px 0 18px">'
         +'<b style="font:700 15px Inter,sans-serif">'+L('sim')+'</b>'
         +'<div style="margin-top:14px;font:12px Inter,sans-serif"><div style="font-weight:600;margin-bottom:6px">'+L('modesPick')+'</div><div id="gh-modes" style="display:flex;flex-wrap:wrap;gap:8px">'+modeChecks()+'</div></div>'
@@ -9064,7 +9074,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
         build();
       }); });
       ['gh-cb','gh-ce'].forEach(function(id){ var el=$(id); if(!el) return; el.addEventListener('input',function(){
-        state[id==='gh-cb'?'cb':'ce']=Math.max(0,+this.value||0);
+        var v=Math.max(0,+this.value||0);
+        state[id==='gh-cb'?'cb':'ce']=v;
+        if(this.value!==''&&(+this.value||0)<0){ this.value=v; }
         recalc(); }); });
       ['gh-promo','gh-iter','gh-sess','gh-in','gh-ctx','gh-out','gh-cache','gh-days'].forEach(function(id){ var el=$(id); if(!el) return;
         el.addEventListener('input',function(){ sync(); recalc(); });
@@ -9076,6 +9088,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
         var B=GH.plans.business, E=GH.plans.enterprise;
         var cb=Math.max(0,+s.cb||0), ce=Math.max(0,+s.ce||0);
         if(!cb&&!ce&&s.seats){ if(s.plan==='business') cb=+s.seats; else ce=+s.seats; } /* compat cenários antigos */
+        var realSeats=cb+ce;
         var seats=Math.max(1,cb+ce);
         var pool=cb*(promo?B.promoCredits:B.includedCredits)+ce*(promo?E.promoCredits:E.includedCredits);
         var licensesUSD=cb*B.usdPerSeat+ce*E.usdPerSeat;
@@ -9093,7 +9106,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
         var rOut=useLong?lc.output:m.output;
         var ctxCost=cache ? s.ctxT*(m.cacheWrite?m.cacheWrite:rIn)/1e6 + s.ctxT*rCin/1e6*(it-1) : s.ctxT*rIn/1e6*it;
         var perSession=s.inT*rIn/1e6 + ctxCost + s.outT*rOut/1e6;
-        var monthly=perSession*s.sess*s.days*seats;
+        var monthly=perSession*s.sess*s.days*realSeats;
         return { plan:plan.label, credsPerSeat:credsPerSeat, pool:pool, poolUSD:poolUSD, model:m.model,
           perSession:perSession, perDev:perSession*s.sess*s.days, monthly:monthly, credits:monthly/GH.aiCreditUSD,
           overage:Math.max(0,monthly-poolUSD), headroom:Math.max(0,poolUSD-monthly), licenses:licensesUSD, seats:seats,
@@ -9112,10 +9125,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
         el.innerHTML = a.length? a.map(function(sc,i){
           var c=compute(sc.state);
           return '<span style="display:inline-flex;gap:8px;align-items:center;border:1px solid #DDD9D2;border-radius:14px;padding:5px 12px;font:12px Inter;background:#fff">'
-            +'<b>'+sc.name+'</b><span style="color:#8A8886">'+sc.state.model+' · '+(((+sc.state.cb||0)+(+sc.state.ce||0))||sc.state.seats||0)+' seats · US$ '+Math.round(c.monthly).toLocaleString('en-US')+'/mo</span>'
+            +'<b>'+sc.name+'</b><span style="color:#6A6A6A">'+sc.state.model+' · '+(((+sc.state.cb||0)+(+sc.state.ce||0))||sc.state.seats||0)+' seats · US$ '+Math.round(c.monthly).toLocaleString('en-US')+'/mo</span>'
             +'<a href="#" data-ld="'+i+'" style="color:#0076AC;text-decoration:none;font-weight:600">'+L('load')+'</a>'
             +'<a href="#" data-del="'+i+'" style="color:#B33816;text-decoration:none;font-weight:600">'+L('del')+'</a></span>';
-        }).join('') : '<span style="font:12px Inter;color:#8A8886">'+L('noScn')+'</span>';
+        }).join('') : '<span style="font:12px Inter;color:#6A6A6A">'+L('noScn')+'</span>';
         el.querySelectorAll('[data-ld]').forEach(function(x){ x.onclick=function(e){ e.preventDefault(); var sc=store()[+this.dataset.ld]; if(sc){ Object.assign(state,sc.state); build(); } }; });
         el.querySelectorAll('[data-del]').forEach(function(x){ x.onclick=function(e){ e.preventDefault(); var a=store(); a.splice(+this.dataset.del,1); setStore(a); renderScn(); }; });
       }
@@ -9140,7 +9153,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
       renderScn();
       function recalc(){
         var c=compute(state); var promo=state.promo==='1';
-        function cardlet(l,v,s2,col){ return '<div style="background:#fff;border:1px solid #E5E2DB;border-top:3px solid '+col+';border-radius:8px;padding:10px 14px"><div style="font:600 10px Inter;letter-spacing:.08em;text-transform:uppercase;color:#8A8886">'+l+'</div><div style="font:700 19px JetBrains Mono,monospace;margin-top:4px">'+v+'</div><div style="font:11px Inter;color:#8A8886;margin-top:2px">'+s2+'</div></div>'; }
+        function cardlet(l,v,s2,col){ return '<div style="background:#fff;border:1px solid #E5E2DB;border-top:3px solid '+col+';border-radius:8px;padding:10px 14px"><div style="font:600 10px Inter;letter-spacing:.08em;text-transform:uppercase;color:#6A6A6A">'+l+'</div><div style="font:700 19px JetBrains Mono,monospace;margin-top:4px">'+v+'</div><div style="font:11px Inter;color:#6A6A6A;margin-top:2px">'+s2+'</div></div>'; }
         $('gh-res').innerHTML=cardlet(L('pool'),Math.round(c.pool).toLocaleString('en-US')+' cr',money(c.poolUSD)+'/mo · '+L('pooled')+' ('+c.credsPerSeat.toLocaleString('en-US')+L('perSeat')+(promo?' promo':'')+')','#00A4EF')
           +cardlet(L('cons'),Math.round(c.credits).toLocaleString('en-US')+' cr',money(c.monthly)+'/mo · '+money(c.perDev)+L('dev'),'#FFB900')
           +cardlet(c.overage>0?L('over'):L('head'),money(c.overage>0?c.overage:c.headroom)+'/mo',c.overage>0?L('beyond'):L('left'),'#7FBA00')
@@ -9171,9 +9184,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
             var c=compute(base), over=c.overage>0;
             return '<td style="text-align:right;padding:6px 10px;border-bottom:1px solid #E5E2DB;font-family:JetBrains Mono,monospace">'+money(c.monthly)+'<div style="font:10px Inter;color:'+(over?'#B33816':'#107C10')+'">'+(over?'+'+money(c.overage):money(c.headroom))+'</div></td>';
           }).join('');
-          return '<tr><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB"><b>'+mn+(mn===state.model?' <span style="color:#8A8886;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</b></td>'+tds+'</tr>';
+          return '<tr><td style="padding:6px 10px;border-bottom:1px solid #E5E2DB"><b>'+mn+(mn===state.model?' <span style="color:#6A6A6A;font-weight:400">· '+L('primaryTag')+'</span>':'')+'</b></td>'+tds+'</tr>';
         }).join('');
-        el.innerHTML='<div style="border-top:1px solid #C7E0F4;margin-top:16px;padding-top:14px"><b style="font:700 13px Inter">'+L('cmpTitle')+'</b><div style="overflow:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;font:12px Inter"><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div><div style="font:11px/1.6 Inter;color:#8A8886;margin-top:6px">'+L('cmpNote')+'</div></div>';
+        el.innerHTML='<div style="border-top:1px solid #C7E0F4;margin-top:16px;padding-top:14px"><b style="font:700 13px Inter">'+L('cmpTitle')+'</b><div style="overflow:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;font:12px Inter"><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div><div style="font:11px/1.6 Inter;color:#6A6A6A;margin-top:6px">'+L('cmpNote')+'</div></div>';
       }
       recalc();
     }
@@ -9195,6 +9208,46 @@ ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.c
       else if(n<40){ setTimeout(function(){ orig=window.setLocale!==window.setLocale?orig:orig; applySaved(n+1); },150); }
     })(0);
   })();
+})();
+</script>
+<script>
+/* A11y: give form controls an accessible name derived from their nearest visible
+   caption when React did not set one. Runs on mount and re-applies on re-render
+   (scoped, debounced MutationObserver), so it survives tab/locale/state changes. */
+(function(){
+  var root = document.getElementById('root');
+  if(!root) return;
+  function nameFor(el){
+    /* explicit caption inside the same field wrapper (.lbl / .sldr-lbl / label) */
+    var wrap = el.closest('div');
+    for(var hops=0; wrap && hops<3; hops++, wrap = wrap.parentElement){
+      var cap = wrap.querySelector('.sldr-lbl, label, .lbl');
+      if(cap && cap.textContent.trim()) return cap.textContent.trim();
+      var t = wrap.querySelector(':scope > div, :scope > span, :scope > label');
+      if(t && t !== el && t.textContent.trim() && t.textContent.trim().length < 60) return t.textContent.trim();
+    }
+    /* checkbox/radio: the text of its own label wrapper */
+    var lab = el.closest('label');
+    if(lab && lab.textContent.trim()) return lab.textContent.trim();
+    /* preceding sibling text */
+    var prev = el.previousElementSibling;
+    while(prev){ if(prev.textContent && prev.textContent.trim()){ return prev.textContent.trim(); } prev = prev.previousElementSibling; }
+    return (el.getAttribute('placeholder')||'').trim() || null;
+  }
+  function label(){
+    var ctrls = root.querySelectorAll('input:not([type=hidden]), select, textarea');
+    for(var i=0;i<ctrls.length;i++){
+      var el = ctrls[i];
+      if(el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || (el.labels && el.labels.length) || el.title) continue;
+      var n = nameFor(el);
+      if(n) el.setAttribute('aria-label', n.replace(/\s+/g,' ').slice(0,80));
+    }
+  }
+  var raf;
+  function schedule(){ if(raf) return; raf = requestAnimationFrame(function(){ raf = 0; label(); }); }
+  label();
+  new MutationObserver(schedule).observe(root, {childList:true, subtree:true});
+  window.addEventListener('localechange', schedule);
 })();
 </script>
 </body>
